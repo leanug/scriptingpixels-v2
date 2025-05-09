@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Geist Variable', 'sans-serif';
+}
+
+@layer components {
+  .btn-primary {
+    @apply flex items-center w-full sm:w-auto hover:cursor-pointer justify-center gap-2 px-8 py-6 bg-[#111111] hover:bg-gray-800 text-white text-2xl font-semibold rounded-xl ease-in;
+  }
+  .heading-hero {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold mt-1.5 mb-6 text-balance;
+  }
+  @layer components {
+    .all-btn {
+      @apply hidden md:inline-block px-4 py-2 text-sm text-white font-semibold bg-[#1D1D1D] rounded-lg cursor-pointer;
+      @apply shadow-[inset_1px_1px_2px_rgba(255,255,255,0.1),_2px_2px_5px_rgba(0,0,0,0.3)];
+      @apply hover:shadow-[inset_1px_1px_1px_rgba(255,255,255,0.08),_1px_1px_3px_rgba(0,0,0,0.2)] hover:opacity-90 transition-all;
+    }
+  }
+}
+
+@layer utilities {
+  .animate-growDown {
+    animation: growDown 0.3s ease-out forwards;
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+  .delay-600 { animation-delay: 0.6s; }
+
+  @keyframes growDown {
+    0% {
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+    100% {
+      transform: scaleY(1);
+      transform-origin: top;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
