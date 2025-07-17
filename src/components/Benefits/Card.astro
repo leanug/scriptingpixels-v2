@@ -1,0 +1,43 @@
+---
+import { 
+  LaptopMinimal, 
+  Rocket, 
+  WandSparkles, 
+  Zap,
+  PiggyBank,
+  SearchCheck
+} from '@lucide/astro';
+
+export interface Props {
+  icon: 'LaptopMinimal' | 'Rocket' | 'WandSparkles' | 'Zap' | 'PiggyBank' | 'SearchCheck';
+  title: string;
+  text?: string;
+  list?: string[];
+}
+const { icon, title, text, list } = Astro.props;
+
+const icons = {
+  LaptopMinimal,
+  Rocket,
+  WandSparkles,
+  Zap,
+  PiggyBank,
+  SearchCheck
+};
+
+const Icon = icons[icon] || null;
+---
+
+<div class="flex-1 min-w-[280px] bg-white p-8 rounded-xl">
+  <div class="mb-4 text-3xl">
+    {Icon && <Icon color="#181D27" size="32" />}
+  </div>
+  <h3 class="text-lg font-semibold mb-2">{title}</h3>
+  {list ? (
+    <ul class="list-disc pl-5 space-y-1 text-sm text-gray-700">
+      {list.map(item => <li>{item}</li>)}
+    </ul>
+  ) : (
+    <p class="text-sm text-gray-700">{text}</p>
+  )}
+</div>

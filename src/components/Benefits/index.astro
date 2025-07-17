@@ -1,0 +1,40 @@
+---
+import Card from './Card.astro';
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+  <Card 
+    icon="PiggyBank"
+    title="Stop burning cash on developers."
+    text="Use SEO-optimized templates to launch faster, rank sooner, and start driving traffic from day one."
+  />
+  <Card 
+    icon="LaptopMinimal"
+    title="Mobile Ready"
+    text="Designs adapt beautifully across all screen sizes and devices."
+  />
+  <Card 
+    icon="WandSparkles"
+    title="Easy to Customize"
+    text="Tweak layouts, colors, and content without touching any code."
+  />
+  <Card 
+    icon="Zap"
+    title="Fast Performance"
+    text="Optimized components and assets to ensure your site loads instantly."
+  />
+  <Card 
+    icon="SearchCheck"
+    title="SEO Ready Out of the Box"
+    text="No need for plugins, hacks, or agencies. Our templates are built to rank, lightning-fast, semantically structured, and Google-approved."
+  />
+  <Card 
+    icon="Rocket"
+    title="Launch in 3 Simple Steps"
+    list={[
+      'Choose a template',
+      'Customize content and colors',
+      'Go live — no developer needed'
+    ]}  
+  />
+</div>

@@ -1,0 +1,12 @@
+---
+const { imgSrc, imgAlt = '' } = Astro.props;
+---
+<span 
+  class="
+    inline-flex items-center gap-2 bg-white text-sm font-semibold 
+    px-4 py-2.5 rounded-full mb-6
+  "
+>
+  {imgSrc && <img src={imgSrc} alt={imgAlt} class="w-5 h-5 rounded-full" />}
+  <slot />
+</span>

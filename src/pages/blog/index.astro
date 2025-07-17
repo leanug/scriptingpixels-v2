@@ -1,0 +1,62 @@
+---
+// Astro imports
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+// Component imports
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogItem from '../../components/Blog/BlogItem.astro';
+import MainBlogItem from '../../components/Blog/MainBlogItem.astro';
+
+// Constants
+const placeholder = '/placeholder.svg';
+const title = "Blog - ScriptingPixels";
+const description = "Insights, tips, and resources for building better websites with Framer - explore tutorials, design ideas, and the latest trends in no-code and web design.";
+
+// Data
+const blog: CollectionEntry<'blog'>[] = await getCollection('blog');
+---
+
+<BaseLayout {title} {description}>
+  <section class="my-20 max-w-3xl mx-auto">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-10">
+      Insights:<br /> ScriptingPixels Blog
+    </h1>
+
+    <div class="">
+      <!-- Featured blog (first post) -->
+      {blog.length > 0 && (
+        <MainBlogItem
+          transition={blog[0].data.slug}
+          avatar={blog[0].data?.avatar || placeholder}
+          image={blog[0].data?.image || placeholder}
+          title={blog[0].data.title}
+          description={blog[0].data.description}
+          author={blog[0].data.author}
+          tags={blog[0].data.tags}
+          date={blog[0].data.date}
+          slug={blog[0].data.slug}
+          layout="featured" // optional: use layout prop to style it differently
+        />
+      )}
+    
+      <!-- Sidebar items (next posts) -->
+      <div class="space-y-8">
+        {blog.slice(1).map(({ data }) => (
+          <div class="pt-8 border-t border-[#E4E4E4]">
+            <BlogItem
+              transition={data.slug}
+              image={data?.image || placeholder}
+              title={data.title}
+              description={data.description}
+              author={data.author}
+              tags={data.tags}
+              date={data.date}
+              slug={data.slug}
+              compact={true} // optional: use prop to display smaller version
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

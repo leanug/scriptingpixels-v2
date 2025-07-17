@@ -1,0 +1,45 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import TemplateCard from './Card.astro';
+
+// Data
+const framerTemplates: CollectionEntry<'framer'>[] = await getCollection('framer');
+const publishedTemplates = framerTemplates.filter(template => template.data.published);
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-2">
+  {publishedTemplates.map(({ data }) => (
+    <TemplateCard 
+      cover={data.cover} 
+      title={data.title} 
+      type={data.type} 
+      price={data.price}
+      category={data.category}
+    />
+  ))}
+</div>
+
+<script>
+  import { filters } from '../../data/filters.js';
+  import { currentFilter } from '../../stores/filter-store.js';
+
+  function applyFilter(filter: string) {
+    document.querySelectorAll('.template-card').forEach(card => {
+      const type = card.getAttribute('data-type');
+      const shouldShow = filter === 'all' || filter === type;
+      card.classList.toggle('hidden', !shouldShow);
+    });
+  }
+
+  document.addEventListener('astro:page-load', () => {
+    // Use currentFilter from store (defaults to 'all')
+    const isValidFilter = filters.some(f => f.slug === currentFilter);
+    applyFilter(isValidFilter ? currentFilter : 'all');
+
+    // React to global filter change
+    document.addEventListener('filterchange', (e) => {
+      const filter = (e as CustomEvent).detail;
+      applyFilter(filter);
+    });
+  });
+</script>

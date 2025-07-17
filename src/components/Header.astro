@@ -1,39 +1,36 @@
 ---
-import Logo from "./Logo.astro"
+// Icons
+import { Menu } from '@lucide/astro';
+
+// Components
+import Logo from "./Logo.astro";
 ---
 
-<header class="mt-6 max-w-screen-2xl w-full mx-auto px-5 mb-12">
-  <nav class="flex items-center justify-between">
-    <a href="/" class="flex items-center gap-2.5">
-      <Logo />
-    </a>
-    <div class="flex gap-4 items-center">
-      <a 
-        href="https://www.fiverr.com/leanug" 
-        class="py-2 hover:bg-gray-200 transition ease-in font-semibold px-3 rounded-lg text-sm md:flex items-center gap-2 hidden border border-gray-300"
-      >
-        <img 
-          aria-hidden="true" 
-          class="w-4 h-4" 
-          src="/fiverr-icon.svg" 
-          alt="Fiverr Logo" 
-        /> 
-        Fiverr Reviews
-      </a>
-      <a
-        href="mailto:leandroubilla@protonmail.com"
-        class="all-btn"
-      >
-        Work with me
-      </a>
-      <button         
-        class="hover:cursor-pointer hamburger -mx-[3px]"
-        aria-label="Open menu"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
-        </svg>
-      </button>
+<header class="mt-5 mx-auto w-full md:w-auto max-w-6xl px-2.5">
+  <nav class="flex gap-12 items-center justify-between bg-[#f6f6f6] border px-3.5 border-[#e4e4e4] py-2.5 rounded-xl">
+    <Logo />
+    {/* Navigation Links */}
+    <div class="flex items-center justify-end gap-6">
+      <ul class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-500">
+        <li><a href="/">Home</a></li>
+        <li><a href="/faqs">FAQs</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+      {/* CTA Button */}
+      <div class="flex items-center gap-5 justify-end">
+        <a
+          href="/framer-templates"
+          class="hidden md:block all-btn"
+        >
+          Get your Template
+        </a>
+        <button         
+          class="hover:cursor-pointer hamburger -mx-[3px]"
+          aria-label="Open menu"
+        >
+          <Menu color="#181D27" size="24" />
+        </button>
+      </div>
     </div>
   </nav>
 </header>

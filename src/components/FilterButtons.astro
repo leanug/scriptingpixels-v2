@@ -1,0 +1,55 @@
+---
+import { filters } from '../data/filters';
+const url = new URL(Astro.request.url);
+const active = url.searchParams.get('filter') || 'all';
+---
+
+<div class="flex space-x-2" id="filter-buttons">
+  {filters.map(filter => (
+    <button
+      type="button"
+      class={`filter-btn px-2.5 py-1.5 text-sm font-semibold rounded-lg transition-colors cursor-pointer
+        ${filter.slug === active ? 'bg-gray-800 text-white' : 'transparent text-gray-800'}`}
+      data-slug={filter.slug}
+    >
+      {filter.label}
+    </button>
+  ))}
+</div>
+
+<script>
+  import { setFilter } from '../stores/filter-store.js';
+
+  document.addEventListener("astro:page-load", () => {
+    const buttons = document.querySelectorAll<HTMLButtonElement>('#filter-buttons button');
+
+    function setActive(slug: string) {
+      buttons.forEach(btn => {
+        const isActive = btn.dataset.slug === slug;
+        btn.classList.toggle('bg-gray-800', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('transparent', !isActive);
+        btn.classList.toggle('text-gray-800', !isActive);
+      });
+
+      // Update store
+      setFilter(slug);
+
+      // Optional: emit event if needed elsewhere
+      document.dispatchEvent(new CustomEvent('filterchange', { detail: slug }));
+    }
+
+    // Set initial filter
+    setActive('all');
+
+    // Set on click
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const slug = btn.dataset.slug || 'all';
+        setActive(slug);
+      });
+    });
+  });
+</script>
+
+

@@ -1,3 +1,7 @@
+---
+import { X } from '@lucide/astro';
+---
+
 <div 
   id="overlay" 
   class="fixed inset-0 bg-black/90 backdrop-blur-md hidden flex-col items-center justify-center text-white z-40 overflow-hidden"
@@ -8,9 +12,7 @@
     id="close-overlay"
     aria-label="Close menu"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-    </svg>
+    <X color="#FFFFFF" size="24" />
   </button>
 
   <!-- Animated container -->
@@ -20,30 +22,38 @@
       <a href="/" class="fade-in delay-100">
         <div class="relative inline-block">
           <span class="absolute -top-4 -left-6 text-sm text-zinc-500 font-semibold">01</span>
-          <h2 class="text-6xl font-semibold text-white hover:text-neutral-300 transition-colors duration-200">Home</h2>
+          <h2 class="text-6xl font-semibold text-white hover:text-neutral-300 transition-colors duration-200">
+            Home
+          </h2>
         </div>
       </a>
 
-      <a href="/about" class="fade-in delay-200 block">
+      <a href="/framer-templates" class="fade-in delay-200 block">
         <div class="relative inline-block">
           <span class="absolute -top-4 -left-6 text-sm text-zinc-500 font-semibold">02</span>
-          <h2 class="text-6xl font-semibold text-white hover:text-neutral-300 transition-colors duration-200">About me</h2>
+          <h2 class="text-6xl font-semibold text-white hover:text-neutral-300 transition-colors duration-200">
+            Templates
+          </h2>
         </div>
       </a>
 
-      <a href="/process" class="fade-in delay-300 block">
+      <a href="/faqs" class="fade-in delay-300 block">
         <div class="relative inline-block">
           <span class="absolute -top-4 -left-6 text-sm text-zinc-500 font-semibold">03</span>
-          <h2 class="text-6xl font-semibold text-white hover:text-neutral-300 transition-colors duration-200">Process</h2>
+          <h2 class="text-6xl font-semibold text-white hover:text-neutral-300 transition-colors duration-200">
+            FAQs
+          </h2>
         </div>
       </a>
 
-      <a href="/services" class="fade-in delay-400 block">
+      <a href="/blog" class="fade-in delay-400 block">
         <div class="relative inline-block">
           <span class="absolute -top-4 -left-6 text-sm text-zinc-500 font-semibold">04</span>
-          <h2 class="text-6xl font-semibold text-white hover:text-neutral-300 transition-colors duration-200">Services</h2>
+          <h2 class="text-6xl font-semibold text-white hover:text-neutral-300 transition-colors duration-200">
+            Blog
+          </h2>
         </div>
-      </a>
+      </a>      
     </nav>
 
     <!-- Social Links -->
@@ -67,12 +77,6 @@
           /> 
         </a>
       </div>
-      <a
-        href="mailto:leandroubilla@protonmail.com"
-        class="px-4 fade-in delay-600 text-lg py-2 w-40 mt-10 text-center text-[#212121] hover:cursor-pointer bg-white rounded-lg font-semibold"
-      >
-        Work with me
-      </a>
     </div>
   </div>
 </div>

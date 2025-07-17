@@ -1,0 +1,30 @@
+---
+import Accordion from '../components/Accordion.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Pill from '../components/Pill.astro';
+
+// Constants
+const title = "FAQs - Scripting Pixels";
+const description = "Find answers to common questions about Framer templates, customization, licensing, and using Scripting Pixels effectively.";
+---
+
+<BaseLayout {title} {description}>
+  <section class="py-16 mt-12">
+    <!-- Left Side Content -->
+    <div class="max-w-xl text-center mx-auto">
+      <Pill imgSrc="/icons/badge-help.svg" imgAlt="Skill icon">
+        Learn More about ScriptingPixels
+      </Pill>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-lg text-gray-700 mb-8">
+        Clear answers to the most common questions, 
+        designed to remove guesswork and help you take action with confidence.
+      </p>
+    </div>
+    <div class="mt-10 max-w-3xl mx-auto">
+      <Accordion />
+    </div>
+  </section>
+</BaseLayout>

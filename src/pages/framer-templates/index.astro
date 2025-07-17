@@ -1,0 +1,37 @@
+---
+import FilterButtons from '../../components/FilterButtons.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FramerTemplatesComponent from '../../components/FramerTemplates/index.astro';
+
+// Constants
+const title = "Framer Templates - Scripting Pixels";
+const description = "Shop Premium Framer Templates - High-impact designs built for startups, creators, portfolios, and modern businesses using Framer.";
+---
+
+<BaseLayout {title} {description}>
+  <section class="mb-20 mt-20">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 md:mb-12 lg:mb-12 gap-3 md:gap-16">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight md:w-1/2">
+        Framer Templates
+      </h1>
+      <p class="text-lg text-gray-700 md:w-1/2">
+        Built to <span class="font-semibold">help freelancers, creators, and founders launch better sites in 
+        less time.</span> No code, fast loads, pro-level design. No filler.   
+      </p>
+    </div>
+
+    <div class="flex justify-between items-center w-full mb-6 rounded-lg">
+      <!-- Left side: tags -->
+      <FilterButtons />
+      <!-- Right side: linked image -->
+      <a href="https://www.lemonsqueezy.com" target="_blank" rel="noopener noreferrer">
+        <img 
+          src="/Lemon-Squeezy-Payments-Badge-Purple-Soft.svg" 
+          alt="LemonSqueezy" 
+          class="h-8 w-auto"
+        />
+      </a>
+    </div>
+    <FramerTemplatesComponent />
+  </section>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import PostCard from './Card.astro';
+
+// Data
+const blog: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+// Get only featured posts
+const featuredPosts = blog.filter(post => post.data.featured);
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-2">
+  {featuredPosts.map(({ data }) => (
+    <PostCard 
+      image={data.image}
+      title={data.title}
+      slug={data.slug}
+    />
+  ))}
+</div>

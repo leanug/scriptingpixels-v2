@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+
+const {
+  image,
+  title,
+  description,
+  author,
+  slug,
+  avatar
+} = Astro.props;
+---
+
+<a href={`/blog/${slug}`} class="w-full rounded">
+  <article class="pb-8">
+    <Image
+      transition:name={`img-${slug}`}
+      src={`/${image}`}
+      alt={`Cover of ${title}`} 
+      class="w-full aspect-video object-cover rounded-2xl bg-[#f2f2f2]"
+      width="1280" 
+      height="960"
+      decoding="async"
+      loading="lazy"
+    />
+
+    <div class="flex flex-col gap-4 mt-6">
+      <h2 class="text-2xl font-semibold leading-snug">
+        {title}
+      </h2>
+
+      <p class="text-base text-gray-700">{description}</p>
+
+      <div class="flex items-center flex-wrap gap-3 text-gray-500">
+        <Image
+          src={`/${avatar}`}
+          alt="Author profile picture" 
+          class="w-8 h-8 rounded-md"
+          width="44" 
+          height="44"
+          decoding="async"
+          loading="lazy"
+        />
+        {author && <span>By {author}</span>}
+      </div>
+    </div>
+  </article>
+</a>
