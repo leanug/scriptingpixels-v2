@@ -87,11 +87,11 @@
   }
 
   .primary-text {
-    @apply text-neutral-900;
+    @apply text-neutral-950;
   }
 
   .secondary-text {
-    @apply text-neutral-400;
+    @apply text-neutral-700;
   }
 
   .base {
