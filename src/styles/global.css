@@ -73,10 +73,35 @@
   }
 
   .all-btn-big {
-    @apply px-4.5 py-3 text-base text-white font-semibold bg-[#181D27] rounded-xl cursor-pointer;
-    @apply hover:opacity-90 transition-all;
-    @apply shadow-[inset_1px_1px_2px_rgba(255,255,255,0.1),_2px_2px_5px_rgba(0,0,0,0.3)];
-    @apply hover:shadow-[inset_1px_1px_1px_rgba(255,255,255,0.08),_1px_1px_3px_rgba(0,0,0,0.2)] hover:opacity-90 transition-all;
+    @apply px-4.5 py-3 text-base font-semibold rounded-xl cursor-pointer transition-all;
+  }
 
+  /* Solid button (default) */
+  .all-btn-big:not(.outline) {
+    @apply bg-neutral-900 text-white hover:opacity-90;
+  }
+
+  /* Outline button */
+  .all-btn-big.outline {
+    @apply bg-transparent text-neutral-900 border border-[#e4e4e4] hover:bg-neutral-900 hover:text-white;
+  }
+
+  .primary-text {
+    @apply text-neutral-900;
+  }
+
+  .secondary-text {
+    @apply text-neutral-400;
+  }
+
+  .base {
+    @apply bg-[#f2f2f2];
+  }
+}
+
+@layer base {
+  :root {
+    --icon-primary : #171717;
+    --icon-muted: #a1a1a1;
   }
 }

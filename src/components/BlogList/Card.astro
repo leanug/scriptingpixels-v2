@@ -10,11 +10,11 @@ const { image, title, slug } = Astro.props;
   <Image
     src={`/framer/${image}`}
     alt={`${title}`}     
-    width="520" 
-    height="320"
+    width="800" 
+    height="600"
     decoding="async"
     loading="lazy"
-    class="rounded-xl"
+    class="rounded-xl object-cover w-full aspect-4/3"
   />
   <h3 class="text-lg font-semibold mt-4">{title}</h3>
 </a>

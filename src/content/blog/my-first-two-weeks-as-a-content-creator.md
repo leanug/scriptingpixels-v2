@@ -7,7 +7,7 @@ description: In this post, I share the highs and lows of my first two weeks as a
 date: 2024-10-17
 tags: ["Content Creation", "YouTube", "Journey"]
 slug: my-first-two-weeks-making-coding-videos
-published: true
+published: false
 featured: false
 ---
 

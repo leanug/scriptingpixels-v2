@@ -7,7 +7,7 @@ description: Dive into Next.js form handling! Learn about HTML validation, handl
 date: 2025-01-17
 tags: ["Next.js", "Forms", "Web Development"]
 slug: mastering-nextjs-form-handling
-published: true
+published: false
 featured: false
 ---
 

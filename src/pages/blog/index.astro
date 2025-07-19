@@ -13,7 +13,7 @@ const title = "Blog - ScriptingPixels";
 const description = "Insights, tips, and resources for building better websites with Framer - explore tutorials, design ideas, and the latest trends in no-code and web design.";
 
 // Data
-const blog: CollectionEntry<'blog'>[] = await getCollection('blog');
+const blog: CollectionEntry<'blog'>[] = await getCollection('blog', ({ data }: { data: CollectionEntry<'blog'>['data'] }) => data.published === 'yes');
 ---
 
 <BaseLayout {title} {description}>
@@ -56,6 +56,9 @@ const blog: CollectionEntry<'blog'>[] = await getCollection('blog');
             />
           </div>
         ))}
+        {blog.length === 0 && (
+          <p class="text-center secondary-text text-lg">No blog posts available at the moment.</p>
+        )}
       </div>
     </div>
   </section>

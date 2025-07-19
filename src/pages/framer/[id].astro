@@ -1,0 +1,202 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { Framer } from "../../types";
+import { Image } from 'astro:assets';
+import Pill from '../../components/Pill.astro';
+import SecurePayments from '../../components/SecurePayments.astro';
+import Benefits from '../../components/Benefits/index.astro';
+import Accordion from '../../components/Accordion.astro';
+
+// Icons
+import { ChevronRight, Clock, StickyNote } from '@lucide/astro';
+
+export async function getStaticPaths() {
+  const templates = await getCollection("framer");
+  return templates.map((template: Framer) => ({
+    params: { id: template.data.slug },
+    props: template
+  }));
+}
+
+const { data } = Astro.props;
+const {
+  author: {
+    name: author,
+    avatar: authorAvatar,
+  },
+  category: { label },
+  title,
+  linkBuy,
+  cover,
+  swap,
+  galleryImg1,
+  galleryImg2,
+  note,
+  updated,
+  description,
+  pages,
+  preview,
+  price,
+  stack,
+} = data;
+
+const formattedDate = updated
+  ? new Date(updated).toLocaleDateString('en-US', {
+      month: 'long',
+      year: 'numeric'
+    })
+  : 'Unknown';
+
+
+const images = [cover, swap, galleryImg1, galleryImg2].filter(Boolean);
+let activeImage = images[0]; // fallback if galleryImg1/2 not passed
+
+export const prerender = true;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="w-full mt-6 mb-20">
+    <!-- Breadcrumbs -->
+    <div class="text-sm flex items-center gap-2 mb-8">
+      <span class="secondary-text">{stack}</span>
+      <ChevronRight color="#9f9fa9" size="16" />
+      <span class="secondary-text">{label}</span>
+      <ChevronRight color="#9f9fa9" size="16" />
+      <span class="secondary-text">{title}</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 items-center">
+     <div class="flex gap-4">
+        <!-- Thumbnails -->
+        <div class="flex flex-col gap-3" id="thumbnail-container">
+          {images.map((img, index) => (
+            <div
+              class="w-16 h-12 overflow-hidden rounded-lg cursor-pointer"
+              data-image={`/framer/${img}`}
+            >
+              <Image
+                src={`/framer/${img}`}
+                alt={title}
+                class="w-full aspect-4/3 h-full object-cover"
+                loading="lazy"
+                decoding="async"
+                width={64}
+                height={64}
+              />
+            </div>
+          ))}
+        </div>
+
+        <!-- Main Image -->
+        <div class="w-full overflow-hidden rounded-2xl shadow-md max-w-3xl">
+          <Image
+            id="main-image"
+            src={`/framer/${activeImage}`}
+            alt={title}
+            class="w-full aspect-4/3 object-cover"
+            width={600}
+            height={600}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+
+      <!-- Right Content -->
+      <div class="flex flex-col gap-6">
+        <h2 class="text-2xl font-semibold tracking-tight">{title}</h2>
+        <p class="text-lg font-medium secondary-text mb-0">{description}</p>
+
+        <div class="flex items-center gap-4">
+          { price > 0 && <div class="text-2xl font-bold text-neutral-900"><span class="text-sm">$</span> {price} USD</div> }
+          { price > 0 &&
+            <div class="text-sm font-medium text-green-600 bg-green-100 inline-block px-3 py-1 rounded-full">
+              {note}
+            </div>
+          }
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href={linkBuy}
+            class="px-6 py-3 font-semibold uppercase bg-black text-white rounded-lg hover:bg-neutral-700 transition"
+          >
+            {price === 0 ? 'Get it for Free' : 'Purchase Template'}
+          </a>
+          <a
+            href={preview}
+            class="px-6 py-3 font-semibold uppercase bg-neutral-100 text-black rounded-lg hover:bg-neutral-200 transition"
+          >
+            Preview
+          </a>
+        </div>
+        
+        <SecurePayments />
+
+        <!-- Metadata -->
+        <ul class="space-y-3">
+          <li class="flex items-center gap-2">
+            <span class="secondary-text font-medium">Creator:</span>
+            <img 
+              src={`/${authorAvatar}`} 
+              alt={author}
+              class="h-5 w-5 rounded-full object-cover"
+            >
+            <span class="font-semibold">{author}</span>
+          <li class="flex items-center gap-2">
+            <Clock color="var(--icon-primary)" size="20" />
+            <span class="secondary-text font-medium">Updated:</span> 
+            <span class="font-semibold">{formattedDate}</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <StickyNote color="var(--icon-primary)" size="20" />
+            <span class="secondary-text font-medium">Pages:</span> 
+            <span class="font-semibold">{pages}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-20">
+    <Pill imgSrc="/icons/framer-color-icon.svg" imgAlt="Framer icon">
+      Framer Templates
+    </Pill>
+    <div class="flex flex-col lg:flex-row items-end justify-between mb-12 gap-6 lg:gap-12">
+      <h2 class="text-4xl md:text-5xl font-semibold lg:w-1/2 self-end">
+        Plug in your brand. Hit publish. Go live in days — not weeks.
+      </h2>
+      <p class="text-lg secondary-text lg:w-1/2 self-end">
+        From mobile-ready design and SEO optimization to accessibility 
+        and launch-ready templates, everything's crafted to help you go 
+        live quickly, and look good doing it.      
+      </p>
+    </div>
+    <Benefits />
+  </section>
+
+  <section class="mb-20">
+    <!-- Left Side Content -->
+    <div class="max-w-xl text-center mx-auto">
+      <Pill imgSrc="/icons/badge-help.svg" imgAlt="Skill icon">
+        Learn More about ScriptingPixels
+      </Pill>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6">
+        Frequently Asked Questions
+      </h2>
+      <p class="text-lg secondary-text mb-8">
+        Clear answers to the most common questions, 
+        designed to remove guesswork and help you take action with confidence.
+      </p>
+    </div>
+    <div class="mt-10 max-w-3xl mx-auto">
+      <Accordion />
+    </div>
+  </section>
+
+  <script>
+    import "../../scripts/image-gallery.ts";
+  </script>
+</BaseLayout>

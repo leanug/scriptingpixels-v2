@@ -1,20 +1,30 @@
 export type Framer = {
   data: {
+    author: {
+      name: string;
+      avatar: string;
+      url?: string;
+    };
     title: string;
-    image: string;
     cover: string;
-    swap: string;
+    swap?: string;
+    galleryImg1?: string;
+    galleryImg2?: string;
+    galleryImg3?: string;
+    galleryImg4?: string;
     slug: string;
     description: string;
-    caterogy: {
+    category: {
       label: string
       slug: string;
     };
     featured?: boolean;
+    stack: string;
     type: 'new' | 'popular';
+    pages: number;
     price: number;
     published: boolean;
-    url: string;
+    url?: string;
   };
 };
 
