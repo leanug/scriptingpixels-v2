@@ -13,7 +13,15 @@ const title = "Blog - ScriptingPixels";
 const description = "Insights, tips, and resources for building better websites with Framer - explore tutorials, design ideas, and the latest trends in no-code and web design.";
 
 // Data
-const blog: CollectionEntry<'blog'>[] = await getCollection('blog', ({ data }: { data: CollectionEntry<'blog'>['data'] }) => data.published === 'yes');
+const blog: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+// Get pinned post
+const pinnedPost = blog.filter(post => post.data.pinned);
+
+// Get only published posts excluding pinned posts
+const publishedPosts = blog
+  .filter((post): post is CollectionEntry<'blog'> => Boolean(!post.data.pinned && post.data.published))
+  .sort((a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime());
 ---
 
 <BaseLayout {title} {description}>
@@ -23,25 +31,29 @@ const blog: CollectionEntry<'blog'>[] = await getCollection('blog', ({ data }: {
     </h1>
 
     <div class="">
-      <!-- Featured blog (first post) -->
-      {blog.length > 0 && (
+      <!-- Pinned Post (first post) -->
+      {pinnedPost.length > 0 ? (
         <MainBlogItem
-          transition={blog[0].data.slug}
-          avatar={blog[0].data?.avatar || placeholder}
-          image={blog[0].data?.image || placeholder}
-          title={blog[0].data.title}
-          description={blog[0].data.description}
-          author={blog[0].data.author}
-          tags={blog[0].data.tags}
-          date={blog[0].data.date}
-          slug={blog[0].data.slug}
-          layout="featured" // optional: use layout prop to style it differently
+          transition={pinnedPost[0].data.slug}
+          avatar={pinnedPost[0].data?.avatar || placeholder}
+          image={pinnedPost[0].data?.image || placeholder}
+          title={pinnedPost[0].data.title}
+          description={pinnedPost[0].data.description}
+          author={pinnedPost[0].data.author}
+          tags={pinnedPost[0].data.tags}
+          date={pinnedPost[0].data.date}
+          slug={pinnedPost[0].data.slug}
+          layout="featured"
         />
+      ) : (
+        <div class="text-muted-foreground text-center py-6">
+          No pinned post
+        </div>
       )}
     
       <!-- Sidebar items (next posts) -->
       <div class="space-y-8">
-        {blog.slice(1).map(({ data }) => (
+        {publishedPosts.map(({ data }) => (
           <div class="pt-8 border-t border-[#E4E4E4]">
             <BlogItem
               transition={data.slug}

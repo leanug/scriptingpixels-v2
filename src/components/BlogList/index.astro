@@ -6,7 +6,9 @@ import PostCard from './Card.astro';
 const blog: CollectionEntry<'blog'>[] = await getCollection('blog');
 
 // Get only featured posts
-const featuredPosts = blog.filter(post => post.data.featured);
+const featuredPosts = blog
+  .filter(post => post.data.featured && post.data.published)
+  .sort((a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime());
 ---
 
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-2">

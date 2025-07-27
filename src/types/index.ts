@@ -39,5 +39,7 @@ export type Blog = {
     description: string;
     tags?: string[];
     featured?: boolean;
+    pinned?: boolean;
+    published: boolean;
   }
 };

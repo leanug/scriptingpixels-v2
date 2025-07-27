@@ -1,14 +1,14 @@
 ---
 author: Leandro Ubilla
 avatar: leandro-profile.png
-image: placeholder.svg
+image: 01-why-mapping-api-data-is-crucial/cover.webp
 title: Why Mapping API Data is Crucial for Web Development
 description: This post walks you through a basic mapping function that will streamline your data handling.
 date: 2024-05-10
 tags: ["JavaScript"]
 slug: why-mapping-api-data-is-crucial
-published: false
-featured: false
+published: true
+featured: true
 ---
 
 Mapping data from an API is an essential step for several reasons, 
@@ -132,7 +132,7 @@ your whole codebase.
 
 **Save yourself from a world of pain.**
 
-![You are entering a world of pain - Walter - The big lebowsky](/blog/03/world-of-pain-walter-min.png)
+![You are entering a world of pain - Walter - The big lebowsky](/blog/01-why-mapping-api-data-is-crucial/world-of-pain-walter-min.png)
 
 If the API changes its response structure or fields, you can adjust the mapping 
 logic rather than **refactoring the entire app**.
