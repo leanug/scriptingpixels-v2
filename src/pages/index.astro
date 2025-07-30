@@ -13,8 +13,8 @@ const description = "Framer Templates for High-Impact Sites - Launch fast with p
 
 <BaseLayout {title} {description}>
   <section class="flex items-center my-12 md:my-16 lg:mt-20 lg:mb-24 justify-center text-center">
-    <div class="max-w-6xl space-y-3 lg:space-y-6">
-      <div class="text-sm font-semibold tracking-wide inline-block px-4 py-2.5 bg-white rounded-full">
+    <div class="max-w-6xl">
+      <div class="text-sm font-semibold tracking-wide mb-6 inline-block px-4 py-2.5 bg-white rounded-full">
         <div class="relative inline-flex">
           <div class="rounded-full bg-green-400 h-[8px] w-[8px] inline-block mr-2"></div>
           <div class="absolute animate-ping rounded-full bg-green-400 h-[8px] w-[8px] mr-2"></div>
@@ -25,45 +25,48 @@ const description = "Framer Templates for High-Impact Sites - Launch fast with p
         Where Framer <img src="/website-icon.svg" alt="Logo" class="inline-block w-7 h-7 md:w-10 md:h-10 lg:w-12 lg:h-12 mx-0.5 align-middle -rotate-4 shadow-lg rounded lg:rounded-lg mb-2" /> 
         Templates deliver real-world results. 
       </h1>
-      <p class="text-xl secondary-text font-medium text-balance mx-auto w-full max-w-4xl">
+      <p class="text-xl secondary-text font-medium text-balance mx-auto w-full max-w-4xl mt-7">
         Effortlessly customizable templates designed to deliver real impact, get your site live in days, not weeks, and start converting sooner.
       </p>
 
-     <div class="flex justify-center items-center bg-gray-100">
-      <div class="relative w-16 h-28 rounded-full bg-white shadow-md overflow-hidden flex items-start justify-center">
-        <div class="absolute top-0 w-3 bg-pink-500 rounded-full animate-grow-origin-bottom origin-top"></div>
+      <style>
+        .mouse-scroll {
+          width: 2.3rem;
+          height: 3.8rem;
+          border-radius: 100px;
+          background-color: #fff;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .mouse-scroll::before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          width: 0.5rem;
+          height: 0.5rem;
+          background-color: #1d1d1d;
+          border-radius: 50%;
+          transform: translateX(-50%);
+          animation: scroll 2.5s infinite ease-in-out;
+        }
+      
+        @keyframes scroll {
+          0% {
+            bottom: 65%;
+            opacity: 1;
+          }
+          100% {
+            bottom: 20%;
+            opacity: 0;
+          }
+        }
+      </style>
+
+      <div class="flex justify-center items-center mt-12">
+        <div class="mouse-scroll"></div>
       </div>
-</div>
-
-<style>
-@keyframes grow-origin-bottom {
-  0% {
-    height: 12px;
-    transform-origin: top;
-    border-radius: 9999px;
-  }
-  30% {
-    height: 100%;
-    border-radius: 0; /* stretch */
-  }
-  60% {
-    height: 100%;
-    border-radius: 0;
-  }
-  100% {
-    height: 12px;
-    transform-origin: bottom;
-    transform: translateY(100%);
-    border-radius: 9999px;
-  }
-}
-.animate-grow-origin-bottom {
-  animation: grow-origin-bottom 2s infinite ease-in-out;
-}
-</style>
-
-
-
+    <div>
     </div>
   </section>
 

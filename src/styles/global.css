@@ -59,7 +59,7 @@
   }
   
   .heading-hero {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-semibold mt-1.5 mb-6 text-balance;
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-semibold mt-1.5 text-balance;
   }
 
   .section-h2 {

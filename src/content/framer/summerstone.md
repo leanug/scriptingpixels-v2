@@ -1,6 +1,6 @@
 ---
 # Text content
-title: Overflow
+title: Summerstone  - Coming soon
 subtitle: A professional-grade portfolio layout
 description: A clean, responsive portfolio Framer template perfect for freelancers and creatives.
 note: Fraction of agency cost
@@ -10,7 +10,7 @@ linkBuy:
 preview:
 
 # Media
-cover: coming-soon.png
+cover: cover.webp
 swap: coming-soon.png
 galleryImg1: coming-soon.png
 galleryImg2: coming-soon.png
@@ -20,7 +20,7 @@ author: {
   name: Leandro Ubilla,
   avatar: leandro-profile.png
 }
-slug: overflow
+slug: summerstone
 type: new
 pages: 3
 price: 99
@@ -31,7 +31,7 @@ updated: 2025-07-15
 
 # Category
 category: {
-  label: Portfolio,
-  slug: portfolio
+  label: Real Estate,
+  slug: real-estate
 }
 ---

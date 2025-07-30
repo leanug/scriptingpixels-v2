@@ -1,23 +1,24 @@
+export type Author = {
+  name: string;
+  avatar: string;
+  url?: string;
+};
+
+export type Category = {
+  label: string;
+  slug: string;
+};
+
 export type Framer = {
   data: {
-    author: {
-      name: string;
-      avatar: string;
-      url?: string;
-    };
+    author: Author;
     title: string;
     cover: string;
     swap?: string;
-    galleryImg1?: string;
-    galleryImg2?: string;
-    galleryImg3?: string;
-    galleryImg4?: string;
+    galleryImgs?: string[];
     slug: string;
     description: string;
-    category: {
-      label: string
-      slug: string;
-    };
+    category: Category;
     featured?: boolean;
     stack: string;
     type: 'new' | 'popular';
@@ -33,13 +34,13 @@ export type Blog = {
     avatar: string;
     title: string;
     slug: string;
-    date: string;
-    author?: string;
+    date: string; 
+    author?: Author; 
     image?: string;
     description: string;
-    tags?: string[];
+    category?: Category[];
     featured?: boolean;
     pinned?: boolean;
     published: boolean;
-  }
+  };
 };

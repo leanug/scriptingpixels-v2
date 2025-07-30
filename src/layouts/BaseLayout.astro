@@ -34,6 +34,25 @@ import Footer from '../components/Footer.astro';
     <meta name="twitter:description" content={Astro.props.description ?? 'Premium Framer templates and design resources for high-impact websites.'} />
     <meta name="twitter:image" content="https://www.scriptingpixels.com/og-image.jpg" />
 
+    <!-- Prevent flash of unstyled content (FOUC) on first paint.
+     Hide body until styles are applied, then fade it in.
+     Note: This is a workaround, not a perfect fix. -->
+
+    <style is:inline>
+      body {
+        visibility: hidden;
+        opacity: 0;
+      }
+    </style>
+
+    <style is:global>
+      body {
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0.2s linear, opacity 0.2s linear;
+      }
+    </style>
+
     <ClientRouter />
     <SpeedInsights/> 
 	</head>

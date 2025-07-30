@@ -1,6 +1,6 @@
 ---
 # Text content
-title: Fieldwave
+title: Fieldwave  - Coming soon
 subtitle: Versatile agency layout for bold brands
 description: A clean, responsive portfolio Framer template perfect for freelancers and creatives.
 note: Fraction of agency cost
@@ -10,7 +10,7 @@ linkBuy:
 preview: 
 
 # Media
-cover: coming-soon.png
+cover: cover.webp
 swap: coming-soon.png
 galleryImg1: coming-soon.png
 galleryImg2: coming-soon.png

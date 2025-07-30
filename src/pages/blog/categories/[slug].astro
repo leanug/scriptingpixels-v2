@@ -1,0 +1,77 @@
+---
+// Astro imports
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+import { categories } from '../../../data/categories';
+
+// Component imports
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogItem from '../../../components/Blog/BlogItem.astro';
+
+import { getCategoryMetadata } from  '../../../scripts/seo';
+
+// This function returns a page for each blog post based on its slug
+export async function getStaticPaths() {
+  return Object.values(categories).map((category) => ({
+    params: { slug: category.slug }
+  }));
+}
+
+const { slug } = Astro.params;
+const categoryLabel =
+  (Object.prototype.hasOwnProperty.call(categories, slug)
+    ? categories[slug as keyof typeof categories].label
+    : 'Blog');
+
+// Constants
+const { 
+  title: postTitle, 
+  description: postDescription 
+} = getCategoryMetadata(categoryLabel);
+
+const placeholder = '/placeholder.svg';
+const title = { postTitle }
+const description = { postDescription };
+
+// Data
+const blog: CollectionEntry<'blog'>[] = await getCollection('blog');
+
+// Get only published posts
+const publishedPosts = blog
+  .filter((post): post is CollectionEntry<'blog'> => Boolean(post.data.published))
+  .sort((a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime());
+
+export const prerender = true;
+---
+
+<BaseLayout {title} {description}>
+  <section class="my-20 max-w-3xl mx-auto">
+    <h1 class="text-4xl font-semibold leading-tight mb-10">
+      Insights:<br /> ScriptingPixels Blog
+    </h1>
+
+    <div class="">
+      <!-- Sidebar items (next posts) -->
+      <div class="space-y-8">
+        {publishedPosts.map(({ data }) => (
+          <div class="pt-8 border-t border-[#E4E4E4]">
+            <BlogItem
+              transition={data.slug}
+              image={data?.image || placeholder}
+              title={data.title}
+              description={data.description}
+              author={data.author}
+              tags={data.tags}
+              date={data.date}
+              slug={data.slug}
+              compact={true} // optional: use prop to display smaller version
+            />
+          </div>
+        ))}
+        {blog.length === 0 && (
+          <p class="text-center secondary-text text-lg">No blog posts available at the moment.</p>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

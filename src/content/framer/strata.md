@@ -4,13 +4,13 @@ linkBuy:
 preview:
 
 # Media
-cover: coming-soon.png
+cover: cover.webp
 swap: coming-soon.png
 galleryImg1: coming-soon.png
 galleryImg2: coming-soon.png
 
 # Text content
-title: Strata
+title: Strata - Coming soon
 subtitle: This is the subtitle
 description: A fast, modern Framer template for SaaS startups looking to launch with impact.
 note: Fraction of agency cost

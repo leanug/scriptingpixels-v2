@@ -1,40 +1,135 @@
 ---
 author: Leandro Ubilla
 avatar: leandro-profile.png
-image: 03-how-to-add-a-blog-to-your-framer-project/cover.webp
+image: cover.webp
 title: How to Add a Blog to Your Framer Project
-description: Learn how to add a fully functional blog to your Framer site from scratch — even if your template doesn’t include a blog setup.
+description: Learn how to add a fully functional blog to your Framer site from scratch.
 date: 2025-07-23
-tags: ["Framer", "Blog"]
+category: {
+  label: "Framer",
+  slug: "framer"
+}
 slug: how-to-add-a-blog-to-your-framer-project
 published: true
 featured: true
 pinned: true
 ---
 
-## Content Creator's Log, Stardate: 2024.10.17. The mission to grow a YouTube channel continues... no sign of views, but the journey goes on.
+## Table of Contents
 
-The first few weeks were tough. My first video took way longer than expected. 
+- [How to add a blog to a blank project](#how-to-add-a-blog-to-a-blank-project)  
+- [How to add a blog to a project with the CMS already set up](#how-to-add-a-blog-to-a-project-with-the-cms-already-set-up)
 
-I had to learn how to make thumbnails 🎨, and I didn&apos;t realize it was something that required so much time. 
 
-The audio in my videos still sounds pretty bad, especially the first one, which is over 20 minutes long 🎧. 
+## Starting with a blank Framer project? No problem.
 
-Recently, for my fourth video, I learned how to clean up the audio with Audacity 🎙️. 
+If your template doesn’t include a blog by default, you'll need to set things up manually. That means creating your own CMS items from scratch, but don’t worry, it’s simpler than it sounds.
 
-Now, it sounds a lot better—normalizing, reducing the echo, and boosting the volume in Kdenlive because it was too quiet. 
+In this quick guide, I’ll walk you through how to add a blog to any Framer site, even if your starting point is completely empty.
 
-As comrade Anatoly Dyatlov would say: Not great, not terrible 💬.
+![Framer add blog button](/public/media/blog/how-to-add-a-blog-to-your-framer-project/1.webp)
 
-![Anatoly Dyatlov: Not great, not terrible](/blog/04/dyatlov.jpg)
+We’re starting with a blank canvas.
+Head over to the CMS panel and click “Add Blog.”
+Framer will automatically create two collections for you:
+one for your blog posts, and one for blog categories.
 
-There&apos;s still room for improvement, though.
+## Why Are Categories and Blog Posts Stored Separately?
 
-The channel&apos;s analytics 📊 are really poor. I knew it was going to be hard, but not this hard. 
+When building a blog or CMS, you’ll often see that categories and blog posts are managed as separate collections. Here’s why:
 
-At this rate, I&apos;ll reach monetization by the time I retire 😅.
+### Better Organization & Reusability  
+Categories act like labels or folders for your posts. By keeping them separate, you can easily add, edit, or remove categories without touching individual blog posts.  
+This means if you want to rename or restructure a category, you do it once, and all posts under that category update automatically.
 
-My last video about localStorage was seen by 2 people, and one of them was me 😂. 
+### Faster Queries & Performance  
+Separating categories allows the system to fetch posts and categories independently.  
+For example, when showing a list of categories, the CMS doesn’t have to scan through every post, improving speed and scalability.
 
-I&apos;ll try to do better for my next video.
+### Cleaner Data Structure  
+Posts contain their own content, metadata, images, and links. Categories are simpler objects with just a name and maybe a description or slug.  
+Separating these keeps your database or content files cleaner and easier to maintain.
 
+### More Flexibility in Design & Filtering  
+Since categories are their own entities, you can build dynamic filters, menus, or tag clouds that update based on category data, without needing to parse through posts every time.
+
+And now we get 4 categories and 5 blog posts
+
+![Blog posts and categories created for us by Framer](/public/media/blog/how-to-add-a-blog-to-your-framer-project/2.webp)
+
+Now, if we click **Back**, we can see this:
+
+![Framer left menu showing the pages list](/public/media/blog/how-to-add-a-blog-to-your-framer-project/3.webp)
+
+## After Creating the Blog
+
+Once you create your blog CMS collection in Framer, your site structure automatically expands. You get:
+
+- **Home** – Your main landing page, the front door of your site.
+
+- **/blog** – A dynamic CMS route that lists all your articles. This is the URL where all your articles will be shown, for example, `yourdomain.com/blog`.
+
+And under `/blog`, you'll see something like:
+
+- **Articles • 5** – This shows you have 5 blog posts in your CMS, each one pulling from your collection.
+
+✅ Clean structure  
+✅ SEO-ready  
+✅ Scalable as hell
+
+Now you're set to start dropping knowledge bombs.
+
+## How to add a blog to a project with the CMS already set up
+
+If you're using a template or working on a project where the CMS is already set up, you might not see the Add Blog button in the CMS panel. In that case, there's a simple workaround.
+
+![Framer left menu no new blog option](/public/media/blog/how-to-add-a-blog-to-your-framer-project/16.webp)
+
+Go back to the Framer dashboard, create a new blank project, and follow the same steps to add a blog. Once it's created, you can copy the CMS structure into your main project.
+
+![Framer dashboard new project](/public/media/blog/how-to-add-a-blog-to-your-framer-project/15.webp)
+
+With this new blank project open, create a new blog by following the steps from the first section of this post.
+
+Next, head over to the CMS tab.
+
+![Framer dashboard CMS tab](/public/media/blog/how-to-add-a-blog-to-your-framer-project/5.webp)
+
+In the CMS tab, right-click **Articles** and choose **Copy**.
+
+![Framer dashboard copy collection](/public/media/blog/how-to-add-a-blog-to-your-framer-project/4.webp)
+
+Go to the Framer dashboard and open your target project. In my case, I’m using the one from the micro animations tutorial.
+
+![Framer dashboard project](/public/media/blog/how-to-add-a-blog-to-your-framer-project/19.webp)
+
+In the CMS tab, right-click anywhere on the left panel (don’t click on any of the collections) and choose Paste.
+Categories will be included automatically, no need to copy them separately.
+
+![Framer dashboard paste collection](/public/media/blog/how-to-add-a-blog-to-your-framer-project/17.webp)
+
+As you can see, all the data has been copied from the other project into this one, so you don’t have to waste time setting up all the fields for your Blog or Categories collections.
+
+![Framer dashboard articles and categories collections](/public/media/blog/how-to-add-a-blog-to-your-framer-project/18.webp)
+
+## ✅ Done. What’s Next?
+
+As you can see, you just saved a ton of time.
+
+No rebuilding collections. No messing with field types. No wondering what you forgot.
+
+You’ve now got a fully functional blog, complete with posts, categories, and a clean URL structure, ready to go.
+
+### This gives you:
+
+A scalable setup you can keep adding to
+
+Better SEO right out of the gate
+
+Less time fiddling, more time publishing
+
+### Next step? Start writing.
+
+Even if it’s just one article a week, it compounds.
+
+Your blog is now a growth engine. Don’t let it sit idle.
