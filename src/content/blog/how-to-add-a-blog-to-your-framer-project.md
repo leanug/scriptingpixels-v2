@@ -27,7 +27,7 @@ If your template doesn’t include a blog by default, you'll need to set things 
 
 In this quick guide, I’ll walk you through how to add a blog to any Framer site, even if your starting point is completely empty.
 
-![Framer add blog button](/public/media/blog/how-to-add-a-blog-to-your-framer-project/1.webp)
+![Framer add blog button](/media/blog/how-to-add-a-blog-to-your-framer-project/1.webp)
 
 We’re starting with a blank canvas.
 Head over to the CMS panel and click “Add Blog.”
@@ -55,11 +55,11 @@ Since categories are their own entities, you can build dynamic filters, menus, o
 
 And now we get 4 categories and 5 blog posts
 
-![Blog posts and categories created for us by Framer](/public/media/blog/how-to-add-a-blog-to-your-framer-project/2.webp)
+![Blog posts and categories created for us by Framer](/media/blog/how-to-add-a-blog-to-your-framer-project/2.webp)
 
 Now, if we click **Back**, we can see this:
 
-![Framer left menu showing the pages list](/public/media/blog/how-to-add-a-blog-to-your-framer-project/3.webp)
+![Framer left menu showing the pages list](/media/blog/how-to-add-a-blog-to-your-framer-project/3.webp)
 
 ## After Creating the Blog
 
@@ -83,34 +83,34 @@ Now you're set to start dropping knowledge bombs.
 
 If you're using a template or working on a project where the CMS is already set up, you might not see the Add Blog button in the CMS panel. In that case, there's a simple workaround.
 
-![Framer left menu no new blog option](/public/media/blog/how-to-add-a-blog-to-your-framer-project/16.webp)
+![Framer left menu no new blog option](/media/blog/how-to-add-a-blog-to-your-framer-project/16.webp)
 
 Go back to the Framer dashboard, create a new blank project, and follow the same steps to add a blog. Once it's created, you can copy the CMS structure into your main project.
 
-![Framer dashboard new project](/public/media/blog/how-to-add-a-blog-to-your-framer-project/15.webp)
+![Framer dashboard new project](/media/blog/how-to-add-a-blog-to-your-framer-project/15.webp)
 
 With this new blank project open, create a new blog by following the steps from the first section of this post.
 
 Next, head over to the CMS tab.
 
-![Framer dashboard CMS tab](/public/media/blog/how-to-add-a-blog-to-your-framer-project/5.webp)
+![Framer dashboard CMS tab](/media/blog/how-to-add-a-blog-to-your-framer-project/5.webp)
 
 In the CMS tab, right-click **Articles** and choose **Copy**.
 
-![Framer dashboard copy collection](/public/media/blog/how-to-add-a-blog-to-your-framer-project/4.webp)
+![Framer dashboard copy collection](/media/blog/how-to-add-a-blog-to-your-framer-project/4.webp)
 
 Go to the Framer dashboard and open your target project. In my case, I’m using the one from the micro animations tutorial.
 
-![Framer dashboard project](/public/media/blog/how-to-add-a-blog-to-your-framer-project/19.webp)
+![Framer dashboard project](/media/blog/how-to-add-a-blog-to-your-framer-project/19.webp)
 
 In the CMS tab, right-click anywhere on the left panel (don’t click on any of the collections) and choose Paste.
 Categories will be included automatically, no need to copy them separately.
 
-![Framer dashboard paste collection](/public/media/blog/how-to-add-a-blog-to-your-framer-project/17.webp)
+![Framer dashboard paste collection](/media/blog/how-to-add-a-blog-to-your-framer-project/17.webp)
 
 As you can see, all the data has been copied from the other project into this one, so you don’t have to waste time setting up all the fields for your Blog or Categories collections.
 
-![Framer dashboard articles and categories collections](/public/media/blog/how-to-add-a-blog-to-your-framer-project/18.webp)
+![Framer dashboard articles and categories collections](/media/blog/how-to-add-a-blog-to-your-framer-project/18.webp)
 
 ## ✅ Done. What’s Next?
 

@@ -7,7 +7,7 @@ description: In this post, I share the highs and lows of my first two weeks as a
 date: 2024-10-17
 tags: ["Content Creation", "YouTube", "Journey"]
 slug: my-first-two-weeks-making-coding-videos
-published: false
+published: true
 featured: false
 ---
 
@@ -25,7 +25,7 @@ Now, it sounds a lot better—normalizing, reducing the echo, and boosting the v
 
 As comrade Anatoly Dyatlov would say: Not great, not terrible 💬.
 
-![Anatoly Dyatlov: Not great, not terrible](/blog/04/dyatlov.jpg)
+![Anatoly Dyatlov: Not great, not terrible](/media/blog/my-first-two-weeks-making-coding-videos/dyatlov.webp)
 
 There&apos;s still room for improvement, though.
 
@@ -35,5 +35,5 @@ At this rate, I&apos;ll reach monetization by the time I retire 😅.
 
 My last video about localStorage was seen by 2 people, and one of them was me 😂. 
 
-I&apos;ll try to do better for my next video.
+Anyway, time to go back to editing, pretending I have an audience. See you in the next log, if anyone’s out there.
 
