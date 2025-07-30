@@ -1,6 +1,6 @@
 ---
 author: Leandro Ubilla
-avatar: leandro-profile.png
+avatar: leandro-ubilla.webp
 image: cover.webp
 title: Why Mapping API Data is Crucial for Web Development
 description: This post walks you through a basic mapping function that will streamline your data handling.

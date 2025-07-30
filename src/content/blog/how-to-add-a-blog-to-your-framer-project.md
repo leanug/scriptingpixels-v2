@@ -1,6 +1,6 @@
 ---
 author: Leandro Ubilla
-avatar: leandro-profile.png
+avatar: leandro-ubilla.webp
 image: cover.webp
 title: How to Add a Blog to Your Framer Project
 description: Learn how to add a fully functional blog to your Framer site from scratch.
