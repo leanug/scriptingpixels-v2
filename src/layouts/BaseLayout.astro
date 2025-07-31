@@ -17,22 +17,24 @@ import Footer from '../components/Footer.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		
-    <!-- SEO Tags -->
+    <!-- SEO Meta Tags -->
     <title>{Astro.props.title ?? 'Scripting Pixels - Framer Templates & Resources'}</title>
-    <meta name="description" content={Astro.props.description ?? 'Premium Framer templates and design resources for high-impact websites.'} />
+    <meta name="description" content={Astro.props.description ?? 'Framer design tips, small business guides, and website launch hacks, all in one place. Also, check out our favorite Framer templates to launch in days, not weeks.'}>
 
     <!-- Open Graph -->
-    <meta property="og:title" content={Astro.props.title ?? 'Scripting Pixels - Framer Templates & Resources'} />
-    <meta property="og:description" content={Astro.props.description ?? 'Premium Framer templates and design resources for high-impact websites.'} />
-    <meta property="og:image" content="https://www.scriptingpixels.com/og-image.jpg" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.scriptingpixels.com" />
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.scriptingpixels.com">
+    <meta property="og:title" content={Astro.props.title ?? 'Scripting Pixels - Framer Templates & Resources'}>
+    <meta property="og:description" content={Astro.props.description ?? 'Framer design tips, small business guides, and website launch hacks, all in one place. Also, check out our favorite Framer templates to launch in days, not weeks.'}>
+    <meta property="og:image" content="https://www.scriptingpixels.com/og-image.jpg">
 
-    <!-- Optional: Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={Astro.props.title ?? 'Scripting Pixels - Framer Templates & Resources'} />
-    <meta name="twitter:description" content={Astro.props.description ?? 'Premium Framer templates and design resources for high-impact websites.'} />
-    <meta name="twitter:image" content="https://www.scriptingpixels.com/og-image.jpg" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" content="scriptingpixels.com">
+    <meta name="twitter:url" content="https://www.scriptingpixels.com">
+    <meta name="twitter:title" content={Astro.props.title ?? 'Scripting Pixels - Framer Templates & Resources'}>
+    <meta name="twitter:description" content={Astro.props.description ?? 'Framer design tips, small business guides, and website launch hacks, all in one place. Also, check out our favorite Framer templates to launch in days, not weeks.'}>
+    <meta name="twitter:image" content="https://www.scriptingpixels.com/og-image.jpg">
 
     <!-- Prevent flash of unstyled content (FOUC) on first paint.
      Hide body until styles are applied, then fade it in.
