@@ -3,6 +3,8 @@ import FilterButtons from '../../components/FilterButtons.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FramerTemplatesComponent from '../../components/FramerTemplates/index.astro';
 import SecurePayments from '../../components/SecurePayments.astro';
+import Pill from '../../components/Pill.astro';
+import BlogList from '../../components/BlogList/index.astro';
 
 // Constants
 const title = "Framer Templates - Scripting Pixels";
@@ -21,12 +23,36 @@ const description = "Shop Premium Framer Templates - High-impact designs built f
       </p>
     </div>
 
-    <div class="flex justify-between items-center w-full mb-6 rounded-lg">
+    <div class="flex flex-col-reverse md:flex-row gap-4 justify-between md:items-center w-full mb-6 rounded-lg">
       <!-- Left side: tags -->
       <FilterButtons />
       <!-- Right side: linked image -->
       <SecurePayments />
     </div>
     <FramerTemplatesComponent />
+  </section>
+  <section class="mb-20">
+    <Pill imgSrc="/icons/sword.svg" imgAlt="Skill icon">
+      Sharpen your Skills
+    </Pill>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+      <!-- Left Side Content -->
+      <div>
+        <h2 class="text-4xl md:text-5xl font-semibold mb-6">
+          Grow Smarter with<br />Proven Framer Tips
+        </h2>
+        <p class="text-lg secondary-text mb-8">
+          Actionable design tips, real-world insights, and no fluff. 
+          Learn what's working in Framer, 
+          how to grow smarter, and build sites that don't just look good — they convert.
+        </p>
+        <a 
+          href="/blog" 
+          class="all-btn-big">
+          Visit the Blog
+        </a>
+      </div>
+      <BlogList />
+    </div>
   </section>
 </BaseLayout>
