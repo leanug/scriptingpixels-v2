@@ -29,42 +29,13 @@ const description = "Framer Templates for High-Impact Sites - Launch fast with p
         Effortlessly customizable templates designed to deliver real impact, get your site live in days, not weeks, and start converting sooner.
       </p>
 
-      <style>
-        .mouse-scroll {
-          width: 2.3rem;
-          height: 3.8rem;
-          border-radius: 100px;
-          background-color: #fff;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .mouse-scroll::before {
-          content: '';
-          position: absolute;
-          left: 50%;
-          width: 0.5rem;
-          height: 0.5rem;
-          background-color: #1d1d1d;
-          border-radius: 50%;
-          transform: translateX(-50%);
-          animation: scroll 2.5s infinite ease-in-out;
-        }
-      
-        @keyframes scroll {
-          0% {
-            bottom: 65%;
-            opacity: 1;
-          }
-          100% {
-            bottom: 20%;
-            opacity: 0;
-          }
-        }
-      </style>
-
-      <div class="flex justify-center items-center mt-12">
-        <div class="mouse-scroll"></div>
+      <div class="flex justify-center gap-3 mt-6 flex-wrap">
+        <a 
+          href="/framer" 
+          class="all-btn-big mt-6"
+        >
+          Get your Template Now
+        </a>
       </div>
     <div>
     </div>
@@ -78,14 +49,6 @@ const description = "Framer Templates for High-Impact Sites - Launch fast with p
       <SecurePayments />
     </div>
     <FramerTemplates />
-    <div class="flex justify-center gap-3 mt-6 flex-wrap">
-      <a 
-        href="/framer" 
-        class="all-btn-big outline mt-6"
-      >
-        Browse all templates
-      </a>
-    </div>
   </section>
   
   <section class="mb-20">
