@@ -22,36 +22,39 @@ export const prerender = true;
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="flex gap-12 max-w-5xl mx-auto mb-20 mt-20">
-    <article class="flex flex-col gap-5 max-w-none">
-      <h1 class="text-4xl md:text-5xl lg:text-6xl text-center font-semibold text-balance leading-tight">
+  <div class="flex gap-12 w-full max-w-2xl mx-auto mb-20 mt-20">
+    <article class="flex flex-col gap-6">
+      <h1 class="text-4xl md:text-5xl font-semibold text-balance leading-tight">
         {title}
       </h1>
-      <p class="text-center">Last updated: {new Date(date).toLocaleDateString()}</p>
-      <div class="flex items-center justify-center flex-wrap gap-3 mb-6">
-        Written by
-        <Image
-          src={`/media/authors/${avatar}`}
-          alt="Author profile picture" 
-          class="w-8 h-8 rounded-md"
-          width="44" 
-          height="44"
-          decoding="async"
-          loading="lazy"
-        />  
-        <a href="https://www.x.com/leandroubilla_" class="underline">{author}</a>
+      <div class="flex flex-col gap-3">
+        <p>
+          Last updated: <span class="font-semibold">{new Date(date).toLocaleDateString()}</span>
+        </p>
+        <!-- Author -->
+        <div class="flex items-center flex-wrap gap-3 mb-6">
+          Written by
+          <Image
+            src={`/media/authors/${avatar}`}
+            alt="Author profile picture" 
+            class="w-8 h-8 rounded-md"
+            width="44" 
+            height="44"
+            decoding="async"
+            loading="lazy"
+          />  
+          <a href="https://www.x.com/leandroubilla_" class="underline font-semibold">{author}</a>
+        </div>
       </div>
       <img
         transition:name={`img-${slug}`}
         src={`/media/blog/${slug}/${image}`} 
         alt={title} 
-        class="w-full aspect-4/3 object-cover rounded-xl"
+        class="w-full max-w-2xl aspect-4/3 object-cover rounded-xl"
       />
-      <div class="max-w-4xl mx-auto">
-        <Prose>
-          <Content />
-        </Prose>
-      </div>
+      <Prose>
+        <Content />
+      </Prose>
     </article>
   </div>
 </BaseLayout>
