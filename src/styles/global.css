@@ -99,6 +99,15 @@
   }
 }
 
+/* Remove max width limit and increase paragraph font size to 18px in prose */
+.prose {
+  @apply max-w-none;
+}
+
+.prose p {
+  font-size: 18px;
+}
+
 @layer base {
   :root {
     --icon-primary : #171717;

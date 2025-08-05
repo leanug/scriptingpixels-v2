@@ -132,7 +132,7 @@ your whole codebase.
 
 **Save yourself from a world of pain.**
 
-![You are entering a world of pain - Walter - The big lebowsky](/blog/01-why-mapping-api-data-is-crucial/world-of-pain-walter-min.png)
+![You are entering a world of pain - Walter - The big lebowsky](/media/blog/why-mapping-api-data-is-crucial/world-of-pain-walter-min.png)
 
 If the API changes its response structure or fields, you can adjust the mapping 
 logic rather than **refactoring the entire app**.

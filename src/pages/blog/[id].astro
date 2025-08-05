@@ -22,35 +22,58 @@ export const prerender = true;
 ---
 
 <BaseLayout title={title} description={description}>
-  <div class="flex gap-12 w-full max-w-2xl mx-auto mb-20 mt-20">
-    <article class="flex flex-col gap-6">
-      <h1 class="text-4xl md:text-5xl font-semibold text-balance leading-tight">
+  <div class="flex gap-12 w-full max-w-4xl mx-auto mb-20 mt-20">
+    <article class="flex flex-col gap-6 justify-start">
+      <h1 class="text-2xl sm:text-4xl md:text-5xl font-semibold text-balance leading-none">
         {title}
       </h1>
-      <div class="flex flex-col gap-3">
-        <p>
-          Last updated: <span class="font-semibold">{new Date(date).toLocaleDateString()}</span>
-        </p>
+
+      <div class="text-sm flex md:flex-row gap-3 md:items-center flex-col text-gray-700">
         <!-- Author -->
-        <div class="flex items-center flex-wrap gap-3 mb-6">
-          Written by
+        <div class="text-start flex items-center gap-2 flex-wrap">
           <Image
             src={`/media/authors/${avatar}`}
-            alt="Author profile picture" 
-            class="w-8 h-8 rounded-md"
-            width="44" 
+            alt="Author profile picture"
+            class="w-8 h-8 rounded-full"
+            width="44"
             height="44"
             decoding="async"
             loading="lazy"
-          />  
-          <a href="https://www.x.com/leandroubilla_" class="underline font-semibold">{author}</a>
+          />
+          <span>Written by</span>
+          <a 
+            href="https://www.x.com/leandroubilla_" 
+            class="underline font-semibold" 
+            rel="author"
+          >
+            {author}
+          </a>
+        </div>
+
+        <!-- Separator -->
+        <span class="hidden md:inline-block text-gray-400">|</span>
+
+        <!-- Date -->
+        <div class="text-start">
+          Last updated 
+          <time 
+            datetime={new Date(date).toISOString()} 
+            class="font-semibold text-gray-800"
+          >
+            {new Date(date).toLocaleDateString(undefined, {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </time>
         </div>
       </div>
+
       <img
         transition:name={`img-${slug}`}
         src={`/media/blog/${slug}/${image}`} 
         alt={title} 
-        class="w-full max-w-2xl aspect-4/3 object-cover rounded-xl"
+        class="w-full aspect-4/3 object-cover rounded-xl mt-3"
       />
       <Prose>
         <Content />
