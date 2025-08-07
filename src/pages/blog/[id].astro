@@ -1,4 +1,7 @@
 ---
+// Icons
+import { Tags } from '@lucide/astro';
+
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Prose from "../../components/Prose.astro";
@@ -14,7 +17,16 @@ export async function getStaticPaths() {
 }
 
 const { data } = Astro.props;
-const { title, image, slug, date, author, avatar, description } = data;
+const {
+  title,
+  image,
+  slug,
+  date,
+  author,
+  avatar,
+  description,
+  tags
+} = data as Blog["data"];
 
 const { Content } = await render(Astro.props)
 
@@ -78,6 +90,22 @@ export const prerender = true;
       <Prose>
         <Content />
       </Prose>
+
+      <div class="w-full h-[1px] bg-gray-200 my-2.5"></div>
+
+      <div class="flex items-center gap-3 flex-wrap">
+        <span class="flex items-center gap-1 text-lg font-medium">
+          Tags: <Tags color="#181D27" size="24" />
+          <!-- You can't use React icons like <Tags /> here; use an SVG or icon font instead -->
+        </span>
+
+        {tags?.map((tag: string) => (
+          <span class="bg-gray-200 text-md text-black px-3 py-1 rounded-md">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
     </article>
   </div>
 </BaseLayout>

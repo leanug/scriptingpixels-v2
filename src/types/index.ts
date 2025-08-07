@@ -42,5 +42,6 @@ export type Blog = {
     featured?: boolean;
     pinned?: boolean;
     published: boolean;
+    tags?: string[];
   };
 };
