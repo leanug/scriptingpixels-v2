@@ -10,6 +10,7 @@ category: {
   slug: "framer"
 }
 slug: how-to-add-a-blog-to-your-framer-project
+tags: ["Framer"]
 published: true
 featured: true
 pinned: true
