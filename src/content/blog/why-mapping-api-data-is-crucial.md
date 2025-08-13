@@ -8,7 +8,8 @@ date: 2024-05-10
 tags: ["JavaScript"]
 slug: why-mapping-api-data-is-crucial
 published: true
-featured: true
+featured: false
+pinned: false
 ---
 
 Mapping data from an API is an essential step for several reasons, 

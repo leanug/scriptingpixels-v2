@@ -10,6 +10,7 @@ category: {
   slug: "framer"
 }
 slug: creating-a-simple-counter-in-framer-using-code-overrides
+tags: ["Framer", "Code Overrides"]
 published: true
 featured: true
 pinned: false
