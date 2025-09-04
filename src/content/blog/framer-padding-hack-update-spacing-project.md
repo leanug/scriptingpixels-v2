@@ -11,7 +11,7 @@ category:
 slug: framer-padding-hack-update-spacing-project
 tags: ["Framer", "Padding", "Responsive"]
 published: true
-featured: true
+featured: false
 pinned: false
 ---
 
