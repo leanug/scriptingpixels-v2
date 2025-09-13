@@ -4,12 +4,16 @@ import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import rehypeWrapPres from './src/lib/rehype-wrap-pres.js'
 
+import partytown from '@astrojs/partytown';
+
 export default defineConfig({
   output: 'server',
   adapter: vercel(),
+
   vite: {
     plugins: [tailwindcss()]
   },
+
   markdown: {
     rehypePlugins: [
       [
@@ -21,4 +25,6 @@ export default defineConfig({
       rehypeWrapPres
     ],
   },
+
+  integrations: [partytown()],
 });

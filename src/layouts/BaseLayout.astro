@@ -1,12 +1,13 @@
 ---
-import '@fontsource-variable/geist';
 import { ClientRouter } from 'astro:transitions'
+import '@fontsource-variable/inter';
 import '../styles/global.css'
 import  SpeedInsights  from "@vercel/speed-insights/astro"
-
+// Supports weights 100-900
 import Overlay from '../components/Overlay.astro'
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Analytics from '../components/Analytics.astro';
 ---
 
 <!doctype html>
@@ -56,11 +57,12 @@ import Footer from '../components/Footer.astro';
     </style>
 
     <ClientRouter />
-    <SpeedInsights/> 
+    <SpeedInsights/>
+    <Analytics />
 	</head>
 	<body>
     <div class="relative leading-tightest">
-      <div class="bg-[#f2f2f2] flex justify-center primary-text">
+      <div class="bg-[#f2f2f2] flex justify-center font-sans">
         <div class="flex flex-col w-full min-h-screen">
           <Header />
           <main class="flex-grow max-w-[1920px] mx-auto px-2.5 md:px-5 xl:px-20">

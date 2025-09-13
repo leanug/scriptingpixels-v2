@@ -2,7 +2,7 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-  --font-sans: 'Geist Variable', 'sans-serif';
+  --font-sans: 'Inter Variable', 'sans-serif';
 }
 
 @layer utilities {
