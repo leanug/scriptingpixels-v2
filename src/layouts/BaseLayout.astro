@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions'
 import '@fontsource-variable/inter';
 import '../styles/global.css'
 import  SpeedInsights  from "@vercel/speed-insights/astro"
@@ -8,52 +7,65 @@ import  SpeedInsights  from "@vercel/speed-insights/astro"
 import Header from '../components/ui/Header.astro';
 import Footer from '../components/ui/Footer.astro';
 import Analytics from '../components/Analytics.astro';
+
+import { siteConfig } from "../config/site.js";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+
+interface Props {
+  title?: string
+  description?: string
+  ogImage?: string
+}
+
+const { title, description, ogImage } = Astro.props
+const socialImage = ogImage 
+  ? new URL(ogImage, Astro.site) 
+  : new URL('/og-image.jpg', Astro.site)
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
 		<meta name="generator" content={Astro.generator} />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
 		
     <!-- SEO Meta Tags -->
-    <title>{Astro.props.title ?? 'Scripting Pixels - Framer Templates & Resources'}</title>
-    <meta name="description" content={Astro.props.description ?? 'Framer design tips, small business guides, and website launch hacks, all in one place. Also, check out our favorite Framer templates to launch in days, not weeks.'}>
+    <title>{title ?? siteConfig.name}</title>
+    <meta
+      name="description"
+      content={description ?? siteConfig.description}
+    />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.scriptingpixels.com">
-    <meta property="og:title" content={Astro.props.title ?? 'Scripting Pixels - Framer Templates & Resources'}>
-    <meta property="og:description" content={Astro.props.description ?? 'Framer design tips, small business guides, and website launch hacks, all in one place. Also, check out our favorite Framer templates to launch in days, not weeks.'}>
-    <meta property="og:image" content="https://www.scriptingpixels.com/og-image.jpg">
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title ?? siteConfig.name} />
+    <meta property="og:description" content={description ?? siteConfig.description} />
+    <meta property="og:image" content={socialImage} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:domain" content="scriptingpixels.com">
-    <meta name="twitter:url" content="https://www.scriptingpixels.com">
-    <meta name="twitter:title" content={Astro.props.title ?? 'Scripting Pixels - Framer Templates & Resources'}>
-    <meta name="twitter:description" content={Astro.props.description ?? 'Framer design tips, small business guides, and website launch hacks, all in one place. Also, check out our favorite Framer templates to launch in days, not weeks.'}>
-    <meta name="twitter:image" content="https://www.scriptingpixels.com/og-image.jpg">
+    <meta name="twitter:domain" content={siteConfig.twitter.site} />
+    <meta name="twitter:title" content={title ?? siteConfig.name} />
+    <meta name="twitter:description" content={description ?? siteConfig.description} />
+    <meta name="twitter:image" content={socialImage} />
 
-    <ClientRouter />
+	</head>
+	<body class="text-base-content font-sans">
+    <div data-theme="black" class="flex flex-col min-h-screen max-w-400 mx-auto px-4 md:px-16">
+      <Header />
+      <main class="grow"><slot /></main>
+      <Footer />
+    </div>
     <SpeedInsights/>
     <Analytics />
-	</head>
-	<body>
-    <div data-theme="black" class="relative leading-tightest scroll-smooth">
-      <div class="flex justify-center font-sans bg-base-200 text-base-content">
-        <div class="flex flex-col w-full min-h-screen xs:px-10 md:mx-16 mx-2.5">
-          <Header />
-          <main class="grow max-w-400 w-full">
-            <slot />
-          </main>
-          <Footer />
-        </div>
-      </div>
-    </div>
-	</body>
+  </body>
 </html>
 
 <style>

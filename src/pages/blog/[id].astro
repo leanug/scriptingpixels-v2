@@ -1,11 +1,9 @@
 ---
 // Icons
-import { Tags } from '@lucide/astro';
-
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Prose from "../../components/Prose.astro";
-import type { Blog } from "../../types";
+import type { Blog } from "../../types/index.ts";
 import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
@@ -40,7 +38,7 @@ export const prerender = true;
         {title}
       </h1>
 
-      <div class="text-sm flex md:flex-row gap-3 md:items-center flex-col text-gray-700">
+      <div class="text-sm flex md:flex-row gap-3 md:items-center flex-col text-base-content">
         <!-- Author -->
         <div class="text-start flex items-center gap-2 flex-wrap">
           <Image
@@ -70,7 +68,7 @@ export const prerender = true;
           Last updated 
           <time 
             datetime={new Date(date).toISOString()} 
-            class="font-semibold text-gray-800"
+            class="font-semibold text-base-content"
           >
             {new Date(date).toLocaleDateString(undefined, {
               year: 'numeric',
@@ -91,16 +89,16 @@ export const prerender = true;
         <Content />
       </Prose>
 
-      <div class="w-full h-[1px] bg-gray-200 my-2.5"></div>
+      <div class="w-full h-[1px] bg-base-300 my-2.5"></div>
 
       <div class="flex items-center gap-3 flex-wrap">
         <span class="flex items-center gap-1 text-lg font-medium">
-          Tags: <Tags color="#181D27" size="24" />
+          Tags:
           <!-- You can't use React icons like <Tags /> here; use an SVG or icon font instead -->
         </span>
 
         {tags?.map((tag: string) => (
-          <span class="bg-gray-200 text-md text-black px-3 py-1 rounded-md">
+          <span class="bg-base-200 text-md  px-3 py-1 rounded-md">
             {tag}
           </span>
         ))}

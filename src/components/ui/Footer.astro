@@ -1,3 +1,8 @@
+---
+import XIcon from "../ui/icons/X.astro"
+import { siteConfig } from "../../config/site.js";
+---
+
 <footer id="footer" class="w-full text-sm py-6">
   <!-- Row 1 -->
   <div class="flex flex-col md:flex-row justify-between items-center px-6 py-4 gap-4">
@@ -25,8 +30,8 @@
       <a href="https://www.leandroubilla.com" target="_blank" class="underline">
         Leandro Ubilla
       </a>
-      <a href="https://x.com/leandroubilla_" target="_blank" class="inline-flex items-center gap-2 bg-white text-black px-3 py-1.5 rounded-md text-sm font-medium hover:bg-gray-100 transition">
-        <img src="/icons/x-social-media-dark-icon.svg" alt="X Logo" class="h-4 w-4">
+      <a href={siteConfig.social.x} target="_blank" class="inline-flex items-center gap-2 bg-white text-black px-3 py-1.5 rounded-md text-sm font-medium hover:bg-gray-100 transition">
+        <XIcon size={22} />
         Follow me
       </a>
     </div>

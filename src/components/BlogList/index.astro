@@ -5,7 +5,7 @@ import PostCard from './Card.astro';
 const blog: CollectionEntry<'blog'>[] = await getCollection('blog');
 
 const posts = blog
-  .filter(post => post.data.published && !post.data.featured)
+  .filter(post => post.data.published && !post.data.pinned)
   .sort((a,b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime());
 ---
 
