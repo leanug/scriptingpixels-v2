@@ -1,10 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Benefits from '../components/Benefits/index.astro';
-import FramerTemplates from '../components/FramerTemplates/index.astro';
 import BlogList from '../components/BlogList/index.astro';
-import Pill from '../components/Pill.astro';
-import SecurePayments from '../components/SecurePayments.astro';
+import PinnedPost from '../components/BlogList/PinnedPost.astro';
 
 // Constants
 const title = "Scripting Pixels - Framer Templates and Resources";
@@ -12,84 +9,25 @@ const description = "Framer Templates for High-Impact Sites - Launch fast with p
 ---
 
 <BaseLayout {title} {description}>
-  <section class="flex items-center my-12 md:my-16 lg:mt-20 lg:mb-20 justify-center text-center">
-    <div class="max-w-6xl">
-      <div class="text-sm font-semibold tracking-wide mb-6 inline-block px-4 py-2.5 bg-white rounded-full">
-        <div class="relative inline-flex">
-          <div class="rounded-full bg-green-400 h-[8px] w-[8px] inline-block mr-2"></div>
-          <div class="absolute animate-ping rounded-full bg-green-400 h-[8px] w-[8px] mr-2"></div>
-        </div>
-        Template customization service available
-      </div>
-      <h1 class="heading-hero">
-        Where Framer <img src="/website-icon.svg" alt="Logo" class="inline-block w-7 h-7 md:w-10 md:h-10 lg:w-12 lg:h-12 mx-0.5 align-middle -rotate-4 shadow-lg rounded lg:rounded-lg mb-2" /> 
-        Templates deliver real-world results. 
-      </h1>
-      <p class="text-xl secondary-text font-medium text-balance mx-auto w-full max-w-4xl mt-7">
-        Effortlessly customizable templates designed to deliver real impact, get your site live in days, not weeks, and start converting sooner.
-      </p>
+  <!-- Blog Intro -->
+  <section class="max-w-4xl mx-auto mt-16 mb-14 text-left">
+    <h1 class="text-4xl md:text-5xl font-bold mb-6">
+      Courtside: The Dribbble Blog
+    </h1>
 
-      <div class="flex justify-center gap-3 mt-6 flex-wrap">
-        <a 
-          href="/framer" 
-          class="all-btn-big mt-6"
-        >
-          Get your Template Now
-        </a>
-      </div>
-    <div>
-    </div>
+    <p class="text-xl secondary-text">
+      Design insights, product thinking, and practical tutorials on
+      wireframing, prototyping, and building modern interfaces.
+    </p>
   </section>
 
-  <section class="mb-20">
-    <div class="flex flex-col md:items-center md:flex-row md:justify-between mb-6 gap-3" id="benefits">
-      <h2 class="text-lg font-semibold w-full md:w-1/2 self-end">
-        Featured and New Framer Templates
-      </h2>
-      <SecurePayments />
-    </div>
-    <FramerTemplates />
-  </section>
-  
-  <section class="mb-20">
-    <Pill imgSrc="/icons/framer-color-icon.svg" imgAlt="Framer icon">
-      Framer Templates
-    </Pill>
-    <div class="flex flex-col lg:flex-row items-end justify-between mb-12 gap-6 lg:gap-12">
-      <h2 class="text-4xl md:text-5xl font-semibold lg:w-1/2 self-end">
-        Plug in your brand. Hit publish. Go live in days — not weeks.
-      </h2>
-      <p class="text-lg secondary-text lg:w-1/2 self-end">
-        From mobile-ready design and SEO optimization to accessibility 
-        and launch-ready templates, everything's crafted to help you go 
-        live quickly, and look good doing it.      
-      </p>
-    </div>
-    <Benefits />
+  <!-- Pinned Post -->
+  <section class="max-w-5xl mx-auto mb-16">
+    <PinnedPost />
   </section>
 
-  <section class="mb-20">
-    <Pill imgSrc="/icons/sword.svg" imgAlt="Skill icon">
-      Sharpen your Skills
-    </Pill>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-      <!-- Left Side Content -->
-      <div>
-        <h2 class="text-4xl md:text-5xl font-semibold mb-6">
-          Grow Smarter with<br />Proven Framer Tips
-        </h2>
-        <p class="text-lg secondary-text mb-8">
-          Actionable design tips, real-world insights, and no fluff. 
-          Learn what's working in Framer, 
-          how to grow smarter, and build sites that don't just look good — they convert.
-        </p>
-        <a 
-          href="/blog" 
-          class="all-btn-big">
-          Visit the Blog
-        </a>
-      </div>
-      <BlogList />
-    </div>
+  <!-- Blog List -->
+  <section class="max-w-5xl mx-auto mb-20">
+    <BlogList />
   </section>
 </BaseLayout>

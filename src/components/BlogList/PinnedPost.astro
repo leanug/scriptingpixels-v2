@@ -1,0 +1,44 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import Image from "astro/components/Image.astro";
+
+const blog: CollectionEntry<'blog'>[] = await getCollection("blog");
+
+const pinned = blog
+  .filter((post) => post.data.pinned && post.data.published)
+  .sort(
+    (a, b) =>
+      new Date(b.data.published).getTime() -
+      new Date(a.data.published).getTime()
+  )[0];
+
+const imagePath = `/media/blog/${pinned.data.slug}/${pinned.data.image}`;
+---
+
+{pinned && (
+  <article class="space-y-6">
+
+    <p class="text-sm uppercase secondary-text tracking-wide">
+      {pinned.data.published}
+    </p>
+
+    <h2 class="text-3xl md:text-4xl font-semibold leading-tight">
+      {pinned.data.title}
+    </h2>
+
+    <Image
+      src={imagePath}
+      alt={pinned.data.title}  
+      width="800" 
+      height="600"
+      decoding="async"
+      loading="lazy"
+      class="rounded-xl object-cover w-full aspect-4/3"
+    />
+
+    <p class="text-lg secondary-text max-w-3xl">
+      {pinned.data.description}
+    </p>
+
+  </article>
+)}

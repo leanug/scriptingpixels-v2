@@ -3,7 +3,6 @@ import { defineCollection, z } from "astro:content";
 const blog = defineCollection({
   schema: z.object({
     title: z.string(),
-    slug: z.string(),
     date: z.string(), // ISO format recommended
     author: z.string().optional(),
     img: z.string().optional(), // thumbnail or cover image
@@ -16,4 +15,3 @@ const blog = defineCollection({
 export const collections = {
   blog,
 };
-

@@ -13,7 +13,7 @@ slug: framer-and-webflow-took-over-my-client-requests
 tags: ["Framer", "Webflow", "WordPress"]
 published: true
 featured: true
-pinned: false
+pinned: true
 ---
 
 For years, almost every project I worked on started the same way.
