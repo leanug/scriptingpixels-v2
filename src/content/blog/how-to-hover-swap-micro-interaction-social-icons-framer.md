@@ -1,5 +1,5 @@
 ---
-author: Leandro Ubilla
+authorId: leandro
 avatar: leandro-ubilla.webp
 image: cover.webp
 title: How to Create a Hover Swap Micro-Interaction for Social Media Icons in Framer
@@ -9,7 +9,6 @@ category: {
   label: "Framer",
   slug: "framer"
 }
-slug: how-to-hover-swap-micro-interaction-social-icons-framer
 tags: ["Framer", "Micro Interaction", "Social Icons"]
 published: true
 featured: true

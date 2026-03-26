@@ -1,15 +1,13 @@
 ---
-author: Leandro Ubilla
-avatar: leandro-ubilla.webp
+authorId: leandro
 image: cover.webp
-title: "Framer and Webflow Took Over My Client Requests: Here’s Why I Dropped WordPress"
+title: "2 Framer and Webflow Took Over My Client Requests: Here’s Why I Dropped WordPress"
 description: My client started choosing Framer and Webflow over WordPress, and I share the story behind the shift and what I learned.
 date: 2025-08-13
 category: {
   label: "Web Development",
   slug: "web-development"
 }
-slug: framer-and-webflow-took-over-my-client-requests
 tags: ["Framer", "Webflow", "WordPress"]
 published: true
 featured: true

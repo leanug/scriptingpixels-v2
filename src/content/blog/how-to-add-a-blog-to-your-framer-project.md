@@ -1,5 +1,5 @@
 ---
-author: Leandro Ubilla
+authorId: leandro
 avatar: leandro-ubilla.webp
 image: cover.webp
 title: How to Add a Blog to Your Framer Project
@@ -9,11 +9,10 @@ category: {
   label: "Framer",
   slug: "framer"
 }
-slug: how-to-add-a-blog-to-your-framer-project
 tags: ["Framer"]
 published: true
-featured: true
-pinned: true
+featured: false
+pinned: false
 ---
 
 ## Table of Contents

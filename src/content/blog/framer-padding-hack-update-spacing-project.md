@@ -1,5 +1,5 @@
 ---
-author: Leandro Ubilla
+authorId: leandro
 avatar: leandro-ubilla.webp
 image: cover.webp
 title: "Framer Padding Hack: Update Spacing Across All Your Project in Seconds"
@@ -8,7 +8,6 @@ date: 2025-08-11
 category: 
   label: "Framer"
   slug: "framer"
-slug: framer-padding-hack-update-spacing-project
 tags: ["Framer", "Padding", "Responsive"]
 published: true
 featured: false

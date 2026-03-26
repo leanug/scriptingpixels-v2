@@ -3,19 +3,19 @@ import { Image } from 'astro:assets';
 const { image, title, slug } = Astro.props;
 ---
 
-<article class="group">
+<article class="group p-6 bg-accent/20 rounded-xl">
   <a 
-    class="rounded-xl"
+    class="rounded-xl group"
     href={`/blog/${slug}`}>
     <Image
       src={`/media/blog/${slug}/${image}`}
       alt=""   
       width="800" 
-      height="600"
+      height="450"
       decoding="async"
       loading="lazy"
-      class="rounded-xl object-cover w-full aspect-4/3"
+      class="rounded-xl object-cover w-full aspect-video transition-opacity duration-300 group-hover:opacity-70"
     />
-    <h3 class="text-lg font-medium mt-4">{title}</h3>
+    <h3 class="text-lg font-medium mt-4 leading-6">{title}</h3>
   </a>
 </article>

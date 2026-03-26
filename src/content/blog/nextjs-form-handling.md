@@ -1,14 +1,14 @@
 ---
-author: Leandro Ubilla
+authorId: leandro
 avatar: leandro-profile.png
 image: placeholder.svg
 title: Mastering Next.js Form Handling
 description: Dive into Next.js form handling! Learn about HTML validation, handling input resets with useActionState, and implementing server-side validation efficiently.
 date: 2025-01-17
 tags: ["Next.js", "Forms", "Web Development"]
-slug: mastering-nextjs-form-handling
 published: false
 featured: false
+pinned: false
 ---
 
 Let's explore how to handle form management in Next.js, from HTML form validation to managing input resets with useActionState, and efficiently implementing server-side validations.

@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config';
 import rehypeExternalLinks from 'rehype-external-links';
 import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
-import rehypeWrapPres from './src/lib/rehype-wrap-pres.js'
 import sitemap from '@astrojs/sitemap';
 
 import partytown from '@astrojs/partytown';
@@ -24,7 +23,6 @@ export default defineConfig({
           content: { type: 'text', value: ' 🔗' }
         }
       ],
-      rehypeWrapPres
     ],
   },
 

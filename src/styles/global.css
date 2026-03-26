@@ -7,3 +7,14 @@
 @theme {
   --font-sans: 'Inter Variable', 'sans-serif';
 }
+
+.prose pre {
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: pre;
+}
+
+.prose div.relative {
+  overflow-x: auto;
+  max-width: 100%;
+}

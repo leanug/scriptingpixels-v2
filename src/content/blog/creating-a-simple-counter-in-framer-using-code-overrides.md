@@ -1,5 +1,5 @@
 ---
-author: Leandro Ubilla
+authorId: leandro
 avatar: leandro-ubilla.webp
 image: cover.webp
 title: Creating a Simple Counter in Framer Using Code Overrides
@@ -9,7 +9,6 @@ category: {
   label: "Framer",
   slug: "framer"
 }
-slug: creating-a-simple-counter-in-framer-using-code-overrides
 tags: ["Framer", "Code Overrides"]
 published: true
 featured: true
