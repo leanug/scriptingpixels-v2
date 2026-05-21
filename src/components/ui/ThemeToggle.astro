@@ -2,86 +2,49 @@
 import { Icon } from 'astro-icon/components'
 ---
 
-<div class="dropdown dropdown-end">
-  <button tabindex="0" class="btn btn-md rounded-lg px-2.5">
-    <span id="theme-dot-active" class="inline-flex items-center justify-center">
-      <Icon id="icon-sun" class="w-4 h-4" name="heroicons:sun-solid" />      
-      <Icon id="icon-moon" class="w-4 h-4" name="heroicons:moon-solid" />      
-      <Icon id="icon-monitor" class="w-4 h-4" name="heroicons:computer-desktop-solid" />    </span>
-      <Icon name="heroicons:chevron-down" />
-  </button>
-
-  <ul tabindex="0" class="dropdown-content menu bg-base-100/95 backdrop-blur-md border border-base-200 rounded-xl z-50 mt-2 w-52 p-2 shadow-lg gap-0.5">
-    <li class="menu-title text-xs opacity-70 px-2 pb-1">Theme</li>
-    <li>
-      <button onclick="setTheme('cmyk')" class="flex items-center gap-3 rounded-lg px-2 py-2">
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-base-200">
-          <Icon id="icon-sun" class="w-4 h-4" name="heroicons:sun-solid" />      
-        </span>
-        <span class="text-sm font-medium">Light</span>
-      </button>
-    </li>
-    <li>
-      <button onclick="setTheme('dark')" class="flex items-center gap-3 rounded-lg px-2 py-2">
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-base-200">
-          <Icon id="icon-moon" class="w-4 h-4" name="heroicons:moon-solid" />
-        </span>
-        <span class="text-sm font-medium">Dark</span>
-      </button>
-    </li>
-    <li>
-      <button onclick="setTheme('system')" class="flex items-center gap-3 rounded-lg px-2 py-2">
-        <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-base-200">
-          <Icon id="icon-monitor" class="w-4 h-4" name="heroicons:computer-desktop-solid" />
-        </span>
-        <span class="text-sm font-medium">System</span>
-      </button>
-    </li>
-  </ul>
-</div>
+<button
+  id="theme-toggle"
+  aria-label="Toggle theme"
+  class="relative cursor-pointer flex items-center w-16 h-10 rounded-full bg-base-content/25 p-0.5 transition-colors duration-300"
+>
+  <span
+    id="theme-knob"
+    class="absolute w-8 h-8 rounded-full bg-base-100 shadow flex items-center justify-center transition-all duration-300 left-1"
+  >
+    <Icon id="icon-sun" class="w-3.5 h-3.5" name="heroicons:sun-solid" />
+    <Icon id="icon-moon" class="w-3.5 h-3.5 hidden" name="heroicons:moon-solid" />
+  </span>
+</button>
 
 <script is:inline>
-  // ⚙️ Global theme config — change here
-  const THEMES = {
-    light: 'cmyk',
-    dark: 'dark',
-    lightFallback: 'lofi'
-  }
+  const THEMES = { light: 'cmyk', dark: 'black' }
 
-  function updateIcon(theme) {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const isSystem = theme === 'system'
-    const isDark = isSystem ? prefersDark : theme === 'dark'
+  function updateToggle(theme) {
+    const knob = document.getElementById('theme-knob')
+    const sun = document.getElementById('icon-sun')
+    const moon = document.getElementById('icon-moon')
+    const isDark = theme === 'dark'
 
-    document.getElementById('icon-sun').classList.toggle('hidden', isDark || isSystem)
-    document.getElementById('icon-moon').classList.toggle('hidden', !isDark || isSystem)
-    document.getElementById('icon-monitor').classList.toggle('hidden', !isSystem)
+    knob.style.left = isDark ? 'calc(100% - 2.25rem)' : '0.25rem'
+    sun.classList.toggle('hidden', isDark)
+    moon.classList.toggle('hidden', !isDark)
   }
 
   function applyTheme(theme) {
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const resolved = theme === 'system'
-      ? (prefersDark ? THEMES.dark : THEMES.lightFallback)
-      : theme === 'dark' ? THEMES.dark : THEMES.light
-
-    document.documentElement.setAttribute('data-theme', resolved)
-    localStorage.setItem('theme', theme)
-    updateIcon(theme)
-  }
-
-  function setTheme(theme) {
-    applyTheme(theme)
-    document.activeElement?.blur()
+    document.documentElement.setAttribute('data-theme', THEMES[theme] || THEMES.dark)
+    localStorage.setItem('portfolio:theme', theme)
+    updateToggle(theme)
   }
 
   function init() {
-    const stored = localStorage.getItem('theme') || 'system'
+    const stored = localStorage.getItem('portfolio:theme') || 'dark'
     applyTheme(stored)
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-      if ((localStorage.getItem('theme') || 'system') === 'system') applyTheme('system')
+
+    document.getElementById('theme-toggle')?.addEventListener('click', () => {
+      const current = localStorage.getItem('portfolio:theme') || 'dark'
+      applyTheme(current === 'dark' ? 'light' : 'dark')
     })
   }
 
   init()
-  document.addEventListener('astro:after-swap', init)
 </script>
