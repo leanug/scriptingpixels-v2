@@ -12,7 +12,7 @@ category: {
 tags: ["Framer", "Code Overrides"]
 published: true
 featured: true
-pinned: false
+pinned: true
 ---
 
 Framer’s power shines when you combine design with code. If you want your prototypes to do more than just look good, you need to control their behavior programmatically.

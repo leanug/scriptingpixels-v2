@@ -1,7 +1,7 @@
 ---
 authorId: leandro
 image: cover.webp
-title: "2 Framer and Webflow Took Over My Client Requests: Here’s Why I Dropped WordPress"
+title: "Framer and Webflow Took Over My Client Requests: Here’s Why I Dropped WordPress"
 description: My client started choosing Framer and Webflow over WordPress, and I share the story behind the shift and what I learned.
 date: 2025-08-13
 category: {
@@ -10,8 +10,8 @@ category: {
 }
 tags: ["Framer", "Webflow", "WordPress"]
 published: true
-featured: true
-pinned: true
+featured: false
+pinned: false
 ---
 
 For years, almost every project I worked on started the same way.

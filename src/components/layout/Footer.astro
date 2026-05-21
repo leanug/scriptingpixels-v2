@@ -1,0 +1,39 @@
+---
+import { siteConfig } from "../../config/site.js";
+import { Icon } from 'astro-icon/components'
+---
+
+<footer id="footer" class="w-full text-sm py-6 border-t border-base-200">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+
+    <!-- Left: logo + legal -->
+    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+      <a href="/" class="flex gap-2 btn btn-ghost rounded-md items-center w-fit">
+        <Icon name="heroicons:pencil-square" class="w-4 h-4" />
+        scriptingpixels
+      </a>
+      <div class="flex items-center gap-4 px-1 sm:px-0">
+        <a href="/terms-of-service" class="hover:underline opacity-60 hover:opacity-100 transition">Terms of Service</a>
+        <a href="/privacy-policy" class="hover:underline opacity-60 hover:opacity-100 transition">Privacy Policy</a>
+        <a href="https://github.com/leanug/scriptingpixels-v2" target="_blank" class="hover:underline opacity-60 hover:opacity-100 transition">
+          GitHub
+        </a>
+        <a href="https://www.youtube.com/@scriptingpixels" target="_blank" class="hover:underline opacity-60 hover:opacity-100 transition">
+          YouTube
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: links -->
+    <div class="flex items-center gap-1 px-1 sm:px-0">
+      Created by 
+      <a href="https://www.leandroubilla.com" target="_blank" class="underline opacity-60 hover:opacity-100 mr-3 transition">
+        Leandro Ubilla
+      </a>
+      <a href={siteConfig.social.linkedin} target="_blank" class="inline-flex items-center gap-2 bg-white/10 text-white px-3 py-1.5 rounded-md text-sm font-medium hover:bg-white/20 transition">
+        LinkedIn
+      </a>
+    </div>
+
+  </div>
+</footer>

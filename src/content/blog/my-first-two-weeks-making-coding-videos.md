@@ -20,7 +20,7 @@ The audio in my videos still sounds pretty bad, especially the first one, which 
 
 Recently, for my fourth video, I learned how to clean up the audio with Audacity 🎙️. 
 
-Now, it sounds a lot better—normalizing, reducing the echo, and boosting the volume in Kdenlive because it was too quiet. 
+Now, it sounds a lot better normalizing, reducing the echo, and boosting the volume in Kdenlive because it was too quiet. 
 
 As comrade Anatoly Dyatlov would say: Not great, not terrible 💬.
 

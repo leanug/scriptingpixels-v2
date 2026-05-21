@@ -1,11 +1,10 @@
 ---
-import '@fontsource-variable/inter';
 import '../styles/global.css'
 import  SpeedInsights  from "@vercel/speed-insights/astro"
-// Supports weights 100-900
+import { Font } from 'astro:assets'
 
-import Header from '../components/ui/Header.astro';
-import Footer from '../components/ui/Footer.astro';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
 import Analytics from '../components/Analytics.astro';
 
 import { siteConfig } from "../config/site.js";
@@ -31,6 +30,16 @@ const socialImage = ogImage
     <meta name="robots" content="index, follow" />
 		<meta name="generator" content={Astro.generator} />
 
+    <Font cssVariable="--font-inter" preload />
+
+    <script is:inline>
+      (function () {
+        const stored = localStorage.getItem('theme')
+        const theme = (stored === 'light' || stored === 'dark') ? stored : 'dark'
+        document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'black' : theme)
+      })()
+    </script>
+
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonicalURL} />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -55,10 +64,9 @@ const socialImage = ogImage
     <meta name="twitter:title" content={title ?? siteConfig.name} />
     <meta name="twitter:description" content={description ?? siteConfig.description} />
     <meta name="twitter:image" content={socialImage} />
-
 	</head>
-	<body class="text-base-content font-sans">
-    <div data-theme="black" class="flex flex-col min-h-screen mx-auto px-4 md:px-16">
+	<body class="text-base-content bg-base-100 font-sans scroll-smooth">
+    <div class="flex flex-col min-h-screen mx-auto px-2.5 sm:px-8 xl:px-16">
       <Header />
       <main class="grow"><slot /></main>
       <Footer />

@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 const { image, title, slug } = Astro.props;
 ---
 
-<article class="group p-6 bg-accent/20 rounded-xl">
+<article class="group p-6 rounded-3xl bg-base-200 hover:bg-base-300 transition-colors duration-300">
   <a 
     class="rounded-xl group"
     href={`/blog/${slug}`}>
@@ -14,7 +14,7 @@ const { image, title, slug } = Astro.props;
       height="450"
       decoding="async"
       loading="lazy"
-      class="rounded-xl object-cover w-full aspect-video transition-opacity duration-300 group-hover:opacity-70"
+      class="rounded-xl object-cover w-full aspect-video"
     />
     <h3 class="text-lg font-medium mt-4 leading-6">{title}</h3>
   </a>

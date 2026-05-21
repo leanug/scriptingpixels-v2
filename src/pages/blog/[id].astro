@@ -1,105 +1,93 @@
 ---
 import { getCollection, render } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import Layout from "../../layouts/Layout.astro";
 import Prose from "../../components/Prose.astro";
-
 import { authors, type AuthorKey } from "../../data/authors";
-
 import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const blog = await getCollection("blog");
-
   return blog.map((post) => ({
     params: { id: post.id },
     props: post
   }));
 }
 
-const { data }  = Astro.props;
+const { data } = Astro.props;
 const { title, image, date, authorId, description, tags } = data;
-
 const id = Astro.props.id;
-console.log(data)
 const author = authors[authorId as AuthorKey];
-
 const { Content } = await render(Astro.props)
 
 export const prerender = true;
 ---
 
-<BaseLayout title={title} description={description}>
-  <div class="flex gap-12 w-full max-w-3xl mx-auto mb-20 mt-20">
-    <article class="flex flex-col gap-6 justify-start w-full">
-      <h1 class="text-2xl sm:text-4xl md:text-5xl font-semibold text-balance leading-none">
+<Layout title={title} description={description}>
+  <article class="w-full mb-24 mt-16">
+
+    <!-- Header -->
+    <div class="max-w-3xl mx-auto mb-10 space-y-6">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight text-balance">
         {title}
       </h1>
 
-      <div class="text-sm flex md:flex-row gap-3 md:items-center flex-col text-base-content">
-        <!-- Author -->
-        <div class="text-start flex items-center gap-2 flex-wrap">
-          <Image
-            src={`/media/authors/${author?.avatar || 'placeholder.svg'}`}
-            alt="Author profile picture"
-            class="w-8 h-8 rounded-full"
-            width="44"
-            height="44"
-            decoding="async"
-            loading="lazy"
-          />
-          <span>Written by</span>
-          <a 
-            href="https://www.x.com/leandroubilla_" 
-            class="underline font-semibold" 
-            rel="author"
-          >
-            {author?.name || "Unknown Author"}
-          </a>
-        </div>
-
-        <!-- Separator -->
-        <span class="hidden md:inline-block text-gray-400">|</span>
-
-        <!-- Date -->
-        <div class="text-start">
-          Last updated 
-          <time 
-            datetime={new Date(date).toISOString()} 
-            class="font-semibold text-base-content"
-          >
-            {new Date(date).toLocaleDateString(undefined, {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric'
-            })}
-          </time>
+      <!-- Author + date -->
+      <div class="flex items-center gap-3 pt-2">
+        <Image
+          src={`/media/authors/${author?.avatar || 'placeholder.svg'}`}
+          alt="Author profile picture"
+          class="w-10 h-10 rounded-full"
+          width="44"
+          height="44"
+          decoding="async"
+          loading="eager"
+        />
+        <div class="flex flex-col text-sm">
+          <span class="font-medium">{author?.name || 'Unknown Author'}</span>
+          <span class="text-base-content/60">
+            Last updated <time datetime={new Date(date).toISOString()}>
+              {new Date(date).toLocaleDateString(undefined, {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+          </span>
         </div>
       </div>
+    </div>
 
-      <img
-        transition:name={`img-${id}`}
-        src={`/media/blog/${id}/${image}`} 
-        alt={title} 
-        class="w-full aspect-4/3 object-cover rounded-xl mt-3"
+    <!-- Hero image (wider than text) -->
+    <div class="max-w-5xl mx-auto mb-12 px-2 sm:px-4">
+      <Image
+        src={`/media/blog/${id}/${image}`}
+        alt={title}
+        width="1200"
+        height="675"
+        class="w-full aspect-video object-cover rounded-2xl"
+        loading="eager"
+        decoding="async"
       />
-      
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-3xl mx-auto">
       <Prose>
         <Content />
       </Prose>
+    </div>
 
-      <div class="flex items-center gap-3 flex-wrap">
-        <span class="flex items-center gap-1 text-lg font-medium">
-          Tags:
-          <!-- You can't use React icons like <Tags /> here; use an SVG or icon font instead -->
-        </span>
-
-        {tags?.map((tag: string) => (
-          <span class="bg-base-200 text-md  px-3 py-1 rounded-md">
+    <!-- Tags -->
+    {tags && tags?.length > 0 && (
+      <div class="max-w-3xl mx-auto mt-12 pt-6 flex items-center gap-2 flex-wrap">
+        <span class="text-sm font-medium text-base-content/60">Tags</span>
+        {tags.map((tag: string) => (
+          <span class="bg-base-200 text-sm px-3 py-1 rounded-md">
             {tag}
           </span>
         ))}
       </div>
-    </div>
-    </article>
-  </div>
-</BaseLayout>
+    )}
+
+  </article>
+</Layout>

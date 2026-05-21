@@ -14,5 +14,6 @@ export const siteConfig = {
   social: {
     x: "https://x.com/leandroubilla_",
     github: "https://github.com/leanug",
+    linkedin: "https://www.linkedin.com/in/leandro-ubilla-gonzalez/",
   },
 };

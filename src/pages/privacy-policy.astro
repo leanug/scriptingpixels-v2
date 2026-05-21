@@ -1,17 +1,17 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Layout from '../layouts/Layout.astro';
 
 // Constants
 const title = "Services";
 const description = "How I Can Help You Build & Grow";
 ---
 
-<BaseLayout {title} {description}>
+<Layout {title} {description}>
   <section 
     aria-label="services tables" 
     class="my-20 px-2.5"
   >
-    <div class="max-w-3xl">
+    <div class="max-w-3xl mx-auto">
       <h1 class="text-4xl font-bold mb-6">🔐 Privacy Policy</h1>
   
       <p class="mb-4 text-lg">This Privacy Policy explains how <strong>ScriptingPixels</strong> collects, uses, and protects your information when you visit our site or purchase Framer templates. We respect your privacy and are committed to transparency.</p>
@@ -46,4 +46,4 @@ const description = "How I Can Help You Build & Grow";
       <p class="text-sm text-zinc-500 mt-8">Last updated: June 2025</p>
     </div>
   </section>
-</BaseLayout>
+</Layout>
