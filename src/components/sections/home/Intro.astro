@@ -1,0 +1,51 @@
+---
+import Eyebrow from "../../ui/Eyebrow.astro";
+---
+
+<section class="relative flex min-h-screen flex-col items-center justify-center bg-blue-700 px-5 py-20 text-center text-white">
+  <Eyebrow
+    icon="heroicons:sparkles"
+    text="WEBSITE DESIGN & DEVELOPMENT"
+    class="badge-outline absolute left-1/2 top-20 mb-6 -translate-x-1/2"
+  />
+
+  <div class="mx-auto flex w-full max-w-2xl flex-col">
+    <h2 class="section-heading text-white">
+      Does your website make<br class="hidden sm:block" />
+      your business look as<br class="hidden sm:block" />
+      good as it really is?
+    </h2>
+
+    <p class="mx-auto text-xl text-white/80">
+      An outdated, generic or disconnected digital presence can undermine
+      the credibility you've spent years building. The right design reflects
+      your expertise and gives your brand the presence it deserves.
+    </p>
+  </div>
+
+  <div class="absolute left-1/2 bottom-20">
+    <a
+      href="#services"
+      aria-label="Scroll to services"
+      class=" left-1/2 flex h-9 w-6 -translate-x-1/2 items-start justify-center rounded-full border border-white/90 pt-[3px]"
+    >
+      <span id="ball" class="mt-auto mb-[2px] size-1.5 rounded-full bg-white"></span>
+    </a>
+  </div>
+</section>
+
+<style>
+  #ball {
+    animation: ball-down 1.4s ease-in infinite;
+  }
+
+  @keyframes ball-down {
+    from {
+      transform: translateY(0);
+    }
+
+    to {
+      transform: translateY(1.25rem);
+    }
+  }
+</style>

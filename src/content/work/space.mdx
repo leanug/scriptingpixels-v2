@@ -1,0 +1,127 @@
+---
+title: "Space"
+date: 2026-04-28
+img: "cover.webp"
+description: |
+  Interactive Framer prototype for a movie trailer production web app, consolidating Slack, email, and video review tools into a single dashboard for agency and studio admins.
+tags: ["Client Work", "Framer", "UI Design"]
+category: Movie production SaaS
+published: false
+featured: false
+more: true
+order: 400
+cols: 2
+---
+
+import { Image } from 'astro:assets'
+
+<div class="max-w-3xl mx-auto px-2.5 py-8 mt-10 md:mt-0 md:py-14 lg:py-20">
+  <div class="flex items-center justify-between mb-4">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10">
+      <path fill-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule="evenodd" />
+    </svg>
+    <span class="badge badge-neutral gap-1.5 rounded-full font-medium">
+      <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
+      Delivered
+    </span>
+  </div>
+
+  <h1 class="font-semibold text-4xl lg:text-5xl leading-none tracking-tight mb-3">
+    Space
+  </h1>
+  <span class="text-base-content/60 font-medium mb-6 block">
+    Movie Trailer Production — Web App Prototype
+  </span>
+  <p class="text-base-content/75 leading-relaxed max-w-2xl mb-8">
+    Space is a web app concept for agency and movie studio admins working on the production of movie trailers for the advertising industry. It consolidates Slack, email, and video review tools into a single command center, reducing context switching and keeping productions on track.
+  </p>
+
+  <div class="flex flex-wrap gap-2 mt-10">
+    <span class="badge badge-soft px-3 py-2 rounded-full text-xs">Framer</span>
+    <span class="badge badge-soft px-3 py-2 rounded-full text-xs">UI Design</span>
+    <span class="badge badge-soft px-3 py-2 rounded-full text-xs">Prototype</span>
+    <span class="badge badge-soft px-3 py-2 rounded-full text-xs">Dashboard</span>
+    <span class="badge badge-soft px-3 py-2 rounded-full text-xs">SaaS</span>
+  </div>
+</div>
+
+<div class="max-w-4xl rounded-2xl bg-base-200 mx-auto mb-16">
+  <Image
+    src="/media/work/space/cover.webp"
+    alt="Space app dashboard overview"
+    widths={[400, 800, 1280]}
+    sizes="(max-width: 1280px) 100vw, 1280px"
+    width={1600}
+    height={900}
+    decoding="async"
+    loading="lazy"
+    class="w-full rounded-2xl"
+  />
+</div>
+
+<div class="max-w-3xl mx-auto px-2.5 space-y-16 mb-16">
+
+  <section>
+    <h2 class="text-xl font-semibold mb-3">Task</h2>
+
+    <p class="leading-relaxed text-base-content/80 mb-4">
+      Build an interactive Framer prototype of the initial screens for a unified dashboard, consolidating Slack messages, email threads, and video review workflows into a single interface for agency and movie studio admins.
+    </p>
+
+    <p class="leading-relaxed text-base-content/80">
+      Along the way, I identified and resolved several issues in the initial design, improving hierarchy, navigation flow, and overall usability before delivering the final prototype.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-semibold mb-3">Process</h2>
+    <p class="leading-relaxed text-base-content/80 mb-4">
+      The work started from an initial Figma design. Where interactions and flow weren't specified, I asked the right questions to fill in the gaps before building, avoiding assumptions that would have required rework later.
+    </p>
+    <p class="leading-relaxed text-base-content/80">
+      Complex interactions were handled through Framer code overrides, including passing state via URL parameters to drive nested component changes on click events, keeping the prototype accurate to how the real app would behave.
+    </p>
+  </section>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 border-t border-base-200 pt-8">
+    <div>
+      <p class="text-xs text-base-content/50 mb-1">Client</p>
+      <a href="https://preludecreative.com" target="_blank" rel="noopener noreferrer" class="text-sm font-medium underline underline-offset-4 hover:text-base-content/60 transition-colors">Prelude Creative</a>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/50 mb-1">My role</p>
+      <p class="text-sm font-medium">Framer Developer</p>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/50 mb-1">Industry</p>
+      <p class="text-sm font-medium">Film & Advertising</p>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/50 mb-1">Deliverable</p>
+      <p class="text-sm font-medium">Interactive prototype</p>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/50 mb-1">Audience</p>
+      <p class="text-sm font-medium">Agency & studio admins</p>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/50 mb-1">Status</p>
+      <p class="text-sm font-medium">Delivered</p>
+    </div>
+  </div>
+</div>
+
+<div class="relative max-w-7xl mx-auto px-2.5 mb-4">
+  <video
+    class="w-full rounded-2xl"
+    src="/media/work/space/prototype.webm"
+    autoplay
+    loop
+    muted
+    playsinline
+    controls
+  />
+  <span class="label text-sm text-base-content/70 mt-3">
+    Interactive prototype walkthrough.
+  </span>
+</div>

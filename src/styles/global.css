@@ -10,6 +10,15 @@
 
 @custom-variant dark (&:where([data-theme=black], [data-theme=black] *));
 
+@utility section-heading {
+  @apply mb-10 text-3xl font-semibold tracking-tighter text-balance text-base-content sm:text-4xl lg:text-6xl;
+}
+
+@utility section {  @apply py-20 md:py-30;}
+@utility container {
+  @apply px-10 w-full mx-auto;
+}
+
 .prose pre {
   overflow-x: auto;
   max-width: 100%;

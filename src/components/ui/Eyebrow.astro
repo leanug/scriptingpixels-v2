@@ -1,0 +1,60 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  icon: string;
+  text: string;
+  variant?: "primary" | "dark" | "light";
+  iconClass?: string;
+  textClass?: string;
+  borderClass?: string;
+  backgroundClass?: string;
+  class?: string;
+};
+
+const {
+  icon,
+  text,
+  variant = "light",
+  iconClass,
+  textClass,
+  borderClass,
+  backgroundClass,
+  class: className = "",
+} = Astro.props;
+
+const variantClasses = {
+  primary: {
+    icon: "text-primary-content",
+    text: "text-primary-content",
+    border: "border-primary",
+    background: "bg-primary",
+  },
+  dark: {
+    icon: "text-neutral-content",
+    text: "text-neutral-content",
+    border: "border-neutral",
+    background: "bg-neutral",
+  },
+  light: {
+    icon: "text-primary",
+    text: "text-base-content",
+    border: "border-base-content/30",
+    background: "bg-transparent",
+  },
+}[variant];
+
+const colors = {
+  icon: iconClass ?? variantClasses.icon,
+  text: textClass ?? variantClasses.text,
+  border: borderClass ?? variantClasses.border,
+  background: backgroundClass ?? variantClasses.background,
+};
+---
+
+<span
+  class={`badge inline-flex items-center gap-1.5 rounded-md border pl-2.5 pr-3 py-5 text-md font-medium ${colors.text} ${colors.border} ${colors.background} ${className}`}
+>
+  <Icon name={icon} class={`size-4 ${colors.icon}`} aria-hidden="true" />
+  {text}
+</span>

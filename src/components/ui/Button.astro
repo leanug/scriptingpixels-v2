@@ -1,0 +1,32 @@
+---
+interface Props {
+  variant?: "dark" | "light";
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  class?: string;
+}
+
+const {
+  variant = "dark",
+  href,
+  type = "button",
+  class: className = "",
+  ...attributes
+} = Astro.props;
+
+const classes = `btn h-auto min-h-0 rounded-xl border border-transparent px-6 py-3 text-base font-normal uppercase tracking-normal shadow-none transition-colors duration-300 ease-in-out hover:bg-blue-700 hover:text-white ${
+  variant === "light"
+    ? "bg-base-100 text-base-content"
+    : "bg-neutral text-neutral-content"
+} ${className}`;
+---
+
+{href ? (
+  <a href={href} class={classes} {...attributes}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes} {...attributes}>
+    <slot />
+  </button>
+)}

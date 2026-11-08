@@ -11,7 +11,7 @@ category: {
 }
 tags: ["Framer"]
 published: true
-featured: false
+featured: true
 pinned: false
 ---
 

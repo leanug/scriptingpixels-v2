@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const work = await getCollection("work");
+  return work.map((item) => ({
+    params: { id: item.id },
+    props: item
+  }));
+}
+
+const { data } = Astro.props;
+const { 
+  title, 
+} = data;
+
+const { Content } = await render(Astro.props)
+
+export const prerender = true;
+---
+
+<Layout title={`${title} - Portfolio`}>
+  <div class="md:text-lg">
+    <Content />
+  </div>
+</Layout>

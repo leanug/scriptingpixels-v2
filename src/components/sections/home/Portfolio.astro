@@ -1,0 +1,70 @@
+
+---
+import { getCollection } from "astro:content";
+import Button from "../../ui/Button.astro";
+
+const featuredWork = await getCollection("work", ({ data }) => data.featured === true);
+
+const projects = featuredWork
+  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0))
+  .map(({ id, data }) => ({
+    id,
+    title: data.title,
+    category: data.category,
+    date: data.date
+      ? `_${String(data.date.getMonth() + 1).padStart(2, "0")}.${String(data.date.getFullYear()).slice(-2)}`
+      : undefined,
+    image: data.img ? `/media/work/${id}/${data.img}` : undefined,
+  }));
+---
+
+<section id="projects" class="section bg-black">
+  <div class="container">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
+      <!-- Intro -->
+      <div class="md:sticky md:top-10 md:h-fit">
+        <h2 class="section-heading text-white">
+          Previous work
+        </h2>
+
+        <div class="mb-14 space-y-4 text-xl text-white/70">
+          <p>We create websites that feel as good as they work.</p>
+          <p>
+            Clean but distinctive. Strategic but never overcomplicated.
+            Every project is designed around the brand, the audience,
+            and the experience it needs to deliver.
+          </p>
+        </div>
+        <Button variant="dark" href="/contact">Start Your Project</Button>
+      </div>
+
+      <!-- Project list -->
+      <div class="flex flex-col gap-7">
+        {projects.map((project) => (
+          <article class="group">
+            <a
+              href={`/work/${project.id}`}
+              aria-label={`View ${project.title}`}
+              class="block aspect-4/3 overflow-hidden rounded-[4px] bg-[#bdbdbd] transition-colors duration-300 hover:bg-[#d0d0d0]"
+            >
+              <img
+                src={project.image}
+                alt={project.title}
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.015]"
+              />
+            </a>
+
+            <div class="mt-4 flex items-center justify-between gap-3 text-[10px]">
+              <h3 class="font-medium text-xl text-base-content text-white">{project.title}</h3>
+              <div class="flex items-center gap-5 text-xl text-white/60">
+                <span>{project.category}</span>
+                {project.date && <span class="font-mono">{project.date}</span>}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

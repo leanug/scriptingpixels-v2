@@ -1,0 +1,41 @@
+
+---
+interface Props {
+  number: string;
+  title: string;
+  price: string;
+  description: string;
+  features: string[];
+}
+
+const { number, title, description, features, price } = Astro.props;
+---
+
+<article class="min-w-0">
+  <img
+    src="/media/services/s1.webp"
+    alt={`${title} service`}
+    class="aspect-4/3 w-full cover rounded-md bg-[#c9c9c9]"
+  />
+
+  <!-- Number -->
+  <div class="mt-4 font-mono text-md tracking-tight text-base-content/50">
+    No. {number}
+  </div>
+
+  <h3 class="text-xl font-medium sm:text-2xl text-base-content my-4">{title}</h3>
+
+  <p class="text-base-content text-4xl font-semibold mb-5">{price}</p>
+
+  <p class="text-base-content/75 text-xl">{description}</p>
+
+  <!-- Features -->
+  <ul class="space-y-1 text-md text-base-content/75 mt-5">
+    {features.map((feature) => (
+      <li class="flex gap-1.5">
+        <span aria-hidden="true" class="text-base-content/75">•</span>
+        <span>{feature}</span>
+      </li>
+    ))}
+  </ul>
+</article>

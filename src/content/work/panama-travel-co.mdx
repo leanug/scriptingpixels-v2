@@ -1,0 +1,102 @@
+---
+title: "Panama Travel Co."
+date: 2026-05-18
+img: "cover.webp"
+description: |
+  Webflow design and development for a kosher travel guide helping Jewish travelers discover restaurants, synagogues, and experiences in Panama City.
+tags: ["Client Work", "Webflow", "UI Design"]
+category: Kosher travel guide
+published: true
+featured: true
+more: true
+order: 300
+cols: 2
+---
+
+import { Image } from 'astro:assets'
+
+<div class="max-w-3xl mx-auto px-2.5 py-8 mt-10 md:mt-0 md:py-14 lg:py-20">
+  <div class="flex items-center justify-between mb-4">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10">
+      <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-2.003 3.5-4.697 3.5-8.327a8.25 8.25 0 0 0-16.5 0c0 3.63 1.556 6.324 3.5 8.327a19.58 19.58 0 0 0 2.683 2.282 16.975 16.975 0 0 0 1.144.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
+    </svg>
+
+    <span class="badge badge-soft gap-1.5 rounded-full font-medium">
+      <span class="w-1.5 h-1.5 rounded-full bg-warning inline-block"></span>
+      In Progress
+    </span>
+  </div>
+
+  <h1 class="font-semibold text-4xl lg:text-5xl leading-none tracking-tight mb-3">
+    Panama Travel Co.
+  </h1>
+  <span class="text-base-content/60 font-medium mb-6 block">
+    Kosher Travel Guide to Panama City — Webflow Design & Development
+  </span>
+  <p class="text-base-content/75 leading-relaxed max-w-2xl mb-8">
+    Panama Travel Co. is a kosher travel guide for Panama City, helping Jewish travelers find restaurants, synagogues, and experiences in one place. The client provided an AI-generated sketch as a structural reference, and my role was to interpret that direction, fill in the missing pieces, and build the full site on Webflow.
+  </p>
+
+  <div class="flex flex-wrap gap-2 mt-10">
+    <span class="badge badge-soft px-3 py-2 rounded-full text-xs">Webflow</span>
+    <span class="badge badge-soft px-3 py-2 rounded-full text-xs">UI Design</span>
+  </div>
+</div>
+
+<div class="max-w-4xl rounded-2xl bg-base-200 mx-auto px-2.5 p-6 mb-16">
+  <Image
+    src="/media/work/panama-travel-co/cover.webp"
+    alt="Panama Travel Co. homepage"
+    widths={[400, 800, 1280]}
+    sizes="(max-width: 1280px) 100vw, 1280px"
+    width={1600}
+    height={900}
+    decoding="async"
+    loading="lazy"
+    class="w-full rounded-2xl"
+  />
+</div>
+
+<div class="max-w-3xl mx-auto px-2.5 space-y-16 mb-16">
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 border-t border-base-200 pt-8">
+    <div>
+      <p class="text-xs text-base-content/50 mb-1">Client</p>
+      <a href="https://mutaxmk.com" target="_blank" rel="noopener noreferrer" class="text-sm font-medium underline underline-offset-4 hover:text-base-content/60 transition-colors">
+        MUTAxMK
+      </a>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/70 mb-1">My role</p>
+      <p class="text-sm font-medium">Designer & Developer</p>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/70 mb-1">Platform</p>
+      <p class="text-sm font-medium">Webflow</p>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/70 mb-1">Pages</p>
+      <p class="text-sm font-medium">8 + Blog</p>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/70 mb-1">Industry</p>
+      <p class="text-sm font-medium">Travel & Tourism</p>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/70 mb-1">Audience</p>
+      <p class="text-sm font-medium">Jewish travelers</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="relative max-w-4xl mx-auto px-2.5 mb-16">
+  <div id="panama-slider" class="flex overflow-x-auto gap-4 scroll-smooth snap-x snap-mandatory pb-4">
+    <Image class="snap-start shrink-0 w-full rounded-2xl bg-base-200 aspect-4/3" src="/media/work/panama-travel-co/kr3.webp" alt="Homepage" width={1600} height={900} />
+    <Image class="snap-start shrink-0 w-full rounded-2xl bg-base-200 aspect-4/3" src="/media/work/panama-travel-co/kr4.webp" alt="Restaurants page" width={1600} height={900} />
+    <Image class="snap-start shrink-0 w-full rounded-2xl bg-base-200 aspect-4/3" src="/media/work/panama-travel-co/kr5.webp" alt="Restaurants page" width={1600} height={900} />
+    <Image class="snap-start shrink-0 w-full rounded-2xl bg-base-200 aspect-4/3" src="/media/work/panama-travel-co/kr1.webp" alt="Restaurants page" width={1600} height={900} />
+    <Image class="snap-start shrink-0 w-full rounded-2xl bg-base-200 aspect-4/3" src="/media/work/panama-travel-co/kr2.webp" alt="Synagogues page" width={1600} height={900} />
+  </div>
+  <p class="text-xs text-base-content/40 mt-2 text-center sm:hidden">Swipe to explore →</p>
+</div>

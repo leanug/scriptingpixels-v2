@@ -4,6 +4,7 @@ import vercel from '@astrojs/vercel';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import icon from "astro-icon";
+import mdx from '@astrojs/mdx';
 
 import partytown from '@astrojs/partytown';
 
@@ -24,7 +25,7 @@ export default defineConfig({
       ],
     ],
   },
-  integrations: [partytown(), icon(), sitemap()],
+  integrations: [partytown(), icon(), sitemap(), mdx()],
   fonts: [{
     provider: fontProviders.google(),
     name: 'Inter',

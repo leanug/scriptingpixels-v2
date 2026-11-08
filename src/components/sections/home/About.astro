@@ -1,0 +1,53 @@
+
+---
+import Button from "../../ui/Button.astro";
+---
+
+<section id="about" class="px-6 py-16 sm:px-10 sm:py-20 w-full bg-base-200">
+  <div class="mx-auto grid grid-cols-[140px_minmax(0,1fr)] max-w-3xl items-start gap-5 sm:gap-12">
+
+    <img
+      src="/media/authors/leandro.webp"
+      alt="Leandro Ubilla"
+      class="aspect-square w-full rounded-sm border-2 border-white object-cover"
+    />
+
+    <!-- About content -->
+    <div>
+      <h2 class="section-heading mb-7">Hi, I'm Leandro</h2>
+
+      <div class="space-y-2.5 text-md  text-base-content/70 sm:text-xl">
+        <p>
+          I design and build custom websites with Webflow and Astro
+          for businesses that are ready to look as good online as
+          they do in real life.
+        </p>
+
+        <p>
+          After more than a decade designing and building for the web,
+          I've learned that a good website needs to do more than look
+          good. It needs to make your business clear, credible, and
+          easy to choose.
+        </p>
+
+        <p>
+          That's why I work across both design and development,
+          taking projects from the first idea through to the final
+          build. Whether it's built with Webflow or custom code,
+          the goal is the same: a website that looks like your
+          business belongs there.
+        </p>
+      </div>
+
+      <div class="mt-10">
+        <Button
+          href="https://dribbble.com/leanug"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Find me on Dribbble
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

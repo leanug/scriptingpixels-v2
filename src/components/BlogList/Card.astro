@@ -1,5 +1,4 @@
 ---
-import { Image } from 'astro:assets';
 const { image, title, slug } = Astro.props;
 ---
 
@@ -7,10 +6,10 @@ const { image, title, slug } = Astro.props;
   <a 
     class="rounded-xl group"
     href={`/blog/${slug}`}>
-    <Image
+    <img
       src={`/media/blog/${slug}/${image}`}
-      alt=""   
-      width="800" 
+      alt={title}
+      width="800"
       height="450"
       decoding="async"
       loading="lazy"
