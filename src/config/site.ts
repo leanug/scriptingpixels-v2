@@ -1,14 +1,14 @@
 export const siteConfig = {
   name: "Scripting Pixels",
-  url: "https://scriptingpixels.com",
+  url: "https://www.scriptingpixels.com",
   description:
-    "Framer design tips, small business guides, and website launch hacks, all in one place. Also, check out our favorite Framer templates to launch in days, not weeks.",
+    "Thoughtful web design and development for businesses and creative agencies. Custom, responsive websites built with Webflow or Astro.",
 
   ogImage: "/og-image.jpg",
 
   twitter: {
     handle: "@scriptingpixels",
-    site: "scriptingpixels.com",
+    site: "www.scriptingpixels.com",
   },
 
   social: {

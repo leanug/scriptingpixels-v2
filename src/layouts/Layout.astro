@@ -14,12 +14,11 @@ interface Props {
   title?: string
   description?: string
   ogImage?: string
+  ogImageAlt?: string
 }
 
-const { title, description, ogImage } = Astro.props
-const socialImage = ogImage 
-  ? new URL(ogImage, Astro.site) 
-  : new URL('/og-image.jpg', Astro.site)
+const { title, description, ogImage, ogImageAlt } = Astro.props
+const socialImage = new URL(ogImage ?? siteConfig.ogImage, siteConfig.url)
 ---
 
 <!doctype html>
@@ -53,13 +52,16 @@ const socialImage = ogImage
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content={siteConfig.name} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title ?? siteConfig.name} />
     <meta property="og:description" content={description ?? siteConfig.description} />
     <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content={ogImageAlt ?? `${siteConfig.name} website preview`} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content={siteConfig.twitter.handle} />
     <meta name="twitter:domain" content={siteConfig.twitter.site} />
     <meta name="twitter:title" content={title ?? siteConfig.name} />
     <meta name="twitter:description" content={description ?? siteConfig.description} />
