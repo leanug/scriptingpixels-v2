@@ -4,40 +4,48 @@ import About from '../components/sections/home/About.astro';
 import FAQ from "../components/sections/home/FAQ.astro";
 import Hero from "../components/sections/home/Hero.astro";
 import HomeIntro from "../components/sections/home/Intro.astro";
-import HomeBlogSlider from "../components/BlogList/HomeBlogSlider.astro";
+import BlogSlider from "../components/sections/home/Blog.astro";
+import Industries from "../components/sections/home/Industries.astro";
 import Portfolio from "../components/sections/home/Portfolio.astro";
 import Services from "../components/sections/home/Services.astro";
+import Process from "../components/sections/home/Process.astro";
+import "@splidejs/splide/css/core";
 
 // Constants
 const title = "Scripting Pixels - Framer Templates and Resources";
 const description = "Framer Templates for High-Impact Sites - Launch fast with premium templates built for speed, flexibility, and a modern web presence.";
 
-const projects = [
-  { name: "Project One", class: "col-span-1" },
-  { name: "Project Two", class: "col-span-1" },
-  { name: "Project Three", class: "col-span-2" },
-  { name: "Project Four", class: "col-span-1" },
-];
 ---
 
 <Layout {title} {description}>
   <Hero />
-  <section class="bg-base-100 text-base-content pb-10 my-6">
-    <div class="grid grid-cols-2 gap-1.5 px-2.5 sm:grid-cols-5">
-      {projects.map((project) => (
-        <div
-          href="#projects"
-          aria-label={project.name}
-          class={`group relative block overflow-hidden rounded-sm bg-[#d9d9d9] transition-colors hover:bg-[#c9c9c9] h-96 ${project.class}`}
-        >
-        </div>
-      ))}
-    </div>
-  </section>
   <HomeIntro />
+  <Industries />
   <Services />
   <Portfolio />
+  <Process />
   <About />
-  <HomeBlogSlider />
+  <BlogSlider />
   <FAQ />
 </Layout>
+
+<script>
+  import Splide from "@splidejs/splide";
+
+  const root = document.querySelector("#home-hero-projects-slider");
+
+  if (root && !root.classList.contains("is-initialized")) {
+    new Splide(root, {
+      perPage: 5,
+      perMove: 1,
+      gap: "6px",
+      arrows: false,
+      pagination: false,
+      breakpoints: {
+        1024: { perPage: 3 },
+        768: { perPage: 2 },
+        480: { perPage: 1 },
+      },
+    }).mount();
+  }
+</script>

@@ -2,21 +2,140 @@
 import Logo from "../ui/Logo.astro";
 import { Icon } from 'astro-icon/components'
 import ThemeToggle from '../../components/ui/ThemeToggle.astro';
+import Button from '../ui/Button.astro';
 ---
 
-<header class="mt-5 flex sm:items-center flex-col sm:flex-row justify-between gap-4 text-sm font-medium tracking-wide px-12">
-  <div class="flex-1">
-    <Logo />
+<header class="fixed inset-x-0 top-0 z-50 h-16 border-b border-base-300 bg-base-100/90 backdrop-blur-md">
+  <div class="container flex h-full flex-row items-center justify-between gap-4 py-3 text-sm font-medium tracking-wide">
+  
+  <!-- Logo + mobile menu (left side) -->
+  <div class="flex flex-row items-center gap-1.5">
+    
+    <!-- Mobile menu dropdown (hidden on desktop) -->
+    <div class="dropdown lg:hidden">
+      <button tabindex="0" aria-label="Open menu" class="btn btn-ghost btn-md rounded-md px-1.5 py-2 uppercase tracking-widest text-xs">
+        <Icon name="heroicons:bars-3" class="w-5 h-5" />
+      </button>
+
+      <ul tabindex="-1" class="dropdown-content bg-base-100/95 backdrop-blur-md border border-base-200 rounded-xl z-50 mt-2 w-48 p-2 shadow-lg gap-0.5 flex flex-col">
+        <li class="menu-title text-xs opacity-70 px-3 pb-1 uppercase tracking-widest">Pages</li>
+        <li>
+          <a href="/" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm hover:bg-base-200 transition-colors">Home</a>
+        </li>
+        <li>
+          <a href="/blog" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm hover:bg-base-200 transition-colors">Blog</a>
+        </li>
+        <li>
+          <a href="/work" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm hover:bg-base-200 transition-colors">Work</a>
+        </li>
+        <li>
+          <a href="/contact" class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm hover:bg-base-200 transition-colors">Contact</a>
+        </li>
+      </ul>
+    </div>
+
+    <a href="/"><Logo /></a>
   </div>
-  <div class="flex-none flex items-center gap-3">
-    <a 
-      href="https://leandroubilla.com" 
-      target="_blank" 
-      class="btn rounded-full btn-outline"
-      aria-label="Visit my portfolio and hire me to build your website">
-      <Icon name="heroicons:computer-desktop-solid" class="w-4 h-4" />
-      Need a Website?
-    </a>
+
+  <!-- Desktop nav + theme toggle (right side) -->
+  <div class="flex flex-row items-center gap-4">
+    <ul class="flex-row text-base-content/70 hidden lg:flex items-center">
+      <li class="w-fit whitespace-nowrap">
+        <a href="/work" class="btn btn-ghost rounded-md">Work</a>
+      </li>
+      <li class="w-fit whitespace-nowrap">
+        <a href="/blog" class="btn btn-ghost rounded-md">Blog</a>
+      </li>
+      <li class="w-fit whitespace-nowrap ml-3">
+        <Button href="/contact" size="sm" class="header-cta-pixels">Start your project</Button>
+      </li>
+    </ul>
     <ThemeToggle />
   </div>
+  </div>
+
 </header>
+
+<script>
+  const cta = document.querySelector<HTMLAnchorElement>(".header-cta-pixels");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let particleInterval: number | undefined;
+
+  function emitPixels() {
+    if (!cta || reduceMotion.matches) return;
+
+    const bounds = cta.getBoundingClientRect();
+    const isDarkTheme = document.documentElement.getAttribute("data-theme") === "black";
+    const pixelColor = isDarkTheme ? "#ffffff" : "#1f2937";
+    const count = 2 + Math.floor(Math.random() * 3);
+
+    for (let index = 0; index < count; index += 1) {
+      const pixel = document.createElement("span");
+      const size = Math.floor(Math.random() * 4) + 1;
+      const edge = Math.floor(Math.random() * 4);
+      const edgePosition = Math.random();
+      const distance = 12 + Math.random() * 30;
+      const duration = 800 + Math.random() * 900;
+      const delay = Math.random() * 100;
+      let startX = 0;
+      let startY = 0;
+      let endX = 0;
+      let endY = 0;
+
+      if (edge === 0) {
+        startX = edgePosition * bounds.width;
+        startY = -size;
+        endX = (Math.random() - 0.5) * 18;
+        endY = -distance;
+      } else if (edge === 1) {
+        startX = edgePosition * bounds.width;
+        startY = bounds.height + size;
+        endX = (Math.random() - 0.5) * 18;
+        endY = distance;
+      } else if (edge === 2) {
+        startX = -size;
+        startY = edgePosition * bounds.height;
+        endX = -distance;
+        endY = (Math.random() - 0.5) * 18;
+      } else {
+        startX = bounds.width + size;
+        startY = edgePosition * bounds.height;
+        endX = distance;
+        endY = (Math.random() - 0.5) * 18;
+      }
+
+      pixel.setAttribute("aria-hidden", "true");
+      pixel.style.cssText = `position:absolute;left:${startX}px;top:${startY}px;width:${size}px;height:${size}px;background:${pixelColor};pointer-events:none;z-index:10;`;
+      cta.append(pixel);
+
+      const animation = pixel.animate(
+        [
+          { opacity: 0, transform: "translate(0, 0) scale(0.6)" },
+          { opacity: 1, offset: 0.18, transform: "translate(0, 0) scale(1)" },
+          { opacity: 0, transform: `translate(${endX}px, ${endY}px) scale(0.7)` },
+        ],
+        { duration, delay, easing: "cubic-bezier(0.2, 0.7, 0.3, 1)" },
+      );
+
+      animation.onfinish = () => pixel.remove();
+    }
+  }
+
+  cta?.addEventListener("pointerenter", () => {
+    if (reduceMotion.matches || particleInterval !== undefined) return;
+    emitPixels();
+    particleInterval = window.setInterval(emitPixels, 110);
+  });
+  cta?.addEventListener("pointerleave", () => {
+    if (particleInterval !== undefined) window.clearInterval(particleInterval);
+    particleInterval = undefined;
+  });
+</script>
+
+<style is:global>
+  .header-cta-pixels {
+    position: relative;
+    overflow: visible;
+    isolation: isolate;
+  }
+</style>

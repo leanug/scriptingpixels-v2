@@ -1,30 +1,28 @@
 ---
 title: "Panama Travel Co."
 date: 2026-05-18
-img: "cover.webp"
+img: "panama_cover.webp"
 description: |
   Webflow design and development for a kosher travel guide helping Jewish travelers discover restaurants, synagogues, and experiences in Panama City.
 tags: ["Client Work", "Webflow", "UI Design"]
-category: Kosher travel guide
+category: Webflow Redesign
 published: true
 featured: true
 more: true
-order: 300
+order: 390
 cols: 2
 ---
 
 import { Image } from 'astro:assets'
+import WorkSlider from '../../components/sections/work/WorkSlider.astro'
+import ProjectStatus from '../../components/sections/work/ProjectStatus.astro'
+import MapPinInline from '../../components/sections/work/icons/MapPinInline.astro'
 
 <div class="max-w-3xl mx-auto px-2.5 py-8 mt-10 md:mt-0 md:py-14 lg:py-20">
   <div class="flex items-center justify-between mb-4">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10">
-      <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-2.003 3.5-4.697 3.5-8.327a8.25 8.25 0 0 0-16.5 0c0 3.63 1.556 6.324 3.5 8.327a19.58 19.58 0 0 0 2.683 2.282 16.975 16.975 0 0 0 1.144.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
-    </svg>
+    <MapPinInline />
 
-    <span class="badge badge-soft gap-1.5 rounded-full font-medium">
-      <span class="w-1.5 h-1.5 rounded-full bg-warning inline-block"></span>
-      In Progress
-    </span>
+    <ProjectStatus status="In Progress" />
   </div>
 
   <h1 class="font-semibold text-4xl lg:text-5xl leading-none tracking-tight mb-3">
@@ -90,13 +88,10 @@ import { Image } from 'astro:assets'
 
 </div>
 
-<div class="relative max-w-4xl mx-auto px-2.5 mb-16">
-  <div id="panama-slider" class="flex overflow-x-auto gap-4 scroll-smooth snap-x snap-mandatory pb-4">
-    <Image class="snap-start shrink-0 w-full rounded-2xl bg-base-200 aspect-4/3" src="/media/work/panama-travel-co/kr3.webp" alt="Homepage" width={1600} height={900} />
-    <Image class="snap-start shrink-0 w-full rounded-2xl bg-base-200 aspect-4/3" src="/media/work/panama-travel-co/kr4.webp" alt="Restaurants page" width={1600} height={900} />
-    <Image class="snap-start shrink-0 w-full rounded-2xl bg-base-200 aspect-4/3" src="/media/work/panama-travel-co/kr5.webp" alt="Restaurants page" width={1600} height={900} />
-    <Image class="snap-start shrink-0 w-full rounded-2xl bg-base-200 aspect-4/3" src="/media/work/panama-travel-co/kr1.webp" alt="Restaurants page" width={1600} height={900} />
-    <Image class="snap-start shrink-0 w-full rounded-2xl bg-base-200 aspect-4/3" src="/media/work/panama-travel-co/kr2.webp" alt="Synagogues page" width={1600} height={900} />
-  </div>
-  <p class="text-xs text-base-content/40 mt-2 text-center sm:hidden">Swipe to explore →</p>
-</div>
+<WorkSlider slides={[
+  { src: '/media/work/panama-travel-co/kr3.webp', alt: 'Panama Travel Co. homepage' },
+  { src: '/media/work/panama-travel-co/kr4.webp', alt: 'Panama Travel Co. restaurants page' },
+  { src: '/media/work/panama-travel-co/kr5.webp', alt: 'Panama Travel Co. restaurant listing' },
+  { src: '/media/work/panama-travel-co/kr1.webp', alt: 'Panama Travel Co. travel guide page' },
+  { src: '/media/work/panama-travel-co/kr2.webp', alt: 'Panama Travel Co. synagogues page' },
+]} />

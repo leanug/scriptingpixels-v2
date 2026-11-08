@@ -1,0 +1,77 @@
+---
+import { Icon } from "astro-icon/components";
+import "@splidejs/splide/css/core";
+
+type Slide = { src: string; alt: string };
+
+type Props = {
+  slides?: Slide[];
+};
+
+const placeholderSlides: Slide[] = [
+  { src: "/media/placeholders/work-slide-1.svg", alt: "Placeholder work slide 1" },
+  { src: "/media/placeholders/work-slide-2.svg", alt: "Placeholder work slide 2" },
+  { src: "/media/placeholders/work-slide-3.svg", alt: "Placeholder work slide 3" },
+];
+
+const { slides = placeholderSlides } = Astro.props;
+---
+
+<div class="work-slider-wrap relative mx-auto mb-16 max-w-4xl px-2.5">
+  <div data-work-slider class="splide" aria-label="Selected work images">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {slides.map((slide) => (
+          <li class="splide__slide">
+            <img
+              src={slide.src}
+              alt={slide.alt}
+              width="1600"
+              height="1200"
+              loading="lazy"
+              decoding="async"
+              class="aspect-4/3 w-full rounded-2xl bg-base-200 object-cover"
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+  <button
+    type="button"
+    class="btn btn-circle absolute left-0 top-1/2 z-10 h-11 w-11 min-h-11 -translate-x-[15%] -translate-y-1/2 border border-base-300 bg-base-100 shadow transition-colors hover:border-primary hover:bg-primary hover:text-primary-content"
+    data-work-prev
+    aria-label="Previous image"
+  >
+    <Icon name="heroicons:arrow-left" class="size-[18px]" aria-hidden="true" />
+  </button>
+  <button
+    type="button"
+    class="btn btn-circle absolute right-0 top-1/2 z-10 h-11 w-11 min-h-11 translate-x-[15%] -translate-y-1/2 border border-base-300 bg-base-100 shadow transition-colors hover:border-primary hover:bg-primary hover:text-primary-content"
+    data-work-next
+    aria-label="Next image"
+  >
+    <Icon name="heroicons:arrow-right" class="size-[18px]" aria-hidden="true" />
+  </button>
+</div>
+
+<script>
+  import Splide from "@splidejs/splide";
+
+  document.querySelectorAll("[data-work-slider]").forEach((root) => {
+    if (root.classList.contains("is-initialized")) return;
+
+    const splide = new Splide(root, {
+      perPage: 1,
+      perMove: 1,
+      arrows: false,
+      pagination: false,
+      rewind: true,
+    });
+
+    splide.mount();
+    const wrapper = root.closest(".work-slider-wrap");
+    wrapper?.querySelector("[data-work-prev]")?.addEventListener("click", () => splide.go("<"));
+    wrapper?.querySelector("[data-work-next]")?.addEventListener("click", () => splide.go(">"));
+  });
+</script>

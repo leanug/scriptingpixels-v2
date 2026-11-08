@@ -8,24 +8,31 @@ interface Props {
 
 const { post } = Astro.props;
 const imagePath = `/media/blog/${post.id}/${post.data.image}`;
+const category = post.data.category?.label ?? "Article";
+const readTime = `${Math.max(1, Math.ceil((post.body?.trim().split(/\s+/).length ?? 0) / 200))} min read`;
 ---
 
 <article class="space-y-6 w-full p-6 bg-base-200 hover:bg-base-300 transition-colors duration-300 rounded-3xl">
   <a class="rounded-xl group" href={`/blog/${post.id}`}>
-    <Image
-      src={imagePath}
-      alt={post.data.title}
-      width="800"
-      height="450"
-      decoding="async"
-      loading="lazy"
-      class="rounded-xl object-cover w-full aspect-video"
-    />
-    <h2 class="text-2xl md:text-3xl font-semibold leading-tight mt-7 mb-4 text-balance">
+    <div class="overflow-hidden rounded-xl">
+      <Image
+        src={imagePath}
+        alt={post.data.title}
+        width="800"
+        height="450"
+        decoding="async"
+        loading="lazy"
+        class="aspect-video w-full rounded-xl object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+      />
+    </div>
+    <h2 class="text-xl md:text-2xl font-semibold leading-tight mt-7 mb-4 text-balance">
       {post.data.title}
     </h2>
     <p class="text-lg max-w-3xl text-balance text-base-content/70">
       {post.data.description}
+    </p>
+    <p class="mt-5 text-sm text-base-content/60">
+      {category} <span aria-hidden="true">·</span> {readTime}
     </p>
   </a>
 </article>

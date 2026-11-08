@@ -1,0 +1,34 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  number: string;
+  title: string;
+  image: string;
+  icon: "heroicons:paper-airplane" | "heroicons:building-office-2" | "heroicons:building-library" | "heroicons:briefcase";
+};
+
+const { number, title, image, icon } = Astro.props;
+---
+
+<article class="card group overflow-hidden rounded-2xl space-y-3 bg-base-200 shadow-sm">
+  <div class="relative aspect-video sm:aspect-4/3">
+    <img
+      src={image}
+      alt={title}
+      loading="lazy"
+      class="absolute inset-0 size-full object-cover"
+    />
+    <span class="absolute left-5 top-5 font-mono text-sm font-medium tracking-wider text-white drop-shadow-md">
+      {number}
+    </span>
+    <span class="absolute bottom-0 left-5 z-10 flex size-16 translate-y-1/2 items-center justify-center rounded-2xl bg-base-100 text-base-content shadow-sm transition-transform duration-300 ease-out group-hover:translate-y-1.5 motion-reduce:transition-none">
+      <Icon name={icon} class="size-6" aria-hidden="true" />
+    </span>
+  </div>
+  <div class="card-body p-6 pt-10 pb-6">
+    <h3 class="text-2xl font-semibold leading-tight tracking-tight text-base-content">
+      {title}
+    </h3>
+  </div>
+</article>

@@ -1,0 +1,49 @@
+---
+import { Icon } from "astro-icon/components";
+
+const industries = [
+  { title: "Industrial & Equipment", icon: "heroicons:paper-airplane" },
+  { title: "Construction & Engineering", icon: "heroicons:building-office-2" },
+  { title: "Legal & Professional", icon: "heroicons:building-library" },
+  { title: "Corporate & B2B Services", icon: "heroicons:briefcase" },
+];
+---
+
+<section aria-labelledby="industries-title" class="pb-12 sm:pb-16">
+  <div class="container">
+    <h2 id="industries-title" class="mb-5 text-center text-sm font-medium uppercase text-base-content/70">
+      Industries served
+    </h2>
+    <div class="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
+    {industries.map(({ title, icon }) => (
+      <article class="industries-mini-card flex min-h-32 flex-col items-start gap-5 rounded-2xl bg-base-200 p-4 sm:min-h-36 sm:p-5">
+        <span data-tilt-icon class="flex size-10 items-center justify-center rounded-xl bg-base-100 text-content-base/70 transition-transform duration-200 ease-out will-change-transform">
+          <Icon name={icon} class="size-5" aria-hidden="true" />
+        </span>
+        <h3 class="max-w-48 text-sm font-medium leading-5 text-base-content sm:text-base">{title}</h3>
+      </article>
+    ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const cards = document.querySelectorAll<HTMLElement>(".industries-mini-card");
+
+  cards.forEach((card) => {
+    const icon = card.querySelector<HTMLElement>("[data-tilt-icon]");
+    if (!icon) return;
+
+    card.addEventListener("pointermove", (event) => {
+      if (event.pointerType !== "mouse") return;
+      const bounds = card.getBoundingClientRect();
+      const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+      const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+      icon.style.transform = `perspective(400px) rotateX(${y * -28}deg) rotateY(${x * 28}deg) scale(1.08)`;
+    });
+
+    card.addEventListener("pointerleave", () => {
+      icon.style.transform = "perspective(400px) rotateX(0deg) rotateY(0deg) scale(1)";
+    });
+  });
+</script>

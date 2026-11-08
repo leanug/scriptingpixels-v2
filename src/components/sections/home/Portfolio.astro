@@ -1,7 +1,9 @@
-
 ---
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 import Button from "../../ui/Button.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
+import ProjectCard from "../../ui/ProjectCard.astro";
 
 const featuredWork = await getCollection("work", ({ data }) => data.featured === true);
 
@@ -18,51 +20,65 @@ const projects = featuredWork
   }));
 ---
 
-<section id="projects" class="section bg-black">
+<section id="projects" class="section bg-base-100">
   <div class="container">
-    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-20">
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-10 lg:gap-40">
       <!-- Intro -->
       <div class="md:sticky md:top-10 md:h-fit">
-        <h2 class="section-heading text-white">
+        <Eyebrow
+          icon="heroicons:rectangle-stack"
+          text="In the field"
+          class="badge-outline"
+          variant="base-200"
+        />
+        <h2 class="section-heading mb-4">
           Previous work
         </h2>
 
-        <div class="mb-14 space-y-4 text-xl text-white/70">
-          <p>We create websites that feel as good as they work.</p>
-          <p>
+        <div class="mb-7 space-y-3 text-base-content/70">
+          <p>Websites should feel as good as they work.</p>
+          <p class="text-balance">
             Clean but distinctive. Strategic but never overcomplicated.
             Every project is designed around the brand, the audience,
             and the experience it needs to deliver.
           </p>
         </div>
-        <Button variant="dark" href="/contact">Start Your Project</Button>
+        <div class="flex flex-wrap gap-3">
+          <Button variant="secondary" href="/work" icon="heroicons:squares-2x2" class="[&_svg]:text-base-content/70">View all work</Button>
+        </div>
+        <div class="mt-6 grid grid-cols-2 gap-3" aria-label="Experience and services">
+          <div class="rounded-xl bg-base-200 p-4">
+            <div class="mb-3 flex items-center gap-3">
+              <span class="grid size-9 shrink-0 place-items-center rounded-lg bg-base-100" aria-hidden="true">
+                <Icon name="heroicons:briefcase" class="size-[18px]" />
+              </span>
+              <p class="text-lg font-semibold tracking-tight sm:text-xl">10+ years</p>
+            </div>
+            <p class="text-sm leading-5 text-base-content/65">Designing for the web.</p>
+          </div>
+          <div class="rounded-xl bg-base-200 p-4">
+            <div class="mb-3 flex items-center gap-3">
+              <span class="grid size-9 shrink-0 place-items-center rounded-lg bg-base-100" aria-hidden="true">
+                <Icon name="heroicons:code-bracket" class="size-[18px]" />
+              </span>
+              <p class="text-lg font-semibold tracking-tight sm:text-xl">Webflow or Code</p>
+            </div>
+            <p class="text-sm leading-5 text-base-content/65">The right approach for your project.</p>
+          </div>
+        </div>
       </div>
 
       <!-- Project list -->
-      <div class="flex flex-col gap-7">
+      <div class="flex min-w-0 flex-col gap-3">
         {projects.map((project) => (
-          <article class="group">
-            <a
-              href={`/work/${project.id}`}
-              aria-label={`View ${project.title}`}
-              class="block aspect-4/3 overflow-hidden rounded-[4px] bg-[#bdbdbd] transition-colors duration-300 hover:bg-[#d0d0d0]"
-            >
-              <img
-                src={project.image}
-                alt={project.title}
-                loading="lazy"
-                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.015]"
-              />
-            </a>
-
-            <div class="mt-4 flex items-center justify-between gap-3 text-[10px]">
-              <h3 class="font-medium text-xl text-base-content text-white">{project.title}</h3>
-              <div class="flex items-center gap-5 text-xl text-white/60">
-                <span>{project.category}</span>
-                {project.date && <span class="font-mono">{project.date}</span>}
-              </div>
-            </div>
-          </article>
+          <ProjectCard
+            id={project.id}
+            title={project.title}
+            category={project.category}
+            date={project.date}
+            image={project.image}
+            variant="featured"
+          />
         ))}
       </div>
     </div>

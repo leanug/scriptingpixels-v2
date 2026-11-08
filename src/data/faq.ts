@@ -1,8 +1,8 @@
 export const faqs = [
   {
-    question: "How do we get started?",
+    question: "How does a project get started?",
     answer:
-      "We'll start with a short call to discuss your goals and project scope. You can reach me by email or on Dribbble. Send me a brief, and I'll reply with a proposal outlining the work, price, and timeline.",
+      "A short call covers your goals and project scope. Send a brief by email or on Dribbble to receive a proposal outlining the work, price, and timeline.",
   },
   {
     question: "How long does a project take?",
@@ -17,42 +17,42 @@ export const faqs = [
   {
     question: "What is your process?",
     answer:
-      "First, we define your goals, scope, and expectations. I then develop a visual direction and create wireframes for the structure and user flow. Once those are approved, I design the full interface and, if needed, build the site in Framer, Webflow, or Astro. I'll keep you updated throughout the project.",
+      "The process starts by defining your goals, scope, and expectations. Next, a visual direction and wireframes establish the structure and user flow. Once approved, the full interface is designed and, if needed, built in Framer, Webflow, or Astro. Updates are shared throughout the project.",
   },
   {
     question: "What's your revision policy?",
     answer:
-      "We'll refine the structure during the wireframe phase. The final design includes 1-2 rounds of major revisions; further changes are billed at my hourly rate.",
+      "The structure is refined during the wireframe phase. The final design includes 1-2 rounds of major revisions; further changes are billed at the hourly rate.",
   },
   {
     question: "Do you build in Framer?",
     answer:
-      "Yes. I build websites in Framer, as well as Webflow and Astro when the project calls for them.",
+      "Yes. Websites are built in Framer, Webflow, or Astro, depending on the project's needs.",
   },
   {
     question: "Do you build in Webflow?",
     answer:
-      "Yes. I design and build custom websites in Webflow, including responsive layouts and interactions tailored to your project.",
+      "Yes. Custom websites are designed and built in Webflow, with responsive layouts and interactions tailored to each project.",
   },
   {
     question: "Do you build coded websites?",
     answer:
-      "Yes. I build custom websites with Astro when a coded solution is the right fit for your project.",
+      "Yes. Custom websites are built with Astro when a coded solution is the right fit for your project.",
   },
   {
     question: "Can you handle quick design updates?",
     answer:
-      "Yes. Send me the details, and I'll let you know the cost and timing. Small updates don't need a full project scope.",
+      "Yes. Share the details to get an estimate for cost and timing. Small updates don't need a full project scope.",
   },
   {
     question: "Do you work with agencies?",
     answer:
-      "Yes. I work with agencies and in-house teams, and can fit into your existing process.",
+      "Yes. Projects can support agencies and in-house teams, fitting into an existing process.",
   },
   {
-    question: "Can we communicate via WhatsApp?",
+    question: "Is WhatsApp available for project communication?",
     answer:
-      "Yes. We can use WhatsApp for project communication once the project has started.",
+      "Yes. WhatsApp is available for project communication once the project has started.",
   },
   {
     question: "What is your refund policy?",

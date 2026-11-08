@@ -1,0 +1,142 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "../../components/ui/ProjectCard.astro";
+import Eyebrow from "../../components/ui/Eyebrow.astro";
+import Layout from "../../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+
+const projects = (await getCollection("work", ({ data }) => data.published === true))
+  .sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+const caseStudies = projects.filter(({ data }) => data.more !== false);
+const moreWork = projects.filter(({ data }) => data.more === false && Boolean(data.img));
+
+const title = "Selected Work | Scripting Pixels";
+const description = "A selection of published design and website projects.";
+---
+
+<Layout {title} {description}>
+  <section class="section">
+    <div class="container">
+      <header class="mb-10 md:mb-14">
+        <Eyebrow
+          icon="heroicons:sparkles"
+          text="A few recent projects"
+          variant="base-200"
+          class="mb-6"
+        />
+        <h1 class="mb-4 text-4xl font-semibold tracking-tight md:text-6xl">
+          Previous Work
+        </h1>
+      </header>
+
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-3">
+        {caseStudies.map(({ id, data }) => (
+          <ProjectCard
+            id={id}
+            title={data.title}
+            category={data.category}
+            date={data.date}
+            image={data.img ? `/media/work/${id}/${data.img}` : undefined}
+            variant="featured"
+          />
+        ))}
+      </div>
+
+      {moreWork.length > 0 && (
+        <section class="mt-20 md:mt-28" aria-labelledby="more-work-heading">
+          <h2 id="more-work-heading" class="mb-8 text-lg font-semibold tracking-tight">
+            More work
+          </h2>
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {moreWork.map(({ id, data }) => (
+              <button
+                type="button"
+                data-image-viewer-trigger
+                data-image-src={`/media/work/${id}/${data.img}`}
+                data-image-alt={data.title}
+                aria-label={`View ${data.title} image`}
+                aria-haspopup="dialog"
+                class="group block w-full cursor-zoom-in overflow-hidden rounded-xl bg-base-200 text-left"
+              >
+                <span class="block aspect-4/3">
+                  <img
+                    src={`/media/work/${id}/${data.img}`}
+                    alt={data.title}
+                    loading="lazy"
+                    class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.015]"
+                  />
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  </section>
+
+  <div
+    id="more-work-viewer"
+    class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/85 p-4 backdrop-blur-sm md:p-8"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image viewer"
+    aria-hidden="true"
+  >
+    <button
+      id="more-work-viewer-close"
+      type="button"
+      class="absolute right-4 top-4 z-10 inline-flex size-11 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white md:right-7 md:top-7"
+      aria-label="Close image viewer"
+    >
+      <Icon name="heroicons:x-mark" class="size-6" aria-hidden="true" />
+    </button>
+    <img
+      id="more-work-viewer-image"
+      src=""
+      alt=""
+      class="max-h-full max-w-full rounded-lg object-contain shadow-2xl"
+    />
+  </div>
+</Layout>
+
+<script>
+  const viewer = document.querySelector<HTMLElement>("#more-work-viewer");
+  const viewerImage = document.querySelector<HTMLImageElement>("#more-work-viewer-image");
+  const closeButton = document.querySelector<HTMLButtonElement>("#more-work-viewer-close");
+  const triggers = document.querySelectorAll<HTMLButtonElement>("[data-image-viewer-trigger]");
+  let lastTrigger: HTMLButtonElement | null = null;
+
+  const closeViewer = () => {
+    if (!viewer || !viewerImage) return;
+    viewer.classList.add("hidden");
+    viewer.classList.remove("flex");
+    viewer.setAttribute("aria-hidden", "true");
+    viewerImage.removeAttribute("src");
+    document.body.classList.remove("overflow-hidden");
+    lastTrigger?.focus();
+  };
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      if (!viewer || !viewerImage) return;
+      lastTrigger = trigger;
+      viewerImage.src = trigger.dataset.imageSrc ?? "";
+      viewerImage.alt = trigger.dataset.imageAlt ?? "";
+      viewer.classList.remove("hidden");
+      viewer.classList.add("flex");
+      viewer.setAttribute("aria-hidden", "false");
+      document.body.classList.add("overflow-hidden");
+      closeButton?.focus();
+    });
+  });
+
+  closeButton?.addEventListener("click", closeViewer);
+  viewer?.addEventListener("click", (event) => {
+    if (event.target === viewer) closeViewer();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && viewer && !viewer.classList.contains("hidden")) {
+      closeViewer();
+    }
+  });
+</script>

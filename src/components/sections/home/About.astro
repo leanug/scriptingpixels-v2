@@ -1,51 +1,78 @@
 
 ---
 import Button from "../../ui/Button.astro";
+import DribbbleIcon from "../../ui/icons/DribbbleIcon.astro";
+import LinkedInIcon from "../../ui/icons/LinkedInIcon.astro";
+import Eyebrow from "../../ui/Eyebrow.astro";
 ---
 
-<section id="about" class="px-6 py-16 sm:px-10 sm:py-20 w-full bg-base-200">
-  <div class="mx-auto grid grid-cols-[140px_minmax(0,1fr)] max-w-3xl items-start gap-5 sm:gap-12">
+<section id="about" class="px-6 py-16 sm:px-10 sm:py-20 w-full bg-base-100">
+  <div class="mx-auto grid max-w-3xl grid-cols-1 items-start gap-5 sm:grid-cols-[112px_minmax(0,1fr)] sm:gap-x-12 sm:gap-y-0">
+
+    <Eyebrow
+      variant="base-200"
+      icon="heroicons:user-circle"
+      text="About me"
+      class="badge-outline order-1 mb-0 sm:col-start-2 sm:row-start-1 sm:mb-6"
+    />
 
     <img
       src="/media/authors/leandro.webp"
       alt="Leandro Ubilla"
-      class="aspect-square w-full rounded-sm border-2 border-white object-cover"
+      class="order-2 aspect-square w-28 rounded-xl object-cover sm:col-start-1 sm:row-span-2 sm:row-start-1 sm:mt-16"
     />
 
     <!-- About content -->
-    <div>
-      <h2 class="section-heading mb-7">Hi, I'm Leandro</h2>
+    <div class="order-3 sm:col-start-2 sm:row-start-2">
+      <h2 class="section-heading mb-7">Hi 👋, I'm Leandro</h2>
 
-      <div class="space-y-2.5 text-md  text-base-content/70 sm:text-xl">
+      <div class="space-y-2.5 text-base-content/70">
         <p>
-          I design and build custom websites with Webflow and Astro
-          for businesses that are ready to look as good online as
-          they do in real life.
+          I design and build custom websites with Webflow and Astro 
+          for businesses and creative agencies.
         </p>
 
         <p>
-          After more than a decade designing and building for the web,
-          I've learned that a good website needs to do more than look
-          good. It needs to make your business clear, credible, and
-          easy to choose.
+          After more than a decade designing and building for the web, 
+          I've learned that a good website needs to do more than look good. 
+          It needs to make your business clear, credible, and easy to choose.
         </p>
 
         <p>
-          That's why I work across both design and development,
-          taking projects from the first idea through to the final
-          build. Whether it's built with Webflow or custom code,
-          the goal is the same: a website that looks like your
-          business belongs there.
+          That's why I work across both design and development, 
+          taking projects from the first idea through to the final build. 
+          Whether it's built with Webflow or custom code, 
+          the goal is the same: a website that looks like your business belongs there.
         </p>
       </div>
 
-      <div class="mt-10">
+      <div class="mt-10 flex flex-wrap gap-3">
         <Button
           href="https://dribbble.com/leanug"
           target="_blank"
           rel="noopener noreferrer"
+          variant="secondary"
+          icon={DribbbleIcon}
         >
-          Find me on Dribbble
+          Dribbble
+        </Button>
+        <Button
+          href="https://www.linkedin.com/in/leandro-ubilla-gonzalez/"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="secondary"
+          icon={LinkedInIcon}
+        >
+          LinkedIn
+        </Button>
+        <Button
+          href="https://leandroubilla.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="secondary"
+          icon="heroicons:globe-alt"
+        >
+          Website
         </Button>
       </div>
     </div>

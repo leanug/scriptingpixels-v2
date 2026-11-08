@@ -1,37 +1,101 @@
 ---
-import { siteConfig } from "../../config/site.js";
-import { Icon } from 'astro-icon/components'
+import { Icon } from "astro-icon/components";
+import { siteConfig } from "../../config/site";
 ---
 
-<footer id="footer" class="w-full text-sm py-6 border-t border-base-200">
-  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-
-    <!-- Left: logo + legal -->
-    <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-      <a href="/" class="flex gap-2 btn btn-ghost rounded-md items-center w-fit">
-        <Icon name="heroicons:pencil-square" class="w-4 h-4" />
-        scriptingpixels
+<footer id="footer" class="bg-black text-white border-t border-base-300">
+  <div class="container pt-12 pb-6 sm:pt-16 sm:pb-8 lg:pt-20 lg:pb-10">
+    <div class="mb-14 flex items-center justify-between font-mono text-xs text-white/65">
+      <a href="/" aria-label="Scripting Pixels home" class="transition-colors hover:text-white">
+        <Icon name="heroicons:square-3-stack-3d" class="size-6" aria-hidden="true" />
       </a>
-      <div class="flex items-center gap-4 px-1 sm:px-0">
-        <a href="/blog" class="hover:underline opacity-60 hover:opacity-100 transition">Blog</a>
-        <a href="/terms-of-service" class="hover:underline opacity-60 hover:opacity-100 transition">Terms of Service</a>
-        <a href="/privacy-policy" class="hover:underline opacity-60 hover:opacity-100 transition">Privacy Policy</a>
-        <a href="https://www.youtube.com/@scriptingpixels" target="_blank" class="hover:underline opacity-60 hover:opacity-100 transition">
-          YouTube
-        </a>
+      <div class="flex items-center gap-4">
+        <a href={siteConfig.social.dribbble} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white">Dribbble</a>
+        <span aria-hidden="true">/</span>
+        <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" class="transition-colors hover:text-white">LinkedIn</a>
       </div>
     </div>
 
-    <!-- Right: links -->
-    <div class="flex items-center gap-1 px-1 sm:px-0">
-      Created by 
-      <a href="https://www.leandroubilla.com" target="_blank" class="underline opacity-60 hover:opacity-100 mr-3 transition">
-        Leandro Ubilla
-      </a>
-      <a href={siteConfig.social.linkedin} target="_blank" class="inline-flex items-center gap-2 bg-white/10 text-white px-3 py-1.5 rounded-md text-sm font-medium hover:bg-white/20 transition">
-        LinkedIn
-      </a>
+    <div class="grid gap-12 md:grid-cols-[1fr_0.8fr] lg:grid-cols-[1fr_0.9fr_1.15fr] lg:gap-16">
+      <section aria-labelledby="footer-cta-title" class="max-w-sm">
+        <h2 id="footer-cta-title" class="text-2xl font-medium leading-9 text-white/80 sm:text-3xl">
+          Web design and development that builds trust, sets your business apart, and supports growth.
+        </h2>
+      </section>
+
+      <nav aria-label="Footer navigation" class="flex flex-col items-start gap-3 text-sm text-white/65">
+        <a href="/" class="transition-colors hover:text-white">Home</a>
+        <a href="/blog" class="transition-colors hover:text-white">Blog</a>
+        <a href="/work" class="transition-colors hover:text-white">Projects</a>
+        <a href="/contact" class="transition-colors hover:text-white">Contact</a>
+      </nav>
+
+      <section aria-labelledby="newsletter-title" class="md:col-span-2 lg:col-span-1">
+        <h2 id="newsletter-title" class="mb-1 text-lg font-medium">Join our newsletter</h2>
+        <p class="mb-5 font-mono text-xs leading-5 text-white/60 text-balance">
+          A little inspiration from the world of web design and development.
+        </p>
+
+        <form id="newsletter-form">
+          <input type="hidden" name="access_key" value="b43a3ddc-d9d3-4113-a0fa-52bc2ba1e8ea" />
+          <input type="hidden" name="subject" value="New Scripting Pixels newsletter signup" />
+          <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" />
+
+          <div class="flex flex-col gap-3">
+            <label class="form-control w-full gap-1.5">
+              <span class="label-text text-xs text-white">Your Name</span>
+              <input name="name" type="text" autocomplete="name" required maxlength="120" class="input input-bordered input-xl w-full rounded-lg border-white/15 bg-white text-black mt-1" />
+            </label>
+            <label class="form-control w-full gap-1.5">
+              <span class="label-text text-xs text-white">Your Email</span>
+              <input name="email" type="email" autocomplete="email" required maxlength="254" class="input input-bordered input-xl w-full rounded-lg border-white/15 bg-white text-black mt-1" />
+            </label>
+          </div>
+          <button type="submit" class="btn btn-xl w-full rounded-lg border-0 bg-white text-sm font-semibold normal-case text-black shadow-none hover:bg-white/85 mt-4">
+            <Icon name="heroicons:plus" class="size-[15px]" aria-hidden="true" />
+            Keep me Posted
+          </button>
+          <p id="newsletter-status" class="min-h-5 text-xs text-white/70" aria-live="polite"></p>
+        </form>
+      </section>
     </div>
 
+    <div class="mt-10 flex flex-col gap-3 pt-5 text-xs text-white/50 sm:mt-24 sm:flex-row sm:items-center sm:justify-between">
+      <p>2026 - Scripting Pixels.</p>
+      <div class="flex items-center gap-5">
+        <a href="/terms-of-service" class="transition-colors hover:text-white">Terms of Service</a>
+        <a href="/privacy-policy" class="transition-colors hover:text-white">Privacy Policy</a>
+      </div>
+    </div>
   </div>
 </footer>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#newsletter-form");
+  const status = document.querySelector<HTMLParagraphElement>("#newsletter-status");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form || !status) return;
+
+    const button = form.querySelector<HTMLButtonElement>("button[type='submit']");
+    if (button) button.disabled = true;
+    status.textContent = "Submitting…";
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(form).entries())),
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) throw new Error(result.message || "Please try again.");
+      form.reset();
+      status.textContent = "Thanks for subscribing!";
+    } catch (error) {
+      status.textContent = error instanceof Error ? error.message : "Something went wrong. Please try again.";
+    } finally {
+      if (button) button.disabled = false;
+    }
+  });
+</script>

@@ -1,20 +1,28 @@
 ---
-const { image, title, slug } = Astro.props;
+const { image, title, slug, category, readTime, variant = "default" } = Astro.props;
+const backgroundClass = variant === "base-200" ? "bg-base-200 hover:bg-base-200" : "bg-base-100 hover:bg-base-100";
 ---
 
-<article class="group p-6 rounded-3xl bg-base-200 hover:bg-base-300 transition-colors duration-300">
+<article class={`group h-full rounded-3xl p-4 transition-colors duration-300 ${backgroundClass}`}>
   <a 
-    class="rounded-xl group"
+    class="group flex h-full flex-col rounded-xl"
     href={`/blog/${slug}`}>
-    <img
-      src={`/media/blog/${slug}/${image}`}
-      alt={title}
-      width="800"
-      height="450"
-      decoding="async"
-      loading="lazy"
-      class="rounded-xl object-cover w-full aspect-video"
-    />
-    <h3 class="text-lg font-medium mt-4 leading-6">{title}</h3>
+    <div class="overflow-hidden rounded-xl">
+      <img
+        src={`/media/blog/${slug}/${image}`}
+        alt={title}
+        width="800"
+        height="600"
+        decoding="async"
+        loading="lazy"
+        class="aspect-4/3 w-full rounded-xl object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+      />
+    </div>
+    <div class="flex flex-1 flex-col pt-3">
+      <h2 class="text-lg font-semibold leading-6 text-balance">{title}</h2>
+      <p class="mt-auto pt-2 text-sm text-base-content/60">
+        {category} <span aria-hidden="true">·</span> {readTime}
+      </p>
+    </div>
   </a>
 </article>

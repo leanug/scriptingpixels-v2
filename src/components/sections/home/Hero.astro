@@ -1,26 +1,95 @@
 ---
+import "@splidejs/splide/css/core";
 import Eyebrow from "../../ui/Eyebrow.astro";
 import Button from "../../ui/Button.astro";
+import SliderArrow from "../../ui/SliderArrow.astro";
+
+const slides = ["draytons", "renner", "aero", "volta"].map((project) => ({
+  image: `/media/hero/h-cover-${project}.webp`,
+  title: `Featured project: ${project}`,
+}));
 ---
 
-<div class="grid gap-5 px-6 pb-7 pt-7 sm:grid-cols-[1.5fr_0.7fr] sm:items-end sm:px-12 sm:pt-40 lg:grid-cols-3 lg:gap-2 lg:px-16">
-    <div class="lg:col-span-2">
-        <Eyebrow
-            icon="heroicons:sparkles"
-            text="WEBSITE DESIGN & DEVELOPMENT"
-            class="badge-outline mb-6"
-        />
+<section class="px-4 pb-16 pt-14 sm:px-8 sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24">
+  <div class="container grid items-center gap-10 md:grid-cols-2 lg:gap-20">
+    <div class="flex flex-col items-start">
+      <Eyebrow icon="heroicons:sparkles" text="Website Design & Development" variant="base-200" />
 
-        <h1 class="max-w-2xl text-[clamp(2rem,4.5vw,5rem)] text-balance font-semibold leading-18 tracking-tighter">
-            Thoughtful web design that turns visitors into clients.
-        </h1>
+      <h1 class="max-w-2xl text-balance text-4xl font-semibold leading-[0.98] tracking-[-0.055em] text-base-content sm:text-5xl">
+        Thoughtful web design that turns visitors into clients.
+      </h1>
+
+      <p class="mt-6 max-w-xl text-sm leading-6 text-base-content/70 sm:text-base md:text-lg">
+        Helping businesses build trust, stand out, and grow online.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-2">
+        <Button
+          href="mailto:leandroubilla@protonmail.com"
+          variant="dark"
+          icon="heroicons:arrow-up-right"
+          class="h-11 min-h-11 rounded-xl px-4 py-0"
+        >
+          Start Your Project
+        </Button>
+        <Button
+          href="#projects"
+          variant="light"
+          icon="heroicons:rectangle-group"
+          class="h-11 min-h-11 rounded-xl border-base-content/10 bg-base-200 px-4 py-0 hover:bg-base-300"
+        >
+          View Our Work
+        </Button>
+      </div>
+
     </div>
 
-    <div class="flex flex-col items-start gap-8 sm:items-start sm:pb-1 lg:col-start-3">
-        <p class="max-w-96 text-2xl leading-8 text-base-content">
-            Helping businesses build trust, stand out, and grow online.
-        </p>
-        
-        <Button variant="dark" href="/contact">Start Your Project</Button>
+    <div class="relative min-w-0">
+      <div id="home-hero-slider" class="splide overflow-hidden rounded-2xl" aria-label="Featured projects">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {slides.map((slide) => (
+              <li class="splide__slide">
+                <img src={slide.image} alt={slide.title} class="block aspect-[4/3] w-full object-cover" />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <SliderArrow direction="prev" label="Previous project" class="hero-slider-prev" />
+      <SliderArrow direction="next" label="Next project" class="hero-slider-next" />
+      <div id="home-hero-pagination" class="hero-slider-pagination" aria-label="Choose project slide"></div>
     </div>
-</div>
+  </div>
+</section>
+
+<script>
+  import Splide from "@splidejs/splide";
+
+  const root = document.querySelector("#home-hero-slider");
+  if (root && !root.classList.contains("is-initialized")) {
+    const splide = new Splide(root, {
+      type: "loop",
+      perPage: 1,
+      arrows: false,
+      pagination: true,
+      speed: 600,
+      reducedMotion: { speed: 0 },
+    });
+
+    splide.on("pagination:mounted", ({ list }) => {
+      list.setAttribute("aria-label", "Featured project slides");
+      document.querySelector("#home-hero-pagination")?.appendChild(list);
+    });
+    splide.mount();
+    document.querySelector(".hero-slider-prev")?.addEventListener("click", () => splide.go("<"));
+    document.querySelector(".hero-slider-next")?.addEventListener("click", () => splide.go(">"));
+  }
+</script>
+
+<style>
+  .hero-slider-pagination { position: absolute; z-index: 2; right: 0; bottom: 0.75rem; left: 0; display: flex; justify-content: center; }
+  .hero-slider-pagination :global(.splide__pagination) { position: static; display: flex; align-items: center; gap: 4.5px; padding: 0; }
+  .hero-slider-pagination :global(.splide__pagination__page) { width: 6px; height: 6px; margin: 0; border: 0; border-radius: 9999px; background: rgb(255 255 255 / 55%); opacity: 1; transform: none; transition: width 200ms ease, background-color 200ms ease; }
+  .hero-slider-pagination :global(.splide__pagination__page.is-active) { width: 39px; height: 6px; background: white; }
+</style>

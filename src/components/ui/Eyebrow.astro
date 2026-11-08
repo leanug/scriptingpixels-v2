@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 type Props = {
   icon: string;
   text: string;
-  variant?: "primary" | "dark" | "light";
+  variant?: "base" | "base-200";
   iconClass?: string;
   textClass?: string;
   borderClass?: string;
@@ -15,7 +15,7 @@ type Props = {
 const {
   icon,
   text,
-  variant = "light",
+  variant = "base",
   iconClass,
   textClass,
   borderClass,
@@ -24,23 +24,17 @@ const {
 } = Astro.props;
 
 const variantClasses = {
-  primary: {
-    icon: "text-primary-content",
-    text: "text-primary-content",
-    border: "border-primary",
-    background: "bg-primary",
-  },
-  dark: {
-    icon: "text-neutral-content",
-    text: "text-neutral-content",
-    border: "border-neutral",
-    background: "bg-neutral",
-  },
-  light: {
-    icon: "text-primary",
+  base: {
+    icon: "text-base-content/70",
     text: "text-base-content",
-    border: "border-base-content/30",
-    background: "bg-transparent",
+    border: "border-base-100",
+    background: "bg-base-100",
+  },
+  "base-200": {
+    icon: "text-base-content/70",
+    text: "text-base-content",
+    border: "border-base-200",
+    background: "bg-base-200",
   },
 }[variant];
 
@@ -53,8 +47,12 @@ const colors = {
 ---
 
 <span
-  class={`badge inline-flex items-center gap-1.5 rounded-md border pl-2.5 pr-3 py-5 text-md font-medium ${colors.text} ${colors.border} ${colors.background} ${className}`}
+  class={`badge group inline-flex items-center gap-1.5 rounded-full border pl-3 pr-3.5 py-5 mb-5 text-sm font-semibold ${colors.text} ${colors.border} ${colors.background} ${className}`}
 >
-  <Icon name={icon} class={`size-4 ${colors.icon}`} aria-hidden="true" />
+  <Icon
+    name={icon}
+    class={`size-4 ${colors.icon} transition-transform duration-300 ease-out group-hover:rotate-45 motion-reduce:transition-none`}
+    aria-hidden="true"
+  />
   {text}
 </span>

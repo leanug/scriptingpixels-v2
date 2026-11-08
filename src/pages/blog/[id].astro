@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import Prose from "../../components/Prose.astro";
 import { authors, type AuthorKey } from "../../data/authors";
 import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
 
 export async function getStaticPaths() {
   const blog = await getCollection("blog");
@@ -24,6 +25,12 @@ export const prerender = true;
 
 <Layout title={title} description={description}>
   <article class="w-full mb-24 mt-16">
+    <div class="max-w-3xl mx-auto mb-6">
+      <a href="/blog" class="group inline-flex items-center gap-2 text-sm font-medium text-base-content/70 transition-colors hover:text-base-content">
+        <Icon name="heroicons:arrow-left" class="size-4 transition-transform duration-200 group-hover:-translate-x-1 motion-reduce:transition-none" aria-hidden="true" />
+        Go back
+      </a>
+    </div>
 
     <!-- Header -->
     <div class="max-w-3xl mx-auto mb-10 space-y-6">

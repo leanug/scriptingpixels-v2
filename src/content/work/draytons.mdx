@@ -1,14 +1,93 @@
 ---
 title: "Drayton's Group"
 date: 2026-09-10
-img: "image.jpg"
+img: "draytons_cover.webp"
 description: |
-  Redesign of Draytons Group’s WordPress website, rebuilt in Webflow with a modern design, improved user experience.
+  Website redesign and Webflow rebuild for Drayton's Group, a workplace relations, employment law, and HR consultancy serving employers across Queensland.
 tags: ["Client Work", "Redesign", "Webflow"]
-category: Redesign
+category: Webflow Redesign
 published: true
 featured: true
 more: true
 order: 310
 cols: 2
 ---
+
+import { Image } from 'astro:assets'
+import ProjectStatus from '../../components/sections/work/ProjectStatus.astro'
+import HardHat from '../../components/sections/work/icons/HardHat.astro'
+
+<div class="max-w-3xl mx-auto px-2.5 py-8 mt-10 md:mt-0 md:py-14 lg:py-20">
+  <div class="flex items-center justify-between mb-5">
+    <HardHat />
+    <ProjectStatus status="Delivered" />
+  </div>
+
+  <h1 class="font-semibold text-4xl lg:text-5xl leading-none tracking-tight mb-3">
+    Drayton's Group
+  </h1>
+  <span class="text-base-content/60 font-medium mb-6 block">
+    Workplace Relations — Website Redesign & Webflow Rebuild
+  </span>
+  <p class="text-base-content/75 leading-relaxed max-w-2xl mb-8">
+    Drayton's Group supports employers with workplace relations, employment law, and HR and payroll services. The redesign brings those services together in a clear, approachable website for businesses across Queensland, with a focus on the construction, trades, and industrial sectors.
+  </p>
+  <div class="flex flex-wrap gap-2 mt-10">
+    <span class="badge badge-soft px-3 py-2 rounded-full text-xs">Webflow</span>
+    <span class="badge badge-soft px-3 py-2 rounded-full text-xs">Website Redesign</span>
+    <span class="badge badge-soft px-3 py-2 rounded-full text-xs">Workplace Relations</span>
+  </div>
+</div>
+
+<Image
+  src="/media/work/draytons/home.webp"
+  alt="Drayton's Group website homepage with workplace relations services for employers"
+  widths={[400, 800, 1280]}
+  sizes="(max-width: 1280px) 100vw, 1280px"
+  width={1600}
+  height={900}
+  decoding="async"
+  loading="lazy"
+  class="block w-full max-w-4xl mx-auto rounded-2xl"
+/>
+
+<div class="max-w-3xl mx-auto px-2.5 space-y-16 mb-16">
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 border-t border-base-200 pt-8">
+    <div>
+      <p class="text-xs text-base-content/70 mb-1">Client</p>
+      <p class="text-sm font-medium">Drayton's Group</p>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/70 mb-1">Platform</p>
+      <p class="text-sm font-medium">Webflow</p>
+    </div>
+    <div>
+      <p class="text-xs text-base-content/70 mb-1">Industry</p>
+      <p class="text-sm font-medium">Employment & HR</p>
+    </div>
+  </div>
+
+  <section>
+    <h2 class="text-xl font-semibold mb-3">About</h2>
+    <p class="leading-relaxed text-base-content/80">
+      Replace the existing WordPress website with a modern experience that makes Drayton's services easier to understand and helps employers find the right kind of support. The site needed to speak directly to practical, on-the-ground industries while presenting legal, HR, and payroll expertise with confidence.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-semibold mb-3">The approach</h2>
+    <p class="leading-relaxed text-base-content/80">
+      The visual direction was intentionally kept away from the conventions of a traditional law firm website. Instead, it takes its cues from the industrial and construction workplaces Drayton's supports—practical, grounded, and direct, while still feeling credible for a professional advisory business. The homepage leads with a clear message for employers, then organizes the offering into three service areas: consulting, law, and HR and payroll. Supporting sections explain areas of expertise, establish trust through concise proof points, and guide visitors toward booking a consultation or exploring a service.
+    </p>
+    <p class="leading-relaxed text-base-content/80 mt-4">
+      A dark, restrained palette and vivid green accents give the interface a confident visual identity, while industry photography connects the content to the people and workplaces Drayton's serves. The redesigned site was rebuilt in Webflow.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-semibold mb-3">The result</h2>
+    <p class="leading-relaxed text-base-content/80">
+      A unified digital presence that brings Drayton's workplace consulting, legal, and HR and payroll services into one clear journey for employers—from understanding the offer to getting in touch.
+    </p>
+  </section>
+</div>

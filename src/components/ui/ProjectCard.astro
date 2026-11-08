@@ -1,0 +1,71 @@
+---
+type Props = {
+  id: string;
+  title: string;
+  category?: string;
+  date?: Date | string;
+  image?: string;
+  description?: string;
+  variant?: "default" | "featured";
+};
+
+const { id, title, category, date, image, description, variant = "default" } = Astro.props;
+const isFeatured = variant === "featured";
+const formattedDate = date instanceof Date
+  ? `_${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getFullYear()).slice(-2)}`
+  : date;
+const dateTime = date instanceof Date ? date.toISOString() : undefined;
+---
+
+<article class:list={[
+  "group",
+  isFeatured && "",
+]}>
+  <a
+    href={`/work/${id}`}
+    aria-label={`View ${title}`}
+    class:list={[
+      "block aspect-4/3 overflow-hidden",
+      isFeatured ? "rounded-xl bg-base-200" : "rounded-xl bg-base-200",
+    ]}
+  >
+    {image ? (
+      <img
+        src={image}
+        alt={title}
+        loading="lazy"
+        class="h-full w-full rounded-xl object-cover transition-transform duration-500 group-hover:scale-[1.015]"
+      />
+    ) : (
+      <div class="h-full w-full" aria-hidden="true"></div>
+    )}
+  </a>
+
+  <div class:list={[
+    "flex flex-wrap items-baseline justify-between",
+    isFeatured ? "gap-x-4 gap-y-1 px-1.5 pb-1 pt-3 text-sm" : "mt-5 gap-3",
+  ]}>
+    {isFeatured
+      ? <h3 class="font-medium text-base-content">{title}</h3>
+      : <h2 class="text-xl font-medium">{title}</h2>}
+    <div class:list={[
+      "flex items-baseline text-base-content/60",
+      isFeatured ? "gap-3" : "gap-4 text-sm",
+    ]}>
+      {category && <span>{category}</span>}
+      {formattedDate && (
+        <time datetime={dateTime} class:list={["font-mono", isFeatured && "text-xs"]}>
+          {formattedDate}
+        </time>
+      )}
+    </div>
+  </div>
+  {description && (
+    <p class:list={[
+      "text-base-content/70 text-balance",
+      isFeatured ? "px-1.5 pb-2.5 pt-2 text-sm" : "mt-3",
+    ]}>
+      {description}
+    </p>
+  )}
+</article>

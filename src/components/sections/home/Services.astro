@@ -2,25 +2,43 @@
 ---
 import ServiceCard from "../../ui/ServiceCard.astro";
 import Eyebrow from "../../ui/Eyebrow.astro";
+import Button from "../../ui/Button.astro";
 import services from "../../../data/services";
 ---
 
-<section id="services" class="section">
+<section id="services" class="section bg-base-200">
   <div class="container">
     <Eyebrow
-      icon="heroicons:sparkles"
-      text="WEBSITE DESIGN & DEVELOPMENT"
-      class="badge-outline mb-8"
+      icon="heroicons:wrench-screwdriver"
+      text="Services"
+      class="badge-outline"
     />
 
-    <h2 class="section-heading">
+    <h2 class="section-heading mb-8">
       Let's build a website that makes a strong first impression.
     </h2>
 
-    <div class="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-3">
+    <div class="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
       {services.map((service) => (
         <ServiceCard {...service} />
       ))}
+    </div>
+
+    <div class="mt-4 flex flex-col gap-6 rounded-3xl bg-base-300 p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
+      <div class="max-w-xl">
+        <h3 class="mb-3 text-xl font-semibold tracking-tight sm:text-2xl">
+          Not sure what your project needs?
+        </h3>
+        <p class="text-base leading-6 text-base-content/70">
+          Share what you're working on to find the right approach.
+        </p>
+        <p class="mt-3 text-sm text-base-content/50">
+          No pressure, just a conversation about your goals.
+        </p>
+      </div>
+      <Button href="/contact" variant="dark" icon="heroicons:arrow-up-right" class="shrink-0 normal-case">
+        Let's talk about your project
+      </Button>
     </div>
   </div>
 </section>

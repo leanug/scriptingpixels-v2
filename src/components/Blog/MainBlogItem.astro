@@ -11,18 +11,20 @@ const {
 } = Astro.props;
 ---
 
-<a href={`/blog/${slug}`} class="w-full rounded">
+<a href={`/blog/${slug}`} class="group w-full rounded">
   <article class="pb-8">
-    <Image
-      transition:name={`img-${slug}`}
-      src={`/media/blog/${slug}/${image}`}
-      alt={`Cover of ${title}`} 
-      class="w-full aspect-video object-cover rounded-2xl"
-      width="800" 
-      height="450"
-      decoding="async"
-      loading="lazy"
-    />
+    <div class="overflow-hidden rounded-2xl">
+      <Image
+        transition:name={`img-${slug}`}
+        src={`/media/blog/${slug}/${image}`}
+        alt={`Cover of ${title}`}
+        class="aspect-video w-full rounded-2xl object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+        width="800"
+        height="450"
+        decoding="async"
+        loading="lazy"
+      />
+    </div>
 
     <div class="flex flex-col gap-4 mt-6">
       <h2 class="text-2xl font-semibold leading-snug">

@@ -1,41 +1,51 @@
-
 ---
+import { Icon as HeroIcon } from "astro-icon/components";
+import Button from "./Button.astro";
+
 interface Props {
   number: string;
+  duration: string;
+  icon: string;
   title: string;
   price: string;
   description: string;
-  features: string[];
+  features: { text: string; icon: string }[];
 }
 
-const { number, title, description, features, price } = Astro.props;
+const { number, duration, icon: Icon, title, description, features, price } = Astro.props;
 ---
 
-<article class="min-w-0">
-  <img
-    src="/media/services/s1.webp"
-    alt={`${title} service`}
-    class="aspect-4/3 w-full cover rounded-md bg-[#c9c9c9]"
-  />
-
-  <!-- Number -->
-  <div class="mt-4 font-mono text-md tracking-tight text-base-content/50">
-    No. {number}
+<article class="flex h-full min-w-0 flex-col rounded-3xl bg-base-100 p-5 sm:p-6">
+  <div class="mb-5 flex items-center justify-between gap-3">
+    <div class="flex items-center gap-2.5">
+      <HeroIcon name={Icon} class="size-5 text-base-content/70" aria-hidden="true" />
+      <span class="font-mono text-md tracking-tight">{title}</span>
+    </div>
+    <span class="badge h-auto border-0 bg-base-200 px-3.5 py-2 text-xs rounded-full text-base-content/70">
+      {duration}
+    </span>
   </div>
 
-  <h3 class="text-xl font-medium sm:text-2xl text-base-content my-4">{title}</h3>
+  <p class="mb-5 text-3xl font-semibold tracking-tight text-base-content">{price}</p>
+  <p class="min-h-12 text-md leading-relaxed text-base-content/65">{description}</p>
 
-  <p class="text-base-content text-4xl font-semibold mb-5">{price}</p>
+  <div class="mt-6 mb-8 border-t border-base-content/10"></div>
 
-  <p class="text-base-content/75 text-xl">{description}</p>
-
-  <!-- Features -->
-  <ul class="space-y-1 text-md text-base-content/75 mt-5">
-    {features.map((feature) => (
-      <li class="flex gap-1.5">
-        <span aria-hidden="true" class="text-base-content/75">•</span>
-        <span>{feature}</span>
+  <ul class="mb-9 flex-1 space-y-3 text-sm leading-4 text-base-content">
+    {features.map(({ text, icon }) => (
+      <li class="flex items-start gap-2.5">
+        <HeroIcon name={icon} class="mt-[-1px] size-4 shrink-0 text-base-content/70" aria-hidden="true" />
+        <span>{text}</span>
       </li>
     ))}
   </ul>
+
+  <Button
+    href="/contact"
+    variant="dark"
+    icon="heroicons:arrow-up-right"
+    class="h-11 min-h-11 w-full rounded-lg border-0 px-4 py-0"
+  >
+    Start Your Project
+  </Button>
 </article>

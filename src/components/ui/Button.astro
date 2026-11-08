@@ -1,32 +1,72 @@
 ---
+import { Icon as HeroIcon } from "astro-icon/components";
+import DribbbleIcon from "./icons/DribbbleIcon.astro";
+import LinkedInIcon from "./icons/LinkedInIcon.astro";
+
 interface Props {
-  variant?: "dark" | "light";
+  variant?: "dark" | "light" | "secondary" | "contrast" | "outline";
+  size?: "sm";
   href?: string;
+  target?: string;
+  rel?: string;
   type?: "button" | "submit" | "reset";
   class?: string;
+  icon?: string | typeof DribbbleIcon | typeof LinkedInIcon;
 }
 
 const {
   variant = "dark",
+  size,
   href,
   type = "button",
   class: className = "",
+  icon: Icon,
   ...attributes
 } = Astro.props;
 
-const classes = `btn h-auto min-h-0 rounded-xl border border-transparent px-6 py-3 text-base font-normal uppercase tracking-normal shadow-none transition-colors duration-300 ease-in-out hover:bg-blue-700 hover:text-white ${
-  variant === "light"
-    ? "bg-base-100 text-base-content"
-    : "bg-neutral text-neutral-content"
-} ${className}`;
+const variantClasses = {
+  dark: "bg-base-content text-base-100 hover:bg-base-content/90 hover:text-base-100",
+  light: "bg-base-100 text-base-content hover:bg-base-200 hover:text-base-content",
+  secondary: "bg-base-200 text-base-content hover:bg-base-300 hover:text-base-content",
+  contrast:
+    "relative bg-base-100 pr-12 pt-4 text-base-content hover:bg-base-200 hover:text-base-content",
+  outline:
+    "btn-outline border-1 border-base-content/30 bg-transparent text-base-content hover:bg-base-200 hover:text-base-content",
+}[variant];
+
+const borderClasses = variant === "outline" ? "" : "border border-transparent";
+const sizeClasses = size === "sm"
+  ? Icon ? "rounded-lg pl-3.5 pr-4 py-2.5 text-xs" : "rounded-lg px-4 py-2.5 text-xs"
+  : Icon ? "rounded-xl pl-4.5 pr-5 py-3 text-sm" : "rounded-xl px-5 py-3 text-sm";
+const classes = `btn group h-auto min-h-0 gap-3 ${sizeClasses} ${borderClasses} font-semibold capitalize tracking-normal shadow-none transition-colors duration-300 ease-in-out ${variantClasses} ${className}`;
 ---
 
 {href ? (
   <a href={href} class={classes} {...attributes}>
+    {typeof Icon === "string" ? (
+      <HeroIcon name={Icon} class="size-[18px] transition-transform duration-200 group-hover:rotate-45 motion-reduce:transition-none" aria-hidden="true" />
+    ) : Icon && <Icon size={18} class="transition-transform duration-200 group-hover:rotate-45 motion-reduce:transition-none" aria-hidden="true" />}
     <slot />
+    {variant === "contrast" && (
+      <HeroIcon
+        name="heroicons:arrow-up-right"
+        class="absolute right-3 top-3 text-base-content"
+        aria-hidden="true"
+      />
+    )}
   </a>
 ) : (
   <button type={type} class={classes} {...attributes}>
+    {typeof Icon === "string" ? (
+      <HeroIcon name={Icon} class="size-[18px] transition-transform duration-200 group-hover:rotate-45 motion-reduce:transition-none" aria-hidden="true" />
+    ) : Icon && <Icon size={18} class="transition-transform duration-200 group-hover:rotate-45 motion-reduce:transition-none" aria-hidden="true" />}
     <slot />
+    {variant === "contrast" && (
+      <HeroIcon
+        name="heroicons:arrow-up-right"
+        class="absolute right-3 top-3 text-base-content"
+        aria-hidden="true"
+      />
+    )}
   </button>
 )}

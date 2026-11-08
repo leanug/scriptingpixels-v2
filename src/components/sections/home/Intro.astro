@@ -1,51 +1,57 @@
----
-import Eyebrow from "../../ui/Eyebrow.astro";
----
+<section class="relative pb-24 pt-12 text-center text-base-content">
+  <div class="container">
+    <div class="flex flex-col items-center px-5">
+      <p class="font-mono mb-3.5 text-md">The Value of Good Design</p>
 
-<section class="relative flex min-h-screen flex-col items-center justify-center bg-blue-700 px-5 py-20 text-center text-white">
-  <Eyebrow
-    icon="heroicons:sparkles"
-    text="WEBSITE DESIGN & DEVELOPMENT"
-    class="badge-outline absolute left-1/2 top-20 mb-6 -translate-x-1/2"
-  />
+      <div class="mx-auto flex w-full max-w-2xl flex-col">
+        <h2 class="section-heading text-base-content mb-4">
+          Does your website reflect the value you bring?
+        </h2>
 
-  <div class="mx-auto flex w-full max-w-2xl flex-col">
-    <h2 class="section-heading text-white">
-      Does your website make<br class="hidden sm:block" />
-      your business look as<br class="hidden sm:block" />
-      good as it really is?
-    </h2>
+        <p class="mx-auto text-base-content/70 text-balance">
+          An outdated, generic or disconnected digital presence can undermine 
+          your brand's credibility. The right design reflects the quality of 
+          your work and gives your business the presence it deserves.
+        </p>
+      </div>
 
-    <p class="mx-auto text-xl text-white/80">
-      An outdated, generic or disconnected digital presence can undermine
-      the credibility you've spent years building. The right design reflects
-      your expertise and gives your brand the presence it deserves.
-    </p>
-  </div>
-
-  <div class="absolute left-1/2 bottom-20">
-    <a
-      href="#services"
-      aria-label="Scroll to services"
-      class=" left-1/2 flex h-9 w-6 -translate-x-1/2 items-start justify-center rounded-full border border-white/90 pt-[3px]"
-    >
-      <span id="ball" class="mt-auto mb-[2px] size-1.5 rounded-full bg-white"></span>
-    </a>
+      <div class="mt-10">
+        <a
+          href="#services"
+          aria-label="Scroll to services"
+          class="left-1/2 flex h-11 w-7 items-start justify-center rounded-full border border-base-content/40"
+        >
+          <span id="ball" class="mt-2 size-1.5 rounded-full bg-base-content/90"></span>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
   #ball {
-    animation: ball-down 1.4s ease-in infinite;
+    animation: ball-down 1.6s ease-in infinite;
   }
 
   @keyframes ball-down {
     from {
       transform: translateY(0);
+      opacity: 1;
+    }
+
+    75% {
+      transform: translateY(1.25rem);
+      opacity: 1;
+    }
+
+    90% {
+      transform: translateY(1.25rem);
+      opacity: 0;
     }
 
     to {
-      transform: translateY(1.25rem);
+      transform: translateY(0);
+      opacity: 0;
     }
   }
 </style>

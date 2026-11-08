@@ -1,0 +1,59 @@
+---
+import { Icon } from "astro-icon/components";
+import Eyebrow from "../../ui/Eyebrow.astro";
+
+const steps = [
+  {
+    title: "Discovery",
+    description: "Business goals, audience, and website objectives are clarified before work begins.",
+    icon: "heroicons:magnifying-glass",
+  },
+  {
+    title: "Design",
+    description: "A thoughtful visual direction and tailored design take shape around your audience.",
+    icon: "heroicons:pencil-square",
+  },
+  {
+    title: "Development",
+    description: "The design becomes a responsive, fast, and reliable website.",
+    icon: "heroicons:code-bracket",
+  },
+  {
+    title: "Launch & Support",
+    description: "The website is tested, refined, and launched, with ongoing support to keep it running smoothly.",
+    icon: "heroicons:rocket-launch",
+  },
+];
+---
+
+<section class="section overflow-x-clip bg-base-200">
+  <div class="container">
+    <div class="mb-14 grid gap-8 md:grid-cols-2 md:items-end lg:mb-16">
+      <div>
+        <Eyebrow icon="heroicons:arrow-path" text="Built step by step" class="badge-outline mb-6" />
+        <h2 class="section-heading mb-0 max-w-xl">
+          A clear process.<br />A better result.
+        </h2>
+      </div>
+      <div class="max-w-md md:justify-self-end">
+        <p class="text-base-content/70">
+          Every project follows a thoughtful, straightforward process designed to make things easier for you. From planning and design to development and launch.
+        </p>
+      </div>
+    </div>
+
+    <div class="relative mt-14 before:absolute before:left-1/2 before:top-6 before:hidden before:h-px before:w-screen before:-translate-x-1/2 before:bg-base-content/15 lg:before:block">
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        {steps.map(({ title, description, icon }) => (
+          <article class="flex flex-col items-start">
+            <span class="z-10 mb-6 flex size-12 items-center justify-center rounded-full border border-base-content/10 bg-base-100 text-base-content/70">
+              <Icon name={icon} class="size-5" aria-hidden="true" />
+            </span>
+            <h3 class="mb-2 text-base font-semibold text-base-content">{title}</h3>
+            <p class="text-sm leading-5 text-base-content/70">{description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

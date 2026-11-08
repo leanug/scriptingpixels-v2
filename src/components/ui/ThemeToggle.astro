@@ -1,21 +1,18 @@
 ---
-import { Icon } from 'astro-icon/components'
 ---
 
 <button
   id="theme-toggle"
   aria-label="Toggle theme"
   aria-pressed="false"
-  class="relative flex h-10 w-20 cursor-pointer items-center rounded-full bg-[#dedede] p-[3px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] transition-colors duration-300"
+  class="relative flex h-9 w-16 cursor-pointer items-center rounded-full bg-[#dedede] p-[3px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.2)] transition-colors duration-300"
 >
-  <span aria-hidden="true" class="absolute left-[11px] top-1/2 z-0 -translate-y-1/2 text-sm font-medium leading-none text-white">I</span>
-  <span aria-hidden="true" class="absolute right-[11px] top-1/2 z-0 size-4 -translate-y-1/2 rounded-full border-[3px] border-white"></span>
+  <span aria-hidden="true" class="absolute left-[14px] top-1/2 z-0 -translate-y-1/2 text-sm font-medium leading-none text-white">I</span>
+  <span aria-hidden="true" class="absolute right-[9px] top-1/2 z-0 size-4 -translate-y-1/2 rounded-full border-[3px] border-white"></span>
   <span
     id="theme-knob"
-    class="absolute left-[3px] z-10 flex h-[34px] w-[34px] items-center justify-center rounded-full border border-black/10 bg-[#f4f4f4] shadow-[0_1px_2px_rgba(0,0,0,0.18),0_5px_10px_rgba(0,0,0,0.16)] transition-[left] duration-300 ease-out"
+    class="absolute left-[3px] z-10 flex h-[30px] w-[30px] items-center justify-center rounded-full border border-black/10 bg-[#f4f4f4] shadow-[0_1px_2px_rgba(0,0,0,0.18),0_5px_10px_rgba(0,0,0,0.16)] transition-[left] duration-300 ease-out"
   >
-    <Icon id="icon-sun" class="h-4 w-4 text-amber-500" name="heroicons:sun-solid" />
-    <Icon id="icon-moon" class="hidden h-4 w-4 text-slate-700" name="heroicons:moon-solid" />
   </span>
 </button>
 
@@ -24,15 +21,11 @@ import { Icon } from 'astro-icon/components'
 
   function updateToggle(theme) {
     const knob = document.getElementById('theme-knob')
-    const sun = document.getElementById('icon-sun')
-    const moon = document.getElementById('icon-moon')
     const track = document.getElementById('theme-toggle')
     const isDark = theme === 'dark'
 
-    knob.style.left = isDark ? 'calc(100% - 37px)' : '3px'
-    track.style.backgroundColor = isDark ? '#ff541f' : '#dedede'
-    sun.classList.toggle('hidden', isDark)
-    moon.classList.toggle('hidden', !isDark)
+    knob.style.left = isDark ? 'calc(100% - 34px)' : '3px'
+    track.style.backgroundColor = isDark ? 'var(--color-neutral)' : '#dedede'
     track.setAttribute('aria-pressed', String(isDark))
   }
 

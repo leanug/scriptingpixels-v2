@@ -6,7 +6,7 @@ description: |
   Interactive Framer prototype for a movie trailer production web app, consolidating Slack, email, and video review tools into a single dashboard for agency and studio admins.
 tags: ["Client Work", "Framer", "UI Design"]
 category: Movie production SaaS
-published: false
+published: true
 featured: false
 more: true
 order: 400
@@ -14,16 +14,14 @@ cols: 2
 ---
 
 import { Image } from 'astro:assets'
+import ProjectStatus from '../../components/sections/work/ProjectStatus.astro'
 
 <div class="max-w-3xl mx-auto px-2.5 py-8 mt-10 md:mt-0 md:py-14 lg:py-20">
   <div class="flex items-center justify-between mb-4">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10">
       <path fill-rule="evenodd" d="M14.615 1.595a.75.75 0 0 1 .359.852L12.982 9.75h7.268a.75.75 0 0 1 .548 1.262l-10.5 11.25a.75.75 0 0 1-1.272-.71l1.992-7.302H3.75a.75.75 0 0 1-.548-1.262l10.5-11.25a.75.75 0 0 1 .913-.143Z" clip-rule="evenodd" />
     </svg>
-    <span class="badge badge-neutral gap-1.5 rounded-full font-medium">
-      <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
-      Delivered
-    </span>
+    <ProjectStatus status="Delivered" />
   </div>
 
   <h1 class="font-semibold text-4xl lg:text-5xl leading-none tracking-tight mb-3">

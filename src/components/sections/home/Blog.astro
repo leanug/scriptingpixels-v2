@@ -1,0 +1,148 @@
+
+---
+import Card from "../../BlogList/Card.astro";
+
+import "@splidejs/splide/css/core";
+
+import { getCollection } from "astro:content";
+import Eyebrow from "../../ui/Eyebrow.astro";
+import Button from "../../ui/Button.astro";
+import SliderArrow from "../../ui/SliderArrow.astro";
+
+const blog = await getCollection('blog')
+const mainPosts = blog
+  .filter((post) => post.data.published && post.data.featured)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .map((post) => ({
+    ...post,
+    readTime: Math.max(1, Math.ceil((post.body?.trim().split(/\s+/).length ?? 0) / 200)),
+  }))
+---
+
+<section class="section bg-base-200">
+  <div class="container">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-20">
+      <div>
+        <div class="mb-8">
+          <Eyebrow
+            icon="heroicons:document-text"
+            text="From the blog"
+            class="badge-outline mb-6"
+          />
+          <h2 class="section-heading mb-0">
+            Latest ideas for a stronger online presence
+          </h2>
+        </div>
+
+        <Button href="/blog" variant="outline" icon="heroicons:newspaper" class="normal-case">
+          View all posts
+        </Button>
+      </div>
+      <div class="relative min-w-0">
+      <div id="home-blog-slider" class="splide" aria-label="Latest blog posts">
+        <div class="splide__track">
+          <ul class="splide__list">
+            {mainPosts.map((post) => (
+              <li class="splide__slide">
+                <Card
+                  image={post.data.image ?? "cover.webp"}
+                  title={post.data.title}
+                  slug={post.id}
+                  category={post.data.category?.label ?? "Article"}
+                  readTime={`${post.readTime} min read`}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div class="blog-slider-controls">
+        <SliderArrow direction="prev" label="Previous posts" class="blog-slider-prev" />
+        <SliderArrow direction="next" label="Next posts" class="blog-slider-next" />
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Splide from "@splidejs/splide";
+
+  const root = document.querySelector("#home-blog-slider");
+
+  if (root && !root.classList.contains("is-initialized")) {
+    const splide = new Splide(root, {
+      perPage: 2,
+      perMove: 1,
+      gap: "12px",
+      arrows: false,
+      pagination: true,
+      breakpoints: {
+        1024: { perPage: 2 },
+        640: { perPage: 1, gap: "10px" },
+      },
+    });
+
+    splide.on("pagination:mounted", ({ list }) => {
+      const pagination = document.querySelector("#home-blog-pagination");
+      if (pagination) pagination.appendChild(list);
+    });
+
+    splide.mount();
+
+    document.querySelector(".blog-slider-prev")?.addEventListener("click", () => splide.go("<"));
+    document.querySelector(".blog-slider-next")?.addEventListener("click", () => splide.go(">"));
+  }
+</script>
+
+<style>
+  .blog-slider-controls {
+    display: contents;
+  }
+
+  @media (max-width: 1023px) {
+    .blog-slider-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+
+    .blog-slider-controls :global(.slider-arrow) {
+      position: static;
+      transform: none;
+    }
+  }
+
+  #home-blog-slider .splide__slide {
+    display: flex;
+    height: auto;
+  }
+
+  #home-blog-slider .splide__slide > * {
+    width: 100%;
+  }
+
+  #home-blog-pagination :global(.splide__pagination) {
+    position: static;
+    display: flex;
+    justify-content: flex-start;
+    gap: 4px;
+    padding: 0;
+  }
+
+  #home-blog-pagination :global(.splide__pagination__page) {
+    width: 4px;
+    height: 4px;
+    margin: 0;
+    background: #b8b8b8;
+    opacity: 1;
+  }
+
+  #home-blog-pagination :global(.splide__pagination__page.is-active) {
+    width: 22px;
+    border-radius: 999px;
+    background: #1677ff;
+    transform: none;
+  }
+</style>

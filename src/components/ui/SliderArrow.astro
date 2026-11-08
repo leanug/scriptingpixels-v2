@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  direction: "prev" | "next";
+  label: string;
+  class?: string;
+}
+
+const { direction, label, class: className = "" } = Astro.props;
+const arrowIcon = direction === "prev" ? "heroicons:arrow-left" : "heroicons:arrow-right";
+---
+
+<button
+  type="button"
+  class={`slider-arrow slider-arrow-${direction} ${className}`}
+  aria-label={label}
+  data-prev={direction === "prev" ? true : undefined}
+  data-next={direction === "next" ? true : undefined}
+>
+  <Icon name={arrowIcon} class="size-4" aria-hidden="true" />
+</button>
+
+<style is:global>
+  .slider-arrow {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    display: grid;
+    width: 2.8rem;
+    height: 2.8rem;
+    cursor: pointer;
+    place-items: center;
+    border: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+    border-radius: 9999px;
+    background: var(--color-base-100, white);
+    color: var(--color-base-content, #171923);
+    transform: translateY(-50%);
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+  .slider-arrow:hover {
+    background: var(--color-neutral, #171923);
+    color: var(--color-neutral-content, white);
+  }
+  .slider-arrow-prev { left: 0; transform: translate(-50%, -50%); }
+  .slider-arrow-next { right: 0; transform: translate(50%, -50%); }
+</style>
