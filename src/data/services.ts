@@ -24,8 +24,7 @@ const services = [
     price: "$3,000",
     description: "A fully custom website designed around your brand, your audience, and your business goals.",
     features: [
-      { text: "Fully custom website design", icon: "heroicons:sparkles" },
-      { text: "Custom UI & responsive layouts", icon: "heroicons:rectangle-group" },
+      { text: "Up to 5 custom-designed pages", icon: "heroicons:sparkles" },
       { text: "Webflow or Astro + CSS", icon: "heroicons:code-bracket" },
       { text: "Desktop, tablet & mobile responsive", icon: "heroicons:device-phone-mobile" },
       { text: "CMS setup (if needed)", icon: "heroicons:circle-stack" },

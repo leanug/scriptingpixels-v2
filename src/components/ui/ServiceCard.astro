@@ -26,7 +26,10 @@ const { number, duration, icon: Icon, title, description, features, price } = As
     </span>
   </div>
 
-  <p class="mb-5 text-3xl font-semibold tracking-tight text-base-content">{price}</p>
+  <div class="mb-5">
+    <p class="mb-2 text-xs text-base-content/60">Starting at</p>
+    <p class="text-3xl font-semibold tracking-tight text-base-content">{price}</p>
+  </div>
   <p class="min-h-12 text-md leading-relaxed text-base-content/65">{description}</p>
 
   <div class="mt-6 mb-8 border-t border-base-content/10"></div>
